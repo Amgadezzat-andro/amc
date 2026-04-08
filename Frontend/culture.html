@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture - A.M.C.</title>
+    <link rel="icon" href="assets/favicon-amc (1).ico" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Culture Page Specific Styles */
+        .culture-hero-banner {
+            position: relative;
+            width: 100%;
+            min-height: 90vh;
+            background: #000000;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-image: url('assets/new/Picture19.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .culture-hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .culture-banner-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 80px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .culture-banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .culture-breadcrumb {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+
+        .culture-banner-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .culture-banner-title strong {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .culture-banner-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .culture-banner-text p {
+            margin: 0;
+        }
+
+        /* Content Sections */
+        .culture-content-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .culture-content-section.alt-bg {
+            background: #f5f7fa;
+        }
+
+        .culture-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .culture-section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            color: #001f2e;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        /* .culture-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #003d5c 0%, #00849e 100%);
+            border-radius: 2px;
+        } */
+
+        .culture-section-subtitle {
+            font-size: 18px;
+            color: #5a6c7d;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+
+        /* Feature Cards Grid */
+        .culture-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .culture-feature-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .culture-feature-card.animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .culture-feature-card.animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .culture-feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 132, 158, 0.2);
+        }
+
+        .culture-feature-title {
+            transition: color 0.3s ease;
+        }
+
+        .culture-feature-card:hover .culture-feature-title {
+            color: #00849e;
+        }
+
+        .culture-feature-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #003d5c 0%, #00849e 100%);
+        }
+
+        .culture-feature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .culture-feature-card:hover .culture-feature-image img {
+            transform: scale(1.1);
+        }
+
+        .culture-feature-content {
+            padding: 40px;
+        }
+
+        .culture-feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #003d5c;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .culture-feature-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #5a6c7d;
+            margin: 0;
+        }
+
+        /* RISE Values Section - What We Do Style */
+        .rise-values-section {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+        }
+
+        .rise-values-tabs-nav {
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .rise-values-tabs-nav > div {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .rise-value-tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px 12px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 100px;
+            text-align: center;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rise-value-tab.animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .rise-value-tab.animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rise-value-tab i {
+            font-size: 24px;
+            color: #6b7280;
+            transition: all 0.3s ease;
+        }
+
+        .rise-value-tab span {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+        }
+
+        .rise-value-tab:hover {
+            border-color: #00849e;
+            background: #f0fdfa;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 132, 158, 0.15);
+        }
+
+        .rise-value-tab:hover i {
+            color: #00849e;
+            transform: scale(1.1);
+        }
+
+        .rise-value-tab.active {
+            border-color: #00849e;
+            background: #00849e;
+        }
+
+        .rise-value-tab.active i,
+        .rise-value-tab.active span {
+            color: white;
+        }
+
+        /* Tab Content Styles */
+        .rise-values-tabs-content {
+            position: relative;
+            min-height: 400px;
+            margin-top: 40px;
+        }
+
+        .rise-value-tab-content {
+            display: none !important;
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            visibility: hidden;
+        }
+
+        .rise-value-tab-content.active {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            animation: fadeInContent 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInContent {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .rise-value-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .rise-value-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .rise-value-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .rise-value-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .rise-value-text-content h3 {
+            font-size: 32px;
+            font-weight: 300;
+            color: #00849e;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .rise-value-text-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        @media (max-width: 1024px) {
+            .rise-value-content-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .rise-value-image img {
+                height: 300px;
+            }
+
+            .rise-values-tabs-nav {
+                margin-top: 40px;
+            }
+
+            .rise-values-tabs-nav > div {
+                max-width: 100%;
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rise-value-tab {
+                padding: 16px 8px;
+                min-height: 90px;
+            }
+
+            .rise-value-tab i {
+                font-size: 20px;
+            }
+
+            .rise-value-tab span {
+                font-size: 11px;
+            }
+
+            .rise-value-text-content h3 {
+                font-size: 24px;
+            }
+
+            .rise-value-image img {
+                height: 250px;
+            }
+
+            .rise-values-tabs-nav > div {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+                max-width: 100% !important;
+            }
+
+            .rise-value-content-grid {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .rise-values-tabs-nav > div {
+                grid-template-columns: 1fr !important;
+            }
+
+            .rise-value-tab {
+                min-height: 80px;
+                padding: 12px 8px;
+            }
+
+            .rise-value-text-content h3 {
+                font-size: 20px;
+            }
+
+            .rise-value-text-content p {
+                font-size: 14px;
+            }
+        }
+
+        /* Equity Section */
+        .equity-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 60px;
+            /* background: linear-gradient(135deg, #f8fafb 0%, #ffffff 100%); */
+            border-radius: 12px;
+            /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+            /* border: 1px solid #e5e7eb; */
+        }
+
+        .equity-intro-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: #001f2e;
+            margin-bottom: 24px;
+        }
+
+        .equity-intro-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #5a6c7d;
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .culture-banner-container {
+                padding: 80px 40px;
+            }
+
+            .culture-container {
+                padding: 0 40px;
+            }
+
+            .culture-features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .culture-hero-banner {
+                min-height: 70vh;
+            }
+
+            .culture-banner-container {
+                padding: 60px 20px;
+            }
+
+            .culture-content-section {
+                padding: 60px 0;
+            }
+
+            .culture-container {
+                padding: 0 20px;
+            }
+
+            .culture-features-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .culture-feature-content {
+                padding: 30px 20px;
+            }
+
+            .culture-feature-title {
+                font-size: 20px;
+            }
+
+            .culture-feature-text {
+                font-size: 15px;
+            }
+
+            .equity-intro {
+                padding: 40px 20px;
+            }
+
+            .culture-section-title {
+                font-size: 28px;
+            }
+
+            .culture-section-subtitle {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .culture-hero-banner {
+                min-height: 60vh;
+            }
+
+            .culture-banner-title {
+                font-size: 28px;
+            }
+
+            .culture-banner-text {
+                font-size: 16px;
+            }
+
+            .culture-breadcrumb {
+                font-size: 12px;
+            }
+
+            .culture-feature-image {
+                height: 200px;
+            }
+
+            .culture-feature-content {
+                padding: 24px 16px;
+            }
+
+            .culture-section-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .fade-in-up.animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ensure all text is visible */
+        .culture-content-section * {
+            visibility: visible;
+        }
+
+        /* Better spacing and readability */
+        .culture-container {
+            color: #2c3e50;
+        }
+
+        /* Improve card readability */
+        .culture-feature-card {
+            color: #2c3e50;
+        }
+
+        /* Ensure all text content is visible by default */
+        .culture-feature-text,
+        .culture-feature-title,
+        .rise-value-text-content,
+        .culture-section-title,
+        .culture-section-subtitle,
+        .culture-banner-text,
+        .culture-banner-title,
+        .culture-breadcrumb,
+        .equity-intro-text,
+        .equity-intro-title,
+        .rise-value-text-content h3,
+        .rise-value-text-content p {
+            opacity: 1 !important;
+            visibility: visible !important;
+            /* color: inherit !important; */
+        }
+
+        /* Ensure sections are visible */
+        .culture-content-section,
+        .culture-container,
+        .rise-values-section,
+        .rise-values-tabs-content,
+        .rise-value-tab-content.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .section-eyebrow {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #003d5c;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: clamp(32px, 4vw, 48px) !important;
+            font-weight: 600 !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            color: #003d5c !important;
+            margin-bottom: 20px !important;
+        }
+    </style>
+    <style>
+        /* Consultation Popup Modal */
+        .consultation-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .consultation-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .consultation-modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .consultation-modal-header {
+            padding: 30px 40px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            border-radius: 16px 16px 0 0;
+            z-index: 1;
+        }
+
+        .consultation-modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #001f2e;
+            margin: 0;
+        }
+
+        .consultation-modal-close {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f3f4f6;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        .consultation-modal-close:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .consultation-modal-body {
+            padding: 40px;
+        }
+
+        .consultation-form-group {
+            margin-bottom: 24px;
+        }
+
+        .consultation-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .consultation-form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .consultation-form-label .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .consultation-form-input,
+        .consultation-form-select,
+        .consultation-form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #374151;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .consultation-form-input:focus,
+        .consultation-form-select:focus,
+        .consultation-form-textarea:focus {
+            outline: none;
+            border-color: #00849e;
+            box-shadow: 0 0 0 3px rgba(0, 132, 158, 0.1);
+        }
+
+        .consultation-form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .consultation-form-submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #003d5c 0%, #00849e 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .consultation-form-submit-btn:hover {
+            background: linear-gradient(135deg, #002d44 0%, #006d84 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 132, 158, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .consultation-modal-content {
+                margin: 20px;
+            }
+
+            .consultation-modal-header,
+            .consultation-modal-body {
+                padding: 24px;
+            }
+
+            .consultation-form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer-logo img {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0 !important;
+            border-radius: 50%;
+            display: block;
+            margin: 0 !important;
+        }
+        .contact-info span, .contact-info-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header Bar -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="contact-info">
+                    <a href="tel:+9615455117" class="contact-info-link"><i class="fas fa-phone"></i> +9615455117</a>
+                    <a href="mailto:amc@amclebanon.com" class="contact-info-link"><i class="fas fa-envelope"></i> amc@amclebanon.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="mobile-sidebar-logo">
+                        <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="about.html">About Us <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="about.html#history">History & Evolution</a>
+                            <a href="about.html#purpose"> Purpose & Future</a>
+                            <a href="about.html#people">Our People</a>
+                            <a href="about.html#ventures">Joint Ventures & Alliances</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#overview">Overview</a>
+                            <a href="services.html#what-we-do">What We Do</a>
+                            <a href="services.html#industries">Industries</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a href="culture.html">Culture <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="culture.html#how-we-do">How We Do</a>
+                            <a href="culture.html#rise-values">RISE Values</a>
+                            <a href="culture.html#equity">Equity Driven Workspace</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="careers.html#jobs">Jobs</a>
+                            <a href="internships.html">Internships</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item cta">
+                        <a href="#" class="btn-consultation" id="openConsultationModal">Book your Consultation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 3.1: How We Do - Hero Banner -->
+    <section id="how-we-do" class="culture-hero-banner">
+        <div class="culture-banner-container">
+            <div class="culture-banner-content">
+                <!-- <div class="culture-breadcrumb">Who we are > Our People</div> -->
+                <h1 class="culture-banner-title">
+                    <strong>Possibility</strong> starts with our people
+                </h1>
+                <div class="culture-banner-text">
+                    <p>A legacy of over 30 years proves one simple truth: our people make it happen. Through their collaboration and connection, they are driving a more sustainable future and developing groundbreaking solutions. Our strong culture, built on a foundation of shared values, empowers every team member to make an impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3.1: How We Do - Feature Cards -->
+    <section class="culture-content-section">
+        <div class="culture-container">
+            <div class="culture-features-grid">
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture20.png" alt="Commitment to Thriving">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Commitment to Thriving</h4>
+                        <p class="culture-feature-text">In today's dynamic business environment, we recognize that engagement alone can lead to burnout. To support our employees' well-being, we conduct an annual thriving survey to assess their mental health and help empower them during work hours.</p>
+                    </div>
+                </div>
+
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture21.png" alt="Zero tolerance for Corruption">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Zero tolerance for Corruption</h4>
+                        <p class="culture-feature-text">We are committed to integrity, transparency, and ethical conduct. With a zero-tolerance policy on corruption, we promote a culture of honesty and accountability while ensuring fair and ethical practices to prevent violations.</p>
+                    </div>
+                </div>
+
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture22.png" alt="Championing Work-Life Balance">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Championing Work-Life Balance</h4>
+                        <p class="culture-feature-text">We believe true success includes both professional achievement and a healthy work-life balance. We are committed to fostering an environment where employees can excel in their careers while also attending to their personal lives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3.2: RISE Values -->
+    <section id="rise-values" class="culture-content-section rise-values-section">
+        <div class="culture-container">
+            <div class="section-header text-center mb-12">
+                <div class="culture-section-title section-eyebrow">RISE Values</div>
+                <h2 class="" style="font-weight: 300; margin-bottom: 16px; font-size: 28px;">Core Values</h2>
+                <p class="culture-section-subtitle" style="margin-bottom: 0;">Our culture forms the foundation of our success and for promoting a dynamic, inclusive, and positive work environment.</p>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <div class="rise-values-tabs-nav" style="margin-top: 40px; margin-bottom: 40px;">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mx-auto" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 800px; margin: 0 auto;">
+                    <button type="button" class="rise-value-tab active" data-tab="respect">
+                        <i class="fas fa-handshake"></i>
+                        <span>Respect</span>
+                    </button>
+                    <button type="button" class="rise-value-tab" data-tab="integrity">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Integrity</span>
+                    </button>
+                    <button type="button" class="rise-value-tab" data-tab="skills">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Skills</span>
+                    </button>
+                    <button type="button" class="rise-value-tab" data-tab="equality">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>Equality</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabs Content -->
+            <div class="rise-values-tabs-content">
+                <!-- Tab 1: Respect -->
+                <div class="rise-value-tab-content active" data-content="respect">
+                    <div class="rise-value-content-grid">
+                        <div class="rise-value-image">
+                            <img src="https://plus.unsplash.com/premium_photo-1664475977286-ac80421b7eda?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Respect">
+                        </div>
+                        <div class="rise-value-text-content">
+                            <h3>Respect</h3>
+                            <p>This commitment helps us attract and retain talent, strengthening our long-term success with all stakeholders, by fostering a positive, productive workplace where everyone feels valued and empowered.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Integrity -->
+                <div class="rise-value-tab-content" data-content="integrity">
+                    <div class="rise-value-content-grid">
+                        <div class="rise-value-image">
+                            <img src="assets/new/Picture23.png" alt="Integrity">
+                        </div>
+                        <div class="rise-value-text-content">
+                            <h3>Integrity</h3>
+                            <p>We value trust and honesty, committing to transparency, accountability, and the highest ethical standards in all interactions with employees, clients, and partners.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Skills -->
+                <div class="rise-value-tab-content" data-content="skills">
+                    <div class="rise-value-content-grid">
+                        <div class="rise-value-image">
+                            <img src="assets/new/Picture24.png" alt="Skills">
+                        </div>
+                        <div class="rise-value-text-content">
+                            <h3>Skills</h3>
+                            <p>We prioritize continuous learning and skill development, encouraging our team to enhance both technical and soft skills through workshops and training to deliver exceptional service to our clients.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Equality -->
+                <div class="rise-value-tab-content" data-content="equality">
+                    <div class="rise-value-content-grid">
+                        <div class="rise-value-image">
+                            <img src="assets/new/Picture25.png" alt="Equality">
+                        </div>
+                        <div class="rise-value-text-content">
+                            <h3>Equality</h3>
+                            <p>We ensure all employees are treated with fairness, respect, and dignity. Through merit-based recruitment, promotion, and retention, we promote equity and fairness in all stakeholder interactions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3.3: Equity-Driven Culture -->
+    <section id="equity" class="culture-content-section">
+        <div class="culture-container">
+            <div class="equity-intro fade-in-up">
+                <h2 class="section-eyebrow">Equity-Driven Culture</h2>
+                <p class="equity-intro-text" id="equity-intro-text">We strive to be the employer of choice by fostering an environment where talent is valued, development is prioritized, and employees thrive.</p>
+            </div>
+
+            <div class="culture-features-grid">
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture26.png" alt="Commitment to Diversity, Equity & Inclusion">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Commitment to Diversity, Equity & Inclusion</h4>
+                        <p class="culture-feature-text">As part of our commitment to Diversity, Equity & Inclusion, we are dedicated to advancing five key agendas: enhancing gender diversity and equality, promoting intersectional justice and equity, addressing socio-economic disparities and fostering social mobility, supporting multi-generational talent throughout all life stages, and building an accessible, inclusive workplace for individuals of all abilities.</p>
+                    </div>
+                </div>
+
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture27.png" alt="Supporting Families">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Supporting Families</h4>
+                        <p class="culture-feature-text">We support staff with family responsibilities through a family-sensitive approach. Our policy includes enhanced maternity, paternity, adoption, care leave for child and elderly care, and shared family leave.</p>
+                    </div>
+                </div>
+
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture28.png" alt="Fair & Bias-Free Recruitment">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Fair & Bias-Free Recruitment</h4>
+                        <p class="culture-feature-text">Our recruitment policy serves as a roadmap for attracting and selecting talent that not only meets the demands of our dynamic industry but also reflects the diverse perspectives and backgrounds, ensuring uniformity and fairness towards all candidates.</p>
+                    </div>
+                </div>
+
+                <div class="culture-feature-card">
+                    <div class="culture-feature-image">
+                        <img src="assets/new/Picture29.png" alt="Supporting and Accelerating Women Inclusion">
+                    </div>
+                    <div class="culture-feature-content">
+                        <h4 class="culture-feature-title">Supporting and Accelerating Women Inclusion</h4>
+                        <p class="culture-feature-text">We take pride in being part of the SAWI (Support and Accelerate Women Inclusion) initiative Phase 2, in partnership with the Lebanese League for Women in Business (LLWB), AUB, MEPI, and TELFER. Through our contribution to the development and implementation of inclusive human capital policies, we have created an environment that values, supports, and accelerates women's inclusion. As a result of our commitment to these principles, we have been recognized as one of the top three employers in the MENA region for successfully implementing these policies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>About us</h4>
+                        <ul>
+                            <li><a href="about.html#history">Our History & Evolution</a></li>
+                            <li><a href="about.html#purpose">Our Purpose & Future</a></li>
+                            <li><a href="about.html#people">Our People</a></li>
+                            <li><a href="about.html#ventures">Joint Ventures & Alliances</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="services.html#overview">Overview</a></li>
+                            <li><a href="services.html#what-we-do">What We Do</a></li>
+                            <li><a href="services.html#industries">Industries</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Culture</h4>
+                        <ul>
+                            <li><a href="culture.html#how-we-do">How We Do</a></li>
+                            <li><a href="culture.html#rise-values">RISE Values</a></li>
+                            <li><a href="culture.html#equity">Equity Driven Workspace</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Careers</h4>
+                        <ul>
+                            <li><a href="careers.html#jobs">Jobs</a></li>
+                            <li><a href="internships.html">Internships</a></li>
+                        </ul>
+                        <div class="stamp-with-gradient">
+                            <img src="assets/stamp.png" alt="Stamp">
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect With Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-phone"></i> <span style="color: #b0bec5;">+9615455117</span></p>
+                            <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=amc@amclebanon.com" target="_blank" style="color: #b0bec5; text-decoration: none;">amc@amclebanon.com</a></p>
+                            <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/search/3rd+Floor,+St.+Elie+Center,+St.+Elie+Street,+Hazmieh,+Lebanon" target="_blank" style="color: #b0bec5; text-decoration: none;">Beirut, Lebanon</a></p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 A.M.C.  All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Culture Page Specific Intersection Observer (using different name to avoid conflict)
+        const cultureAnimationOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        // Reduce threshold on mobile for better UX
+        if (window.innerWidth <= 768) {
+            cultureAnimationOptions.threshold = 0.05;
+            cultureAnimationOptions.rootMargin = '0px 0px -30px 0px';
+        }
+
+        const cultureAnimationObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    cultureAnimationObserver.unobserve(entry.target);
+                }
+            });
+        }, cultureAnimationOptions);
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animate-on-scroll class and observe all feature cards
+            document.querySelectorAll('.culture-feature-card').forEach(card => {
+                card.classList.add('animate-on-scroll');
+                cultureAnimationObserver.observe(card);
+            });
+
+            // Add animate-on-scroll class and observe fade-in-up elements
+            document.querySelectorAll('.fade-in-up').forEach(element => {
+                element.classList.add('animate-on-scroll');
+                cultureAnimationObserver.observe(element);
+            });
+        });
+
+        // Make sure equity intro is visible immediately
+        const equityIntro = document.querySelector('.equity-intro');
+        if (equityIntro) {
+            equityIntro.classList.add('visible');
+        }
+
+        // RISE Values Tabs Functionality
+        function initRiseTabs() {
+            const tabs = document.querySelectorAll('.rise-value-tab');
+            const contents = document.querySelectorAll('.rise-value-tab-content');
+
+            if (tabs.length === 0 || contents.length === 0) {
+                return;
+            }
+
+            // Initialize first tab - show it
+            const firstTab = document.querySelector('.rise-value-tab.active');
+            if (firstTab) {
+                const firstTabId = firstTab.dataset.tab;
+                const firstContent = document.querySelector(`.rise-value-tab-content[data-content="${firstTabId}"]`);
+                if (firstContent) {
+                    firstContent.style.display = 'block';
+                    firstContent.style.opacity = '1';
+                    firstContent.classList.add('active');
+                }
+            }
+
+            // Hide all other tabs
+            contents.forEach(c => {
+                if (!c.classList.contains('active')) {
+                    c.style.display = 'none';
+                    c.style.opacity = '0';
+                }
+            });
+
+            // Add click event listeners
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const targetTab = this.getAttribute('data-tab');
+                    if (!targetTab) {
+                        return;
+                    }
+
+                    // Remove active from all tabs and contents
+                    document.querySelectorAll('.rise-value-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.rise-value-tab-content').forEach(c => {
+                        c.classList.remove('active');
+                        c.style.display = 'none';
+                        c.style.opacity = '0';
+                    });
+
+                    // Add active to clicked tab
+                    this.classList.add('active');
+
+                    // Show corresponding content
+                    const targetContent = document.querySelector(`.rise-value-tab-content[data-content="${targetTab}"]`);
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                        targetContent.classList.add('active');
+                        targetContent.style.opacity = '1';
+                        
+                        // Smooth scroll to content on mobile
+                        if (window.innerWidth < 768) {
+                            setTimeout(() => {
+                                targetContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }, 100);
+                        }
+                    }
+                });
+            });
+        }
+
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initRiseTabs);
+        } else {
+            initRiseTabs();
+        }
+        
+        // Also run after a short delay to ensure everything is loaded
+        setTimeout(initRiseTabs, 500);
+
+        // Intersection Observer for RISE Values Tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            const riseTabsObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                        riseTabsObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Add animate-on-scroll class and observe tabs
+            document.querySelectorAll('.rise-value-tab').forEach(tab => {
+                tab.classList.add('animate-on-scroll');
+                riseTabsObserver.observe(tab);
+            });
+        });
+
+        // Equity intro text toggle (if needed for title 1 vs title 2)
+        const urlParams = new URLSearchParams(window.location.search);
+        const equityTitle = urlParams.get('equity_title');
+        const equityIntroText = document.getElementById('equity-intro-text');
+        
+        if (equityTitle === '2' && equityIntroText) {
+            equityIntroText.textContent = "Our equity-driven culture is built on fairness, respect, and equal opportunity for all. We are dedicated to creating a workplace where everyone feels valued, supported, and empowered to reach their full potential";
+        }
+    </script>
+
+    <!-- Consultation Modal Popup -->
+    <div class="consultation-modal" id="consultationModal">
+        <div class="consultation-modal-content">
+            <div class="consultation-modal-header">
+                <h2 class="consultation-modal-title">Book your Consultation</h2>
+                <button class="consultation-modal-close" id="closeConsultationModal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="consultation-modal-body">
+                <form id="consultationForm">
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationFirstName">
+                                First Name<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationFirstName" name="firstName" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationLastName">
+                                Last Name<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationLastName" name="lastName" class="consultation-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationCompany">
+                                Company<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationCompany" name="company" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationPosition">
+                                Position<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationPosition" name="position" class="consultation-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationEmail">
+                                Email<span class="required">*</span>
+                            </label>
+                            <input type="email" id="consultationEmail" name="email" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationPhone">
+                                Phone<span class="required">*</span>
+                            </label>
+                            <input type="tel" id="consultationPhone" name="phone" class="consultation-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="consultationLocation">
+                            Location<span class="required">*</span>
+                        </label>
+                        <input type="text" id="consultationLocation" name="location" class="consultation-form-input" required>
+                    </div>
+
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="consultationMessage">
+                            Message<span class="required">*</span>
+                        </label>
+                        <textarea id="consultationMessage" name="message" class="consultation-form-textarea" required></textarea>
+                    </div>
+
+                    <button type="submit" class="consultation-form-submit-btn">Submit Consultation Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const consultationModal = document.getElementById('consultationModal');
+        const openConsultationModalBtn = document.getElementById('openConsultationModal');
+        const closeConsultationModalBtn = document.getElementById('closeConsultationModal');
+        const consultationForm = document.getElementById('consultationForm');
+
+        function openModal() {
+            consultationModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            consultationModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (openConsultationModalBtn) {
+            openConsultationModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+
+        if (closeConsultationModalBtn) {
+            closeConsultationModalBtn.addEventListener('click', closeModal);
+        }
+
+        consultationModal.addEventListener('click', function(e) {
+            if (e.target === consultationModal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && consultationModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        if (consultationForm) {
+            consultationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#ef4444';
+                    } else {
+                        field.style.borderColor = '#d1d5db';
+                    }
+                });
+                if (isValid) {
+                    alert('Thank you for your consultation request! We will contact you soon.');
+                    this.reset();
+                    closeModal();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

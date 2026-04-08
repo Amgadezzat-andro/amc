@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Consultation - A.M.C.</title>
+    <link rel="icon" href="assets/favicon-amc (1).ico" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .footer-logo img {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0 !important;
+            border-radius: 50%;
+            display: block;
+            margin: 0 !important;
+        }
+    </style>
+    <style>
+        .contact-info span, .contact-info-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="contact-info">
+                    <a href="tel:+9611123456" class="contact-info-link"><i class="fas fa-phone"></i> +961 1 123 456</a>
+                    <a href="mailto:info@amc-lb.com" class="contact-info-link"><i class="fas fa-envelope"></i> info@amc-lb.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo"><a href="index.html"><span class="logo-text">A.M.C.</span></a></div>
+                <button class="mobile-menu-toggle"><span></span><span></span><span></span></button>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="about.html">About Us</a></li>
+                    <li class="nav-item"><a href="services.html">Services</a></li>
+                    <li class="nav-item"><a href="culture.html">Culture</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="careers.html#jobs">Jobs</a>
+                            <a href="internships.html">Internships</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                    <li class="nav-item cta"><a href="contact.html" class="btn-consultation">Book your Consultation</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="text-align:center; padding:100px 20px; background:linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%); color:white;">Book Your Consultation</h1>
+    
+    <section style="padding:60px 20px;">
+        <div class="container" style="max-width:800px;">
+            <p style="text-align:center; margin-bottom:40px; font-size:18px;">Schedule a consultation with our expert team to discuss your business needs.</p>
+            <form style="background:#f5f7fa; padding:40px; border-radius:12px;">
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:8px; font-weight:600;">Full Name</label>
+                    <input type="text" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:8px; font-weight:600;">Company</label>
+                    <input type="text" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:8px; font-weight:600;">Email</label>
+                    <input type="email" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:8px; font-weight:600;">Service Interest</label>
+                    <select style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px;">
+                        <option>Audit Services</option>
+                        <option>Tax Consultancy</option>
+                        <option>Financial Advisory</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:8px; font-weight:600;">Preferred Date</label>
+                    <input type="date" style="width:100%; padding:12px; border:1px solid #e5e7eb; border-radius:8px;">
+                </div>
+                <button type="submit" style="background:linear-gradient(135deg, var(--color-accent) 0%, var(--color-teal) 100%); color:white; padding:14px 40px; border:none; border-radius:30px; font-weight:600; cursor:pointer;">Book Consultation</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 A.M.C. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

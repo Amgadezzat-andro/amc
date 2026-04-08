@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - A.M.C.</title>
+    <link rel="icon" href="assets/favicon-amc (1).ico" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            height: 50vh;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+        
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .page-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            margin-inline-end: 3rem;
+        }
+        
+        .page-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content-section {
+            padding: 80px 0;
+        }
+        
+        .content-section:nth-child(even) {
+            background: var(--color-light-gray);
+        }
+        
+        .section-title {
+            /* font-size: 42px; */
+            /* color: var(--color-primary); */
+            margin-bottom: 30px;
+            text-align: center;
+              font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #003d5c;
+            /* margin-bottom: 20px; */
+
+        }
+        
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-dark);
+        }
+        
+        /* Parallax Hero Container */
+        .parallax-hero-container {
+            position: relative;
+            width: 100%;
+            min-height: 800px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .parallax-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            will-change: transform;
+            z-index: 1;
+            /* background-attachment: fixed; */
+        }
+
+        /* .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 61, 92, 0.85) 0%, rgba(0, 132, 158, 0.75) 100%);
+            z-index: 2;
+        } */
+
+        .parallax-content-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 80px;
+            z-index: 3;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+        }
+
+        .parallax-sticky-content {
+            position: sticky;
+            top: 120px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .parallax-text-container {
+            /* background: rgba(255, 255, 255, 0.98); */
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .parallax-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white !important;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .parallax-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            color: #001f2e;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .parallax-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .parallax-text p {
+            margin-bottom: 20px;
+            color: white;
+            font-weight: bolder;
+        }
+
+        .parallax-text strong {
+            color: #00849e;
+            font-weight: 600;
+        }
+
+        /* Photo Collage Section */
+        .photo-collage-section {
+            background: white;
+            padding: 80px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-collage-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .photo-collage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .photo-collage-item {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: transform, opacity;
+        }
+
+        /* Different directions for each image */
+        .photo-collage-item[data-direction="left"] {
+            transform: translateX(-100px) translateY(20px);
+        }
+
+        .photo-collage-item[data-direction="center"] {
+            transform: translateY(60px);
+        }
+
+        .photo-collage-item[data-direction="right"] {
+            transform: translateX(100px) translateY(20px);
+        }
+
+        .photo-collage-item.revealed {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+        }
+
+        .photo-collage-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: block;
+        }
+
+        .photo-collage-item:hover .photo-collage-img {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 132, 158, 0.15);
+        }
+
+        /* Responsive Grid */
+        @media (max-width: 1024px) {
+            .photo-collage-container {
+                padding: 0 40px;
+            }
+
+            .photo-collage-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .photo-collage-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .photo-collage-container {
+                padding: 0 20px;
+            }
+
+            .photo-collage-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .photo-collage-section {
+                padding: 40px 0;
+            }
+
+            .photo-collage-img {
+                border-radius: 8px;
+            }
+        }
+
+        .parallax-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #00849e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(40px);
+            will-change: transform, opacity;
+        }
+
+        .parallax-cta:hover {
+            background: #006d84;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 132, 158, 0.3);
+        }
+
+        .parallax-cta:focus {
+            outline: 2px solid #00849e;
+            outline-offset: 4px;
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Parallax */
+        @media (max-width: 1024px) {
+            .parallax-content-wrapper {
+                padding: 80px 40px;
+                min-height: 700px;
+            }
+
+            .parallax-text-container {
+                padding: 50px;
+            }
+
+            .parallax-hero-container {
+                min-height: 700px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .parallax-content-wrapper {
+                padding: 60px 20px;
+                min-height: 600px;
+            }
+
+            .parallax-sticky-content {
+                position: relative;
+                top: 0;
+            }
+
+            .parallax-text-container {
+                padding: 40px 30px;
+            }
+
+            .parallax-bg-layer {
+                height: 100%;
+                background-attachment: fixed;
+            }
+
+            .parallax-hero-container {
+                min-height: 600px;
+            }
+
+            .parallax-title {
+                font-size: 28px;
+            }
+
+            .parallax-text {
+                font-size: 16px;
+            }
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            background: var(--color-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: all var(--transition-speed);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 132, 158, 0.15);
+        }
+        
+        .team-photo {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-teal) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .team-photo i {
+            font-size: 80px;
+            color: var(--color-white);
+        }
+        
+        .team-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .team-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 8px;
+        }
+        
+        .team-role {
+            color: var(--color-gray);
+            margin-bottom: 15px;
+        }
+        
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .partnership-card {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            border-left: 4px solid var(--color-accent);
+        }
+        
+        .partnership-card h3 {
+            font-size: 24px;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+        
+        .partnership-card p {
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        /* Team Reveal Section - Vertical Slider */
+        .team-reveal-section {
+            min-height: 270vh;
+            background: #d5f0e8;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .cmp-content-width {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .team-reveal-inner {
+            position: sticky;
+            top: 100px;
+        }
+
+        .team-reveal-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .team-reveal-content {
+            position: sticky;
+            top: 100px;
+        }
+
+        .section-eyebrow {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #003d5c;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: clamp(32px, 4vw, 48px) !important;
+            font-weight: 600 !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            color: #003d5c !important;
+            margin-bottom: 20px !important;
+        }
+
+        .team-reveal-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            color: #001f2e;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .team-reveal-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .team-reveal-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #00849e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .team-reveal-btn:hover {
+            background: #006d84;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 132, 158, 0.3);
+        }
+
+        .team-reveal-centered {
+            position: relative;
+        }
+
+        .team-reveal-slider {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 1s ease-out;
+        }
+
+        .team-reveal-slider.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .team-reveal-slider-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .team-reveal-item {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: all 0.8s ease-out;
+        }
+
+        .team-reveal-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-card-link {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            min-height: 320px;
+        }
+
+        .team-card-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 132, 158, 0.15);
+        }
+
+        .team-card-text {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .team-card-text h3 {
+            font-size: 20px;
+            font-weight: 400;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .team-card-text p {
+            font-size: 14px;
+            color: #5a6c7d;
+            margin-bottom: 0;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .team-card-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .team-card-link:hover .team-card-image img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 1024px) {
+            .team-reveal-layout {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .team-reveal-content {
+                position: relative;
+                top: 0;
+            }
+
+            .team-reveal-section {
+                min-height: auto;
+                padding: 80px 0;
+            }
+
+            .cmp-content-width {
+                padding: 0 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cmp-content-width {
+                padding: 0 20px;
+            }
+
+            .team-card-link {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .team-card-image {
+                height: 300px;
+            }
+
+            .team-card-text {
+                padding: 30px;
+            }
+
+            .team-card-text h3 {
+                font-size: 18px;
+            }
+
+            .team-reveal-title {
+                font-size: 28px;
+            }
+
+            .team-reveal-description {
+                font-size: 16px;
+            }
+
+            .team-reveal-slider-inner {
+                gap: 40px;
+            }
+        }
+
+        /* Card Reveal Section */
+        .card-reveal-section {
+            min-height: 270vh;
+            background: white;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .card-reveal-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .card-reveal-content {
+            position: sticky;
+            top: 100px;
+        }
+
+        .card-reveal-title {
+            font-size: 14px;
+            font-weight: 300;
+            color: #001f2e;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .card-reveal-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .card-reveal-description p {
+            margin-bottom: 20px;
+        }
+
+        .card-reveal-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #00849e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .card-reveal-btn:hover {
+            background: #006d84;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 132, 158, 0.3);
+        }
+
+        .card-reveal-slider {
+            position: relative;
+        }
+
+        .card-reveal-track {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .card-reveal-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .card-reveal-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-item-link {
+            display: block;
+            position: relative;
+            border-radius: .25rem;
+            overflow: visible;
+            box-shadow: none;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            min-height: 550px;
+        }
+
+        .card-item-link:hover {
+            transform: none;
+        }
+
+        .card-item-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .card-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+        }
+
+        .card-item-link:hover .card-item-image img {
+            transform: scale(1.02);
+        }
+
+        .card-item-text {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            width: 42%;
+            max-width: 480px;
+            padding: 35px;
+            background: white;
+            border-radius: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-item-text h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            /* font-style: italic; */
+        }
+
+        .card-item-text p {
+            font-size: 13px;
+            color: #5a6c7d;
+            margin-bottom: 0;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .card-link-arrow {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            color: #5a6c7d;
+            font-weight: 400;
+            font-size: 13px;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .card-item-link:hover .card-link-arrow {
+            opacity: 1;
+            color: #00849e;
+        }
+
+        @media (max-width: 1024px) {
+            .card-reveal-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 0 40px;
+            }
+
+            .card-reveal-content {
+                position: relative;
+                top: 0;
+            }
+
+            .card-reveal-section {
+                min-height: auto;
+                padding: 80px 0;
+            }
+
+            .card-item-text {
+                width: 50%;
+                bottom: 40px;
+                right: 40px;
+                padding: 30px;
+            }
+
+            .card-item-link {
+                min-height: 480px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-reveal-container {
+                padding: 0 20px;
+            }
+
+            .card-item-link {
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card-item-image {
+                position: relative;
+                width: 100%;
+                height: 350px;
+            }
+
+            .card-item-text {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 30px;
+            }
+
+            .card-item-text h3 {
+                font-size: 17px;
+                margin-bottom: 15px;
+            }
+
+            .card-item-text p {
+                font-size: 13px;
+            }
+
+            .card-link-arrow {
+                position: static;
+                display: block;
+                margin-top: 15px;
+            }
+
+            .card-reveal-title {
+                font-size: 28px;
+            }
+
+            .card-reveal-description {
+                font-size: 16px;
+            }
+
+            .card-reveal-track {
+                gap: 50px;
+            }
+        }
+
+        /* Horizontal Card Reveal Section (Deloitte Style) */
+        .horizontal-card-reveal {
+            min-height: 270vh;
+            background: #ffffff;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .horizontal-reveal-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .horizontal-reveal-content {
+            position: sticky;
+            top: 120px;
+        }
+
+        .reveal-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00849e;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-heading {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 300;
+            color: #001f2e;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal-text p {
+            margin-bottom: 20px;
+        }
+
+        .reveal-cta {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #00849e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            will-change: transform, opacity;
+        }
+
+        .reveal-cta:hover {
+            background: #006d84;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 132, 158, 0.3);
+        }
+
+        .reveal-cta:focus {
+            outline: 2px solid #00849e;
+            outline-offset: 4px;
+        }
+
+        .reveal-stagger.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .horizontal-reveal-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .horizontal-slider-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        .horizontal-card {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .horizontal-card-link {
+            display: block;
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .horizontal-card-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 132, 158, 0.15);
+        }
+
+        .horizontal-card-link:focus {
+            outline: 2px solid #00849e;
+            outline-offset: 4px;
+        }
+
+        .horizontal-card-img {
+            position: relative;
+            overflow: hidden;
+            height: 380px;
+            background: #e9ecef;
+        }
+
+        .horizontal-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            will-change: transform;
+        }
+
+        .horizontal-card-link:hover .horizontal-card-img img {
+            transform: scale(1.05);
+        }
+
+        .horizontal-card-content {
+            padding: 40px;
+        }
+
+        .horizontal-card-content h3 {
+            font-size: 28px;
+            font-weight: 300;
+            color: #001f2e;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .horizontal-card-content p {
+            font-size: 16px;
+            color: #5a6c7d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-cta-link {
+            color: #00849e;
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .horizontal-card-link:hover .card-cta-link {
+            color: #006d84;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .horizontal-reveal-wrapper {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 0 40px;
+            }
+
+            .horizontal-reveal-content {
+                position: relative;
+                top: 0;
+            }
+
+            .horizontal-card-reveal {
+                min-height: auto;
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .horizontal-reveal-wrapper {
+                padding: 0 20px;
+            }
+
+            .horizontal-slider-track {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .horizontal-card {
+                min-width: 100%;
+                opacity: 0;
+                transform: translateY(50px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+
+            .horizontal-card.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .horizontal-card-img {
+                height: 280px;
+            }
+
+            .horizontal-card-content {
+                padding: 30px;
+            }
+
+            .horizontal-card-content h3 {
+                font-size: 24px;
+            }
+
+            .reveal-heading {
+                font-size: 28px;
+            }
+
+            .reveal-text {
+                font-size: 16px;
+            }
+
+            .horizontal-card-reveal {
+                padding: 60px 0;
+            }
+        }
+    </style>
+    <style>
+        /* Consultation Popup Modal */
+        .consultation-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .consultation-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .consultation-modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .consultation-modal-header {
+            padding: 30px 40px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            border-radius: 16px 16px 0 0;
+            z-index: 1;
+        }
+
+        .consultation-modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #001f2e;
+            margin: 0;
+        }
+
+        .consultation-modal-close {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #f3f4f6;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: #6b7280;
+        }
+
+        .consultation-modal-close:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .consultation-modal-body {
+            padding: 40px;
+        }
+
+        .consultation-form-group {
+            margin-bottom: 24px;
+        }
+
+        .consultation-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .consultation-form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .consultation-form-label .required {
+            color: #ef4444;
+            margin-left: 4px;
+        }
+
+        .consultation-form-input,
+        .consultation-form-select,
+        .consultation-form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #374151;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .consultation-form-input:focus,
+        .consultation-form-select:focus,
+        .consultation-form-textarea:focus {
+            outline: none;
+            border-color: #00849e;
+            box-shadow: 0 0 0 3px rgba(0, 132, 158, 0.1);
+        }
+
+        .consultation-form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .consultation-form-submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #003d5c 0%, #00849e 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .consultation-form-submit-btn:hover {
+            background: linear-gradient(135deg, #002d44 0%, #006d84 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 132, 158, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .consultation-modal-content {
+                margin: 20px;
+            }
+
+            .consultation-modal-header,
+            .consultation-modal-body {
+                padding: 24px;
+            }
+
+            .consultation-form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .footer-logo img {
+            height: 80px;
+            width: 80px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0 !important;
+            border-radius: 50%;
+            display: block;
+            margin: 0 !important;
+        }
+        .contact-info span, .contact-info-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header Bar -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="contact-info">
+                    <a href="tel:+9615455117" class="contact-info-link"><i class="fas fa-phone"></i> +9615455117</a>
+                    <a href="mailto:amc@amclebanon.com" class="contact-info-link"><i class="fas fa-envelope"></i> amc@amclebanon.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="mobile-sidebar-logo">
+                        <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="about.html">About Us <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="about.html#history">History & Evolution</a>
+                            <a href="about.html#purpose"> Purpose & Future</a>
+                            <a href="about.html#people">Our People</a>
+                            <a href="about.html#ventures">Joint Ventures & Alliances</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#overview">Overview</a>
+                            <a href="services.html#what-we-do">What We Do</a>
+                            <a href="services.html#industries">Industries</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="culture.html">Culture <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="culture.html#how-we-do">How We Do</a>
+                            <a href="culture.html#rise-values">RISE Values</a>
+                            <a href="culture.html#equity">Equity Driven Workspace</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="careers.html#jobs">Jobs</a>
+                            <a href="internships.html">Internships</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item cta">
+                        <a href="#" class="btn-consultation" id="openConsultationModal">Book your Consultation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+        <div class="hero-background">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80" alt="About Us Background" loading="eager">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 class="hero-title-main">About A.M.C.</h1>
+            <p class="hero-subtitle-main">33 Years of Excellence in Audit, Accounting, and Consultancy Services</p>
+        </div>
+    </section>
+
+    <style>
+        /* Page Hero Banner Styles */
+        .page-hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            max-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 61, 92, 0.85) 0%, rgba(13, 148, 136, 0.75) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-title-main {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-subtitle-main {
+            font-size: clamp(16px, 2vw, 22px);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                height: 50vh;
+                min-height: 350px;
+            }
+
+            .hero-title-main {
+                font-size: 32px;
+            }
+
+            .hero-subtitle-main {
+                font-size: 16px;
+            }
+        }
+    </style>
+
+    <!-- Our History & Evolution -->
+    <section id="history" class="content-section">
+        <div class="container">
+            <h2 class="section-title">History & Evolution</h2>
+            <div class="section-content">
+                <p>Accounting and Management Consultants is a Lebanese audit firm established in 1993 by two certified and experienced sworn auditors: Mr. Nabil Abi Zeid & Mr. Tanios Karam, and registered under license no 47926 – Baabda – Lebanon on August 03, 1993. Our team of Auditors and Accountants provide a large range of Accounting, Audit and Assurance, Financial and Tax Consultancy services.</p>
+                
+                <p>In response to evolving client needs and a commitment to optimized service delivery, we are pleased to announce the establishment of our sister company, Audit & Management Consultants – A.M.C.</p>
+                
+                <p>Founded on May 31, 2024, and licensed under number 1028 in Beirut, Lebanon, Audit & Management Consultants – A.M.C. specializes in audit, tax, financial consultancy, and related professional services, mirroring the established expertise of Accounting & Management Consultants.</p>
+                
+                <p>This strategic formation allows for an internal segregation of services between the two entities, thereby enhancing our collective capacity to address the increasingly complex requirements of our clientele. Both firms will operate under the unified umbrella of "A.M.C.," ensuring a cohesive and integrated approach.</p>
+                
+                <p>As a testament to the strong partnerships we've built, today, we proudly serve as the auditors and advisors for 250 companies, both in Lebanon and across borders.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Collage Section -->
+    <!-- <section class="photo-collage-section">
+        <div class="photo-collage-container">
+            <div class="photo-collage-grid">
+                <div class="photo-collage-item" data-delay="0" data-direction="left">
+                    <img 
+                        class="photo-collage-img"
+                        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80" 
+                        data-src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80"
+                        srcset="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80 400w,
+                                https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80 800w,
+                                https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        alt="Team collaboration and strategic planning"
+                        loading="lazy">
+                </div>
+                
+                <div class="photo-collage-item" data-delay="100" data-direction="center">
+                    <img 
+                        class="photo-collage-img"
+                        src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80" 
+                        data-src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80"
+                        srcset="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80 400w,
+                                https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80 800w,
+                                https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&q=80 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        alt="Professional audit and consultancy services"
+                        loading="lazy">
+                </div>
+                
+                <div class="photo-collage-item" data-delay="200" data-direction="right">
+                    <img 
+                        class="photo-collage-img"
+                        src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80" 
+                        data-src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
+                        srcset="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80 400w,
+                                https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80 800w,
+                                https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80 1200w"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        alt="Financial expertise and business growth"
+                        loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Our Purpose & Future -->
+    <section id="purpose" class="content-section">
+        <div class="container">
+            <h2 class="section-title">Purpose & Future</h2>
+            <div class="section-content">
+                <p>Our mission is to provide professional audit, accounting, and financial services, delivered with unwavering integrity, meticulous precision, and steadfast independence. We empower businesses to not only achieve financial transparency but also to cultivate enduring growth, all while fostering a culture of continuous improvement that propels them forward. We believe in building more than just client relationships; we forge bonds of trust with those we serve, our valued partners, and our dedicated staff. Within our walls, we cultivate a diverse, inclusive, and dynamic environment – a vibrant ecosystem where innovation flourishes and every professional can thrive.</p>
+
+                <p>Our vision? To be the leading audit firm in Lebanon, recognized for our unwavering integrity and exceptional standards. We aim to empower businesses with financial clarity and the confidence to achieve sustainable growth. We&#39;re building a future where our expert insights directly contribute to our clientele’s success, making their achievements our shared victory. We&#39;re on track to set the benchmark for excellence and ethical practices, ensuring a landscape of lasting prosperity for our ecosystem.</p>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- Card Reveal Section - Our People -->
+    <section class="card-reveal-section" id="people">
+        <div class="card-reveal-container">
+            <div class="card-reveal-content">
+                <div class="section-eyebrow">Our people</div>
+                <h2 class="card-reveal-title">At the heart of every possibility is our team</h2>
+                <div class="card-reveal-description">
+                    <p>It's straightforward: our people drive success. Whether we're advancing towards a sustainable future or developing forward-thinking strategies, it's the teamwork and collaboration among our diverse team – a mix of talented men and women, many of whom are also parents, including CPAs, seasoned experts, and dedicated professionals, that make the difference.</p>
+                    <p style="margin-top:12px; font-weight:600; color:#00849e;">And we have more than 30 years worth of impact to prove it.</p>
+                </div>
+            </div>
+
+            <div class="card-reveal-slider">
+                <div class="card-reveal-track">
+                    <div class="card-reveal-item">
+                        <a href="#people" class="card-item-link">
+                            <div class="card-item-image">
+                                <img src="assets/Nabil Abi Zeid.jpg" alt="Nabil Y. Abi Zeid" loading="lazy">
+                            </div>
+                            <div class="card-item-text">
+                                <h2 style="color: #003d5c;">Nabil Y. Abi Zeid</h2>
+                                <p style="font-weight:600; margin-bottom:8px;">Co-founder & Managing Partner</p>
+                                <p>Sworn auditor, member of the Lebanese Association of Certified Public Accountants under the number 261, and member of the Arab Certified Public Accountants.</p>
+                            </div>
+                            <!-- <span class="card-link-arrow">Read more →</span> -->
+                        </a>
+                    </div>
+
+                    <div class="card-reveal-item">
+                        <a href="#people" class="card-item-link">
+                            <div class="card-item-image">
+                                <img src="assets/Jad Abi Zeid.JPG" alt="Jad N. Abi Zeid" loading="lazy">
+                            </div>
+                            <div class="card-item-text">
+                                <h2 style="color: #003d5c;">Jad N. Abi Zeid</h2>
+                                <p style="font-weight:600; margin-bottom:8px;">Senior Manager</p>
+                                <p>American CPA - New Hampshire Board of Accountancy, member of the Lebanese Association of Certified Public Accountants under number 2249. Holder of an MBA, Certificate in IFRS from ACCA, and Certificate in Startups Valuation from Duke University.</p>
+                            </div>
+                            <!-- <span class="card-link-arrow">Read more →</span> -->
+                        </a>
+                    </div>
+
+                    <div class="card-reveal-item">
+                        <a href="#people" class="card-item-link">
+                            <div class="card-item-image">
+                                <img src="assets/Elie N. Abi Zeid.jpg" alt="Elie N. Abi Zeid" loading="lazy">
+                            </div>
+                            <div class="card-item-text">
+                                <h2 style="color: #003d5c;">Elie N. Abi Zeid</h2>
+                                <p style="font-weight:600; margin-bottom:8px;">Audit Manager and Financial &amp; Tax Advisor</p>
+                                <p>Certified Public Accountant, member of the Lebanese Association under number 2745. Holder of a Master's in Accounting, Audit & Control; Certificate in IFRS from ACCA; Certificate in Private Equity and Venture Capital from Bocconi University; Certificate in Startups Valuation from Duke University. Head of NGO department.</p>
+                            </div>
+                            <!-- <span class="card-link-arrow">Read more →</span> -->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Card Reveal Section (Deloitte Style) -->
+    <!-- <section class="horizontal-card-reveal" id="purpose">
+        <div class="horizontal-reveal-wrapper">
+            <div class="horizontal-reveal-content">
+                <div class="reveal-subtitle reveal-stagger" data-delay="0">Our Purpose &amp; Future</div>
+                <h2 class="reveal-heading reveal-stagger" data-delay="100">Purpose &amp; Vision</h2>
+                <div class="reveal-text reveal-stagger" data-delay="200">
+                    <p>Our mission is to provide professional audit, accounting, and financial services, delivered with unwavering integrity, meticulous precision, and steadfast independence. We empower businesses to not only achieve financial transparency but also to cultivate enduring growth, all while fostering a culture of continuous improvement that propels them forward. We believe in building more than just client relationships; we forge bonds of trust with those we serve, our valued partners, and our dedicated staff. Within our walls, we cultivate a diverse, inclusive, and dynamic environment – a vibrant ecosystem where innovation flourishes and every professional can thrive.</p>
+
+                    <p>Our vision? To be the leading audit firm in Lebanon, recognized for our unwavering integrity and exceptional standards. We aim to empower businesses with financial clarity and the confidence to achieve sustainable growth. We&#39;re building a future where our expert insights directly contribute to our clientele’s success, making their achievements our shared victory. We&#39;re on track to set the benchmark for excellence and ethical practices, ensuring a landscape of lasting prosperity for our ecosystem.</p>
+                </div>
+            </div>
+            
+            <div class="horizontal-reveal-slider-wrapper">
+                <div class="horizontal-slider-track">
+                    <div class="horizontal-card">
+                        <a href="culture.html#sawi" class="horizontal-card-link">
+                            <div class="horizontal-card-img">
+                                <img src="https://images.unsplash.com/photo-1573164574511-73c773193279?w=720&q=80" alt="SAWI Award - Top 3 Employer for Women" loading="lazy">
+                            </div>
+                            <div class="horizontal-card-content">
+                                <h3>SAWI Recognition</h3>
+                                <p>Top 3 Employer for Women in MENA Region</p>
+                                <span class="card-cta-link">Learn more →</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="horizontal-card">
+                        <a href="culture.html#rise" class="horizontal-card-link">
+                            <div class="horizontal-card-img">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=720&q=80" alt="RISE Values - Culture of Excellence" loading="lazy">
+                            </div>
+                            <div class="horizontal-card-content">
+                                <h3>RISE Values Framework</h3>
+                                <p>Building Tomorrow's Leaders Through Excellence</p>
+                                <span class="card-cta-link">Learn more →</span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="horizontal-card">
+                        <a href="services.html" class="horizontal-card-link">
+                            <div class="horizontal-card-img">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=720&q=80" alt="Industry Leadership - 250+ Companies Served" loading="lazy">
+                            </div>
+                            <div class="horizontal-card-content">
+                                <h3>Industry Leadership</h3>
+                                <p>250+ Companies Served Across All Sectors</p>
+                                <span class="card-cta-link">Learn more →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Joint Ventures & Alliances -->
+    <section id="ventures" class="content-section">
+        <div class="container">
+            <div class="section-eyebrow" style="text-align:center;"> Joint Ventures &amp; Alliances</div>
+            <h2 class="section-title" style="text-align:center;">Ecosystems and Trusted Relationships</h2>
+
+            <div class="section-content">
+                <div class="partnerships-grid" style="margin-top:30px;">
+                    <div class="partnership-card">
+                        <h2 style="margin-bottom:12px; color: #003d5c;">Strategic International Partnerships</h2>
+                        <p>Through our strategic collaboration with international key partners, we combine expertise to tackle complex audit challenges, conduct thorough spot-checks and forensic audit missions, and deliver forward-thinking strategies. These partnerships empower our clients to manage risk effectively, foster innovation, reduce fraud risks, and achieve a distinct competitive advantage.</p>
+                    </div>
+
+                    <div class="partnership-card">
+                        <h2 style="margin-bottom:12px; color: #003d5c;">Legal &amp; Regulatory Collaboration</h2>
+                        <p>Our commitment extends beyond financial expertise. We have established a strong partnership with leading legal consultants to ensure clients receive comprehensive support — addressing financial and audit needs while navigating legal and regulatory requirements with assurance and clarity. Together we provide a holistic approach that safeguards clients' interests and enables them to operate with greater security and strategic foresight.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <footer class="footer">
+        <div class="footer-content">
+            <!-- Footer Logo -->
+
+            
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>About us</h4>
+                        <ul>
+                            <li><a href="about.html#history">Our History & Evolution</a></li>
+                            <li><a href="about.html#purpose">Our Purpose & Future</a></li>
+                            <li><a href="about.html#people">Our People</a></li>
+                            <li><a href="about.html#ventures">Joint Ventures & Alliances</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="services.html#overview">Overview</a></li>
+                            <li><a href="services.html#what-we-do">What We Do</a></li>
+                            <li><a href="services.html#industries">Industries</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Culture</h4>
+                        <ul>
+                            <li><a href="culture.html#how-we-do">How We Do</a></li>
+                            <li><a href="culture.html#rise-values">RISE Values</a></li>
+                            <li><a href="culture.html#equity">Equity Driven Workspace</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Careers</h4>
+                        <ul>
+                            <li><a href="careers.html#jobs">Jobs</a></li>
+                            <li><a href="internships.html">Internships</a></li>
+                        </ul>
+                        <div class="stamp-with-gradient">
+                            <img src="assets/stamp.png" alt="Stamp">
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect With Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-phone"></i> <span style="color: #b0bec5;">+9615455117</span></p>
+                            <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=amc@amclebanon.com" target="_blank" style="color: #b0bec5; text-decoration: none;">amc@amclebanon.com</a></p>
+                            <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/search/3rd+Floor,+St.+Elie+Center,+St.+Elie+Street,+Hazmieh,+Lebanon" target="_blank" style="color: #b0bec5; text-decoration: none;">Beirut, Lebanon</a></p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 A.M.C. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+        import { animate, scroll } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm"
+
+        // Team Reveal Section - Vertical Slider Animation
+        const teamRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const slider = entry.target.querySelector('.team-reveal-slider');
+                    if (slider) {
+                        slider.classList.add('active');
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -200px 0px'
+        });
+
+        const teamSection = document.querySelector('.team-reveal-section');
+        if (teamSection) {
+            teamRevealObserver.observe(teamSection);
+        }
+
+        // Team Cards Stagger Animation on Scroll
+        const teamCardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 200);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.team-reveal-item').forEach(item => {
+            teamCardObserver.observe(item);
+        });
+
+        // Vertical Scroll Progress for Team Cards
+        window.addEventListener('scroll', () => {
+            const teamSection = document.querySelector('.team-reveal-section');
+            if (!teamSection) return;
+            
+            const rect = teamSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                const teamCards = document.querySelectorAll('.team-reveal-item');
+                
+                teamCards.forEach((card, index) => {
+                    const offset = scrollProgress * 100 * (index + 1) * 0.3;
+                    const translateValue = Math.max(0, 80 - offset);
+                    if (!card.classList.contains('visible')) {
+                        card.style.transform = `translateY(${translateValue}px)`;
+                        card.style.opacity = Math.min(1, scrollProgress * 2);
+                    }
+                });
+            }
+        });
+
+        // Card Reveal Scroll Animation
+        const cardRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 200);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        document.querySelectorAll('.card-reveal-item').forEach(item => {
+            cardRevealObserver.observe(item);
+        });
+
+        // Parallax effect for card reveal section
+        window.addEventListener('scroll', () => {
+            const cardSection = document.querySelector('.card-reveal-section');
+            if (!cardSection) return;
+            
+            const rect = cardSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                const cards = document.querySelectorAll('.card-reveal-item');
+                
+                cards.forEach((card, index) => {
+                    const offset = scrollProgress * 100 * (index + 1) * 0.5;
+                    card.style.transform = `translateY(${Math.max(0, 50 - offset)}px)`;
+                });
+            }
+        });
+
+        // Parallax Hero Section
+        (function() {
+            const parallaxHero = document.querySelector('.parallax-hero-container');
+            if (!parallaxHero) return;
+
+            const bgLayer = parallaxHero.querySelector('.parallax-bg-layer');
+            const revealElements = parallaxHero.querySelectorAll('.reveal-element');
+            
+            // Get responsive image URLs
+            const mobileImg = parallaxHero.dataset.mobileImg;
+            const tabletImg = parallaxHero.dataset.tabletImg;
+            const desktopImg = parallaxHero.dataset.desktopImg;
+            const minHeight = parallaxHero.dataset.minHeight || '800px';
+            
+            let isMobile = window.innerWidth <= 768;
+            let isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+            
+            // Set responsive background image
+            function setResponsiveBackground() {
+                isMobile = window.innerWidth <= 768;
+                isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+                
+                if (isMobile) {
+                    bgLayer.style.backgroundImage = `url(${mobileImg})`;
+                    parallaxHero.style.minHeight = '600px';
+                } else if (isTablet) {
+                    bgLayer.style.backgroundImage = `url(${tabletImg})`;
+                    parallaxHero.style.minHeight = '700px';
+                } else {
+                    bgLayer.style.backgroundImage = `url(${desktopImg})`;
+                    parallaxHero.style.minHeight = minHeight;
+                }
+            }
+            
+            setResponsiveBackground();
+            window.addEventListener('resize', setResponsiveBackground);
+            
+            // IntersectionObserver for reveal animation
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.delay) || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, delay);
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+            
+            // Parallax scroll effect (GPU-accelerated)
+            function handleParallax() {
+                if (isMobile) return; // Disable on mobile for performance
+                
+                const rect = parallaxHero.getBoundingClientRect();
+                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    // Parallax range: 0 to -20%
+                    const translateY = Math.min(0, scrollProgress * 20 - 10);
+                    bgLayer.style.transform = `translateY(${translateY}%)`;
+                }
+            }
+            
+            // Throttled scroll handler using requestAnimationFrame
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            // Initial call
+            handleParallax();
+        })();
+
+        // Photo Collage Scroll Reveal Animation with Directional Movement
+        (function() {
+            const collageItems = document.querySelectorAll('.photo-collage-item');
+            if (collageItems.length === 0) return;
+
+            // Lazy load images when they come into view
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target.querySelector('img[data-src]');
+                        if (img && img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imageObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '50px'
+            });
+
+            // Scroll reveal animation with stagger and directional movement
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const delay = parseInt(entry.target.dataset.delay) || 0;
+                    
+                    if (entry.isIntersecting) {
+                        // Reveal: fade in and move to center
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, delay);
+                    } else {
+                        // Hide: fade out and return to original direction
+                        entry.target.classList.remove('revealed');
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all collage items
+            collageItems.forEach(item => {
+                imageObserver.observe(item);
+                revealObserver.observe(item);
+            });
+        })();
+
+        // Horizontal Card Reveal Section - Scroll-Synced Slider
+        (function() {
+            const horizontalSection = document.querySelector('.horizontal-card-reveal');
+            if (!horizontalSection) return;
+
+            const sliderTrack = horizontalSection.querySelector('.horizontal-slider-track');
+            const cards = horizontalSection.querySelectorAll('.horizontal-card');
+            const revealItems = horizontalSection.querySelectorAll('.reveal-stagger');
+            
+            let sectionTop = 0;
+            let sectionHeight = 0;
+            let isMobile = window.innerWidth <= 768;
+
+            // Update dimensions on resize
+            function updateDimensions() {
+                const rect = horizontalSection.getBoundingClientRect();
+                sectionTop = window.scrollY + rect.top;
+                sectionHeight = horizontalSection.offsetHeight;
+                isMobile = window.innerWidth <= 768;
+            }
+
+            updateDimensions();
+            window.addEventListener('resize', updateDimensions);
+
+            // IntersectionObserver for staggered reveal animation
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.dataset.delay) || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('revealed');
+                        }, delay);
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            revealItems.forEach(item => {
+                revealObserver.observe(item);
+            });
+
+            // Horizontal scroll sync for desktop
+            function handleHorizontalScroll() {
+                if (isMobile) {
+                    // Mobile: vertical fade-up animation
+                    cards.forEach((card, index) => {
+                        const rect = card.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 150);
+                        }
+                    });
+                    return;
+                }
+
+                // Desktop: horizontal scroll sync
+                const scrollY = window.scrollY;
+                const sectionProgress = (scrollY - sectionTop) / (sectionHeight - window.innerHeight);
+                const clampedProgress = Math.max(0, Math.min(1, sectionProgress));
+
+                // Calculate translateX based on scroll progress
+                // 3 cards total, so we slide 2 card widths (0% → -200%)
+                const maxTranslate = (cards.length - 1) * 100;
+                const translateX = -clampedProgress * maxTranslate;
+
+                // GPU-accelerated transform
+                sliderTrack.style.transform = `translateX(${translateX}%)`;
+            }
+
+            // Throttle scroll for performance using requestAnimationFrame
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        handleHorizontalScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Initial call
+            handleHorizontalScroll();
+        })();
+    </script>
+
+    <!-- Consultation Modal Popup -->
+    <div class="consultation-modal" id="consultationModal">
+        <div class="consultation-modal-content">
+            <div class="consultation-modal-header">
+                <h2 class="consultation-modal-title">Book your Consultation</h2>
+                <button class="consultation-modal-close" id="closeConsultationModal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="consultation-modal-body">
+                <form id="consultationForm">
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationFirstName">
+                                First Name<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationFirstName" name="firstName" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationLastName">
+                                Last Name<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationLastName" name="lastName" class="consultation-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationCompany">
+                                Company<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationCompany" name="company" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationPosition">
+                                Position<span class="required">*</span>
+                            </label>
+                            <input type="text" id="consultationPosition" name="position" class="consultation-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationEmail">
+                                Email<span class="required">*</span>
+                            </label>
+                            <input type="email" id="consultationEmail" name="email" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="consultationPhone">
+                                Phone<span class="required">*</span>
+                            </label>
+                            <input type="tel" id="consultationPhone" name="phone" class="consultation-form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="consultationLocation">
+                            Location<span class="required">*</span>
+                        </label>
+                        <input type="text" id="consultationLocation" name="location" class="consultation-form-input" required>
+                    </div>
+
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="consultationMessage">
+                            Message<span class="required">*</span>
+                        </label>
+                        <textarea id="consultationMessage" name="message" class="consultation-form-textarea" required></textarea>
+                    </div>
+
+                    <button type="submit" class="consultation-form-submit-btn">Submit Consultation Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const consultationModal = document.getElementById('consultationModal');
+        const openConsultationModalBtn = document.getElementById('openConsultationModal');
+        const closeConsultationModalBtn = document.getElementById('closeConsultationModal');
+        const consultationForm = document.getElementById('consultationForm');
+
+        function openModal() {
+            consultationModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            consultationModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (openConsultationModalBtn) {
+            openConsultationModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal();
+            });
+        }
+
+        if (closeConsultationModalBtn) {
+            closeConsultationModalBtn.addEventListener('click', closeModal);
+        }
+
+        consultationModal.addEventListener('click', function(e) {
+            if (e.target === consultationModal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && consultationModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        if (consultationForm) {
+            consultationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const requiredFields = this.querySelectorAll('[required]');
+                let isValid = true;
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#ef4444';
+                    } else {
+                        field.style.borderColor = '#d1d5db';
+                    }
+                });
+                if (isValid) {
+                    alert('Thank you for your consultation request! We will contact you soon.');
+                    this.reset();
+                    closeModal();
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
