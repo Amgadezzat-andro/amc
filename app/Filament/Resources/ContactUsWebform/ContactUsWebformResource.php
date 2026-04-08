@@ -105,10 +105,6 @@ class ContactUsWebformResource extends Resource
                     ->label(__("Location"))
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('subject.title')
-                    ->label(__("Subject"))
-                    ->searchable(),
-
                 Tables\Columns\TextColumn::make('message')
                     ->label(__("message"))
                     ->searchable(),
@@ -121,11 +117,7 @@ class ContactUsWebformResource extends Resource
             ])
             ->defaultSort('id', 'desc')
             ->striped()
-            ->filters([
-                Tables\Filters\SelectFilter::make('subject_id')
-                    ->relationship('subject', 'id')
-                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->title),
-            ])
+            ->filters([])
 
             ->actions([
 

@@ -1,19 +1,6 @@
 <form wire:submit.prevent="submit">
     @csrf
-    @if (Session::has('success'))
-        <div class="form-success-toast" role="status" aria-live="polite">
-            <div class="form-success-toast__icon">
-                <i class="fas fa-check"></i>
-            </div>
-            <div class="form-success-toast__content">
-                <p class="form-success-toast__eyebrow">Submission received</p>
-                <p class="form-success-toast__message">{{ Session::get('success') }}</p>
-            </div>
-            <button type="button" class="form-success-toast__close" onclick="this.closest('.form-success-toast').remove()" aria-label="Dismiss success message">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    @endif
+    <x-common.form-success-flush :message="Session::get('success')" />
 
     <div class="form-row">
         <div class="form-group">

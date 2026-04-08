@@ -6,7 +6,7 @@
     $headerImg = data_get($header, 'mainImage.url') ?: (data_get($header, 'mainImage') ? data_get($header, 'mainImage')->getUrl() : null);
     $headerTitle = data_get($header, 'title') ?: 'Why AMC?';
     $headerBrief = data_get($header, 'brief') ?: '';
-    $headerBtn = data_get($header, 'frontButtons.0');
+    $headerButtons = collect(data_get($header, 'frontButtons', []));
     $internshipUrl = '/' . app()->getLocale() . '/internship';
 @endphp
 
@@ -82,8 +82,21 @@
             <div class="careers-banner-text">
                 <p>{{ $headerBrief }}</p>
             </div>
-            <a href="#jobs" class="careers-cta-button">{{ data_get($headerBtn, 'label') ?: 'Explore Jobs' }}</a>
-            <a href="{{ $internshipUrl }}" class="careers-cta-button">Explore Internships</a>
+            @if($headerButtons->isNotEmpty())
+                @foreach($headerButtons as $index => $button)
+                    @php
+                        $buttonUrl = data_get($button, 'url');
+                        if (!$buttonUrl) {
+                            $buttonUrl = $index === 0 ? '#jobs' : $internshipUrl;
+                        }
+                        $buttonLabel = data_get($button, 'label') ?: ($index === 0 ? 'Explore Jobs' : 'Explore Internships');
+                    @endphp
+                    <a {!! \App\Classes\Utility::printAllUrl($buttonUrl) !!} class="careers-cta-button">{{ $buttonLabel }}</a>
+                @endforeach
+            @else
+                <a href="#jobs" class="careers-cta-button">Explore Jobs</a>
+                <a {!! \App\Classes\Utility::printAllUrl($internshipUrl) !!} class="careers-cta-button">Explore Internships</a>
+            @endif
         </div>
     </div>
 </section>

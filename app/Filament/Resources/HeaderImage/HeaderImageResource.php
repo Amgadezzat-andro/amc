@@ -38,6 +38,8 @@ class HeaderImageResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-s-photo';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function getNavigationBadge(): ?string
     {
         return self::$model::count();

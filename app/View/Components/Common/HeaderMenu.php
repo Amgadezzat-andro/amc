@@ -26,7 +26,7 @@ class HeaderMenu extends Component
         $data = [];
 
 
-        $menu = Cache::rememberForever( "header_". (new Menu())->getTable(), function () {
+        $menu = Cache::remember( "header_". (new Menu())->getTable(), now()->addMinutes(10), function () {
             return Menu::active()
                         ->with("translation")
                         ->where("category_slug","main-menu")
@@ -35,7 +35,7 @@ class HeaderMenu extends Component
 
         if(isset($menu) && $menu)
         {
-            $data['menuParents'] =  Cache::rememberForever( "header_". (new MenuLink())->getTable(), function () use($menu) {
+            $data['menuParents'] =  Cache::remember( "header_". (new MenuLink())->getTable(), now()->addMinutes(10), function () use($menu) {
                                         return MenuLink::active()
                                                     ->where("menu_id",$menu->id)
                                                     ->where("self_parent_id", -1)

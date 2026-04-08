@@ -333,6 +333,18 @@ class AllSetting extends BaseSettings
                                                 ]),
 
 
+                                            CustomCuratorPicker::make($tab->makeName("site.footer_logo"))
+                                                ->label(__("Footer Logo [" . $tab->getLocale() . "]"))
+                                                ->pathGenerator(DatePathGenerator::class)
+                                                ->size(40)
+                                                ->color('primary')
+                                                ->outlined(true)
+                                                ->size('md')
+                                                ->constrained(true)
+                                                ->orderColumn('order')
+                                                ->required(),
+
+
                                         ])->columns(2),
 
 
@@ -397,14 +409,6 @@ class AllSetting extends BaseSettings
                                                 ->validationMessages([
                                                     'not_regex' => 'HTML is invalid',
                                                 ]),
-                                            TextInput::make('site.internships_url')
-                                                ->label(__("Get A Free Quote Url"))
-                                                ->maxLength(255)
-                                                // ->activeUrl()
-                                                ->notRegex('/<[^b][^r][^>]*>/')
-                                                ->validationMessages([
-                                                    'not_regex' => 'HTML is invalid',
-                                                ]),
 
                                             TextInput::make($tab->makeName('site.location_title'))
                                                 ->label(__("Location Title[" . $tab->getLocale() . "]"))
@@ -429,75 +433,6 @@ class AllSetting extends BaseSettings
                                                 ->validationMessages([
                                                     'not_regex' => 'HTML is invalid',
                                                 ]),
-
-                                            TextInput::make('site.linkedin_url')
-                                                ->label(__("LinkedIn URL"))
-                                                ->url()
-                                                ->maxLength(255),
-                                            TextInput::make('site.instagram_url')
-                                                ->label(__("Instagram URL"))
-                                                ->url()
-                                                ->maxLength(255),
-                                            TextInput::make('site.facebook_url')
-                                                ->label(__("Facebook URL"))
-                                                ->url()
-                                                ->maxLength(255),
-                                            TextInput::make('site.youtube_url')
-                                                ->label(__("YouTube URL"))
-                                                ->url()
-                                                ->maxLength(255),
-
-
-                                        ])->columns(2),
-
-
-
-                                    Section::make('Default Header Image')
-                                        ->collapsed()
-                                        ->schema([
-
-                                            CustomCuratorPicker::make($tab->makeName("site.default_header_image"))
-                                                ->label(__("Default Header Image[" . $tab->getLocale() . "]"))
-                                                ->pathGenerator(DatePathGenerator::class)
-                                                ->size(40)
-                                                ->color('primary')
-                                                ->outlined(true)
-                                                ->size('md')
-                                                ->constrained(true)
-                                                ->orderColumn('order')
-                                                ->required(),
-                                            CustomCuratorPicker::make($tab->makeName("site.footer_logo"))
-                                                ->label(__("Footer Logo [" . $tab->getLocale() . "]"))
-                                                ->pathGenerator(DatePathGenerator::class)
-                                                ->size(40)
-                                                ->color('primary')
-                                                ->outlined(true)
-                                                ->size('md')
-                                                ->constrained(true)
-                                                ->orderColumn('order')
-                                                ->required(),
-
-                                            TextInput::make($tab->makeName('site.default_header_image_title'))
-                                                ->label(__("Default Header Image Title[" . $tab->getLocale() . "]"))
-                                                ->required()
-                                                ->maxLength(255)
-                                                ->notRegex('/<[^b][^r][^>]*>/')
-                                                ->validationMessages([
-                                                    'not_regex' => 'HTML is invalid',
-                                                ]),
-
-                                            Textarea::make($tab->makeName('site.default_header_image_brief'))
-                                                ->label(__("Header Image Brief[" . $tab->getLocale() . "]"))
-                                                // ->maxLength(255)
-                                                ->rows(3)
-                                                ->notRegex('/<[^b][^r][^>]*>/')
-                                                ->validationMessages([
-                                                    'not_regex' => 'HTML is invalid',
-                                                ]),
-
-
-
-
 
 
                                         ])->columns(2),

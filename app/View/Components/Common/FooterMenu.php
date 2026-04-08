@@ -29,7 +29,7 @@ class FooterMenu extends Component
 
 
 
-        $menu = Cache::rememberForever( $category_slug."_footer_". (new Menu())->getTable(), function () use($category_slug) {
+        $menu = Cache::remember( $category_slug."_footer_". (new Menu())->getTable(), now()->addMinutes(10), function () use($category_slug) {
             return Menu::active()
                         ->with("translation")
                         ->where("category_slug",$category_slug)
@@ -39,7 +39,7 @@ class FooterMenu extends Component
         if(isset($menu) && $menu)
         {
             $data['menu'] = $menu;
-            $data['menuParents'] =  Cache::rememberForever( $category_slug."_footer_". (new MenuLink())->getTable(), function () use($menu) {
+            $data['menuParents'] =  Cache::remember( $category_slug."_footer_". (new MenuLink())->getTable(), now()->addMinutes(10), function () use($menu) {
                                         return MenuLink::active()
                                                     ->where("menu_id",$menu->id)
                                                     ->where("self_parent_id", -1)

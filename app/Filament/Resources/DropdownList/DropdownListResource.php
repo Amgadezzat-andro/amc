@@ -15,13 +15,10 @@ use Filament\Resources\Resource;
 use App\Traits\CommonActionButtons;
 
 use App\Traits\AllColumnActionVisibility;
-use App\Filament\Resources\Bms\BmsResource;
-use App\Filament\Resources\Bms\Model\Bms;
 use App\Filament\Resources\DropdownList\Model\DropdownList;
 use App\Filament\Resources\DropdownList\ResourcePages\Create;
 use App\Filament\Resources\DropdownList\ResourcePages\Edit;
 use App\Filament\Resources\DropdownList\ResourcePages\ListItems;
-use Filament\Forms\Components\Fieldset;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -47,22 +44,22 @@ class DropdownListResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __("Widgets & Categories");
+        return __("Categories");
     }
 
     public static function getModelLabel(): string
     {
-        return __("Widgets & Categories");
+        return __(" Categories");
     }
 
     public static function getPluralLabel(): ?string
     {
-        return __("Widgets & Categories");
+        return __("Categories");
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __("Widgets & Categories");
+        return __("Categories");
     }
 
     public static function getNavigationGroup(): ?string
@@ -95,14 +92,6 @@ class DropdownListResource extends Resource
                                     ->validationMessages([
                                         'not_regex' => 'HTML is invalid',
                                     ]),
-                                    Forms\Components\TextInput::make($tab->makeName('second_title'))
-                                    ->label(__("SecondTitle[" . $tab->getLocale() . "]"))
-                                    // ->required()
-                                    ->maxLength(1000)
-                                    ->notRegex('/<[^b][^r][^>]*>/')
-                                    ->validationMessages([
-                                        'not_regex' => 'HTML is invalid',
-                                    ]),
                                 Forms\Components\TextInput::make('slug')
                                     ->label(__("Slug"))
                                     ->unique(ignoreRecord: true)
@@ -112,42 +101,6 @@ class DropdownListResource extends Resource
                                     ->validationMessages([
                                         'not_regex' => 'HTML is invalid',
                                     ]),
-
-                            Fieldset::make(__("Content Taps"))
-                                    ->schema([
-
-                                        FilamentUtility::genericRepeater(
-                                            "ContentTaps",
-                                            "bmses",
-                                            [],
-                                            "weight_order",
-                                            BmsResource::class,
-                                            "formPopup",
-                                            [
-                                                "module_id" => fn($get) => $get("id"),
-                                                "module_class" => DropdownList::class,
-                                                'category' => 'ContentTaps'
-
-                                            ],
-                                        ),
-
-
-                                        FilamentUtility::genericAddButtonRepeater(
-                                            "Add Content Tap",
-                                            "Add Content Tap",
-                                            BmsResource::class,
-                                            "formPopup",
-                                            [
-                                                "module_id" => fn($get) => $get("id"),
-                                                "module_class" => DropdownList::class,
-                                                'category' => 'ContentTaps'
-
-                                            ],
-                                            Bms::class,
-                                            "ContentTaps"
-                                        ),
-                                    ])
-                                    ->visible(fn(string $operation, $get): bool => $operation != 'create' && $get("id")),
 
                                 // Forms\Components\Textarea::make($tab->makeName('brief'))
                                 //     ->label(__("Brief[". $tab->getLocale()."]"))

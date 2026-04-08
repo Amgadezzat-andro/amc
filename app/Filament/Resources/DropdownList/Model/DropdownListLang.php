@@ -14,7 +14,6 @@ class DropdownListLang extends BaseLangModel
     public $timestamps = false;
     protected $fillable = [
         'title',
-        'second_title',
         'content',
         'image',
         'video_link'

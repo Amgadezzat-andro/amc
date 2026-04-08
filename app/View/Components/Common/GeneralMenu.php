@@ -26,7 +26,7 @@ class GeneralMenu extends Component
         $data = [];
 
 
-        $menu = Cache::rememberForever( "general_". (new Menu())->getTable(), function () {
+        $menu = Cache::remember( "general_". (new Menu())->getTable(), now()->addMinutes(10), function () {
             return Menu::active()
                         ->with("translation")
                         ->where("category_slug","mega-menu")
@@ -37,7 +37,7 @@ class GeneralMenu extends Component
         // die;
         if(isset($menu) && $menu)
         {
-            $data['menuParents'] =  Cache::rememberForever( "general_". (new MenuLink())->getTable(), function () use($menu) {
+            $data['menuParents'] =  Cache::remember( "general_". (new MenuLink())->getTable(), now()->addMinutes(10), function () use($menu) {
                                         return MenuLink::active()
                                                     ->where("menu_id",$menu->id)
                                                     ->where("self_parent_id", -1)

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\DropdownList\Model;
 
 use App\Filament\Resources\AcademicAffairs\Model\AcademicAffairs;
-use App\Filament\Resources\Bms\Model\Bms;
 use App\Filament\Resources\Faq\Model\Faq;
 use App\Models\Base\BaseTranslationModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +20,6 @@ class DropdownList extends BaseTranslationModel
     public $translatedAttributes =
         [
             'title',
-            'second_title',
             'content',
             'image',
             'video_link'
@@ -104,15 +102,6 @@ class DropdownList extends BaseTranslationModel
     public function mainImage()
     {
         return $this->translate()->mainImage();
-    }
-
-        public function bmses()
-    {
-        return $this->hasMany(Bms::class, 'module_id')
-            ->where('module_class', self::class)
-            ->where('category', '=', 'ContentTaps')
-            ->orderBy('category')
-            ->orderBy('weight_order');
     }
 
 

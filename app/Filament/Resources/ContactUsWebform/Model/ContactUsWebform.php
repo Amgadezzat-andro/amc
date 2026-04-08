@@ -2,10 +2,8 @@
 
 namespace App\Filament\Resources\ContactUsWebform\Model;
 
-use App\Filament\Resources\DropdownList\Model\DropdownList;
 use App\Models\Base\BaseModelNotForAdmin;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ContactUsWebform extends BaseModelNotForAdmin
 {
@@ -26,23 +24,7 @@ class ContactUsWebform extends BaseModelNotForAdmin
             'company',
             'position',
             'location',
-            'subject_id',
             'message',
         ];
-
-    public function subject(): BelongsTo
-    {
-        return $this->belongsTo(DropdownList::class, 'subject_id', 'id');
-    }
-
-    public static function getSubjectList(): array
-    {
-        return DropdownList::activeWithCategory(DropdownList::CONTACT_SUBJECT)->get()->mapWithKeys(function ($i) {
-            return [$i->id => $i->title];
-        })->all();
-    }
-
-
-
 
 }

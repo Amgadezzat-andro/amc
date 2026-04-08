@@ -1,9 +1,5 @@
 <form class="application-form" wire:submit.prevent="submit" enctype="multipart/form-data">
-    @if (Session::has('success'))
-        <div class="no-vacancy-message" style="margin-bottom: 30px;">
-            <p>{{ Session::get('success') }}</p>
-        </div>
-    @endif
+    <x-common.form-success-flush :message="Session::get('success')" />
 
     <h2 class="form-title">Internship Application Form</h2>
 

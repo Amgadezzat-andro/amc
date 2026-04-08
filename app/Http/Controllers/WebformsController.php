@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Filament\Resources\Bms\Model\Bms;
-use App\Filament\Resources\ContactUsWebform\Model\ContactUsWebform;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -33,7 +32,6 @@ class WebformsController extends Controller
         $mapQuery = $locationCoordinate ?: $locationTitle;
 
         return view('webforms.contact-form', [
-            'subjectList' => ContactUsWebform::getSubjectList(),
             'contactInfo' => $contactInfo,
             'mapQuery' => $mapQuery,
         ]);
@@ -47,8 +45,12 @@ class WebformsController extends Controller
 
     public function careers(): View
     {
-        $data['careersHeader'] = Cache::rememberForever('careers_header_bms', function () {
-            return Bms::activeWithCategory('home-page-careers')->with(['mainImage', 'frontButtons'])->first();
+        $lng = app()->getLocale();
+        $data['careersHeader'] = Cache::remember("careers_header_bms_{$lng}", now()->addMinutes(10), function () {
+            $header = Bms::activeWithCategory('careers-header')->with(['mainImage', 'frontButtons'])->first();
+
+            // Backward compatibility for existing content using the old category slug.
+            return $header ?: Bms::activeWithCategory('home-page-careers')->with(['mainImage', 'frontButtons'])->first();
         });
 
         return view('site.careers', $data);

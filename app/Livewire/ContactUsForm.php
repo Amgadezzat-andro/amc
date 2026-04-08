@@ -11,9 +11,8 @@ class ContactUsForm extends BaseForm
 
     public $subject = "Contact Us Form";
     public $emailList = "";
-    public $subjectList = [];
 
-    public $first_name, $last_name, $company, $position, $location, $email, $phone, $internation_phone_country, $subject_id, $message, $captcha;
+    public $first_name, $last_name, $company, $position, $location, $email, $phone, $internation_phone_country, $message, $captcha;
 
     public $mailData = [];
 
@@ -33,9 +32,8 @@ class ContactUsForm extends BaseForm
     // ];
 
 
-    public function mount($subjectList = [])
+    public function mount()
     {
-        $this->subjectList = $subjectList;
         if (empty($this->internation_phone_country)) {
             $this->internation_phone_country = 'TZ';
         }
@@ -61,7 +59,6 @@ class ContactUsForm extends BaseForm
                 'company' => ['nullable', 'string', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
                 'position' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
                 'location' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
-                'subject_id' => ['nullable', 'exists:dropdown_list,id'],
                 'message' => ['nullable', 'min:3', 'max:65535', 'not_regex:/<[^b][^r][^>]*>/'],
                 'captcha' => ['nullable'],
             ];

@@ -103,7 +103,7 @@
         <div class="contact-form-wrapper">
             <h2 class="contact-form-title">Get in Touch</h2>
             <p style="color:#5a6c7d; margin-bottom:30px;">Please don't hesitate to contact us regarding any questions and enquiries you may have!</p>
-            <livewire:contact-us-form :subjectList="$subjectList ?? []" />
+            <livewire:contact-us-form />
         </div>
     </div>
 </section>

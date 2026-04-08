@@ -1,9 +1,5 @@
 <form wire:submit.prevent="submit">
-    @if (Session::has('success'))
-        <div class="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-            {{ Session::get('success') }}
-        </div>
-    @endif
+    <x-common.form-success-flush :message="Session::get('success')" />
 
     <div class="consultation-form-row">
         <div class="consultation-form-group">

@@ -175,19 +175,6 @@ class BmsResource extends Resource
                                 //     ->multiple(false),
 
 
-                                CustomCuratorPicker::make($tab->makeName("video_id"))
-                                    ->label(__("Main Video[" . $tab->getLocale() . "]"))
-                                    ->pathGenerator(DatePathGenerator::class)
-                                    ->size(40)
-                                    ->color('primary')
-                                    ->outlined(true)
-                                    ->size('md')
-                                    ->constrained(true)
-                                    ->listDisplay(false)
-                                    ->orderColumn('order')
-                                    ->multiple(false),
-
-
                                 // CustomCuratorPicker::make($tab->makeName("image_responsive_id"))
                                 //     ->label(__("Mobile Image[" . $tab->getLocale() . "]"))
                                 //     ->pathGenerator(DatePathGenerator::class)
@@ -307,10 +294,10 @@ class BmsResource extends Resource
                                     ]),
 
                                 \Filament\Forms\Components\Select::make('category')
-                                    ->label(__("Category"))
+                                    ->label(__('Category'))
                                     ->required()
                                     ->options(function () {
-                                        $static = Bms::getCategoryList();
+                                        $static = Bms::getCategoryListPlain();
 
                                         // $dynamic = DropdownList::query()
                                         //     ->where('category', DropdownList::BMS_CATEGORY)
@@ -553,7 +540,7 @@ class BmsResource extends Resource
                                     ->label(__("Category"))
                                     ->required()
                                     ->options(function () {
-                                        $static = Bms::getCategoryList();
+                                        $static = Bms::getCategoryListPlain();
 
                                         // $dynamic = DropdownList::query()
                                         //     ->where('category', DropdownList::BMS_CATEGORY)
@@ -629,7 +616,7 @@ class BmsResource extends Resource
                 Tables\Columns\SelectColumn::make('category')
                     ->label(__("Category"))
                     ->options(function () {
-                        $static = Bms::getCategoryList();
+                        $static = Bms::getCategoryListPlain();
 
                         // $dynamic = DropdownList::query()
                         //     ->where('category', DropdownList::BMS_CATEGORY)
@@ -668,21 +655,12 @@ class BmsResource extends Resource
 
                 static::renderFilterActions([
                     Tables\Filters\SelectFilter::make('category')
-                        ->options(function () {
-                            $static = Bms::getCategoryList();
-
-                            // $dynamic = DropdownList::query()
-                            //     ->where('category', DropdownList::BMS_CATEGORY)
-                            //     ->get()
-                            //     ->mapWithKeys(function ($item) {
-                            //         return [$item->slug => $item->lang->title ?? $item->slug];
-                            //     })
-                            //     ->toArray();
-
-                            return $static;
-                        }),
+                        ->label(__('Filter by Category'))
+                        ->options(Bms::getCategoryList())
+                        ->searchable(),
                 ]),
             )
+            ->filtersLayout(\Filament\Tables\Enums\FiltersLayout::AboveContent)
 
             ->actions(
                 static::renderTableActions(),
@@ -708,7 +686,8 @@ class BmsResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->filtersFormColumns(4);
     }
 
     public static function getRelations(): array

@@ -107,19 +107,6 @@ class ButtonResource extends Resource
                                     ]),
 
 
-                                CustomCuratorPicker::make($tab->makeName("image_id"))
-                                    ->label(__("Main Image[" . $tab->getLocale() . "]"))
-                                    ->pathGenerator(DatePathGenerator::class)
-                                    ->size(40)
-                                    ->color('primary')
-                                    ->outlined(true)
-                                    ->size('md')
-                                    ->constrained(true)
-                                    ->listDisplay(false)
-                                    ->orderColumn('order')
-                                    ->multiple(false),
-
-
                             ]),
 
                         Section::make()
@@ -224,19 +211,6 @@ class ButtonResource extends Resource
                                     ->validationMessages([
                                         'not_regex' => 'HTML is invalid',
                                     ]),
-
-
-                                CustomCuratorPicker::make($tab->makeName("image_id"))
-                                    ->label(__("Main Image[" . $tab->getLocale() . "]"))
-                                    ->pathGenerator(DatePathGenerator::class)
-                                    ->size(40)
-                                    ->color('primary')
-                                    ->outlined(true)
-                                    ->size('md')
-                                    ->constrained(true)
-                                    ->listDisplay(false)
-                                    ->orderColumn('order')
-                                    ->multiple(false),
 
 
                             ]),

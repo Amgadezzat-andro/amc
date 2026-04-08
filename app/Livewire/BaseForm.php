@@ -71,7 +71,7 @@ class BaseForm extends Component
 
             $this->firsTime = true;
 
-            session()->flash('success', __("site.SUBMITTED_SUCCESSFULLY") );
+            session()->flash('success', 'Submitted Succesffuly');
 
             $this->reset($this->getResettableFields());
         }
