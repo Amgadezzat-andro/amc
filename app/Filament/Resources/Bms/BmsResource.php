@@ -149,6 +149,7 @@ class BmsResource extends Resource
                                     ->profile('with-bootstrap'),
 
 
+
                                 CustomCuratorPicker::make($tab->makeName("image_id"))
                                     ->label(__("Main Image[" . $tab->getLocale() . "]"))
                                     ->pathGenerator(DatePathGenerator::class)
@@ -185,6 +186,7 @@ class BmsResource extends Resource
                                     ->listDisplay(false)
                                     ->orderColumn('order')
                                     ->multiple(false),
+
 
                                 // CustomCuratorPicker::make($tab->makeName("image_responsive_id"))
                                 //     ->label(__("Mobile Image[" . $tab->getLocale() . "]"))
@@ -274,6 +276,7 @@ class BmsResource extends Resource
 
 
 
+
                             ]),
 
                         Section::make()
@@ -346,6 +349,22 @@ class BmsResource extends Resource
                                 //     ->validationMessages([
                                 //         'not_regex' => 'HTML is invalid',
                                 //     ]),
+                                Forms\Components\TextInput::make($tab->makeName('button_text'))
+                                    ->label(__("Button Text[" . $tab->getLocale() . "]"))
+                                    ->maxLength(1000)
+                                    // ->rows(6)
+                                    ->notRegex('/<[^b][^r][^>]*>/')
+                                    ->validationMessages([
+                                        'not_regex' => 'HTML is invalid',
+                                    ]),
+                                 Forms\Components\TextInput::make('code')
+                                    ->label('Code')
+                                    ->maxLength(1000)
+                                    // ->rows(6)
+                                    ->notRegex('/<[^b][^r][^>]*>/')
+                                    ->validationMessages([
+                                        'not_regex' => 'HTML is invalid',
+                                    ]),
                                 Forms\Components\TextInput::make('url')
                                     ->label(__("Url"))
                                     ->maxLength(255)

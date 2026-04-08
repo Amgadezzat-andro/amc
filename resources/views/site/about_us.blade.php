@@ -1,4 +1,4 @@
-<x-layouts.layout seoTitle="{{ __('site.About_US') }}">
+<x-layouts.layout seoTitle="{{ __('About Us') }}">
     @push('css')
     @endpush
 
@@ -7,6 +7,6 @@
     @endsection
 
     @push('js')
-    <script src="{{ asset('js/about-slider.js') }}"></script>
+    {{-- <script src="{{ asset('js/about-slider.js') }}"></script> --}}
     @endpush
 </x-layouts.layout>

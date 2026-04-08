@@ -60,6 +60,8 @@ Route::prefix('{locale}')
                 Route::get('/', 'home')->name('home');
                 Route::get('/change-language', 'changeLanguage')->name('change-language');
                 Route::get('/about-us', 'aboutUs')->name('about-us');
+                Route::get('/services', 'services')->name('services');
+                Route::get('/culture', 'culture')->name('culture');
                 Route::get('/{slug}', 'index')->name('page-view');
 
             });

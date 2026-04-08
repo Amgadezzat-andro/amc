@@ -2,76 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\Utility;
-use App\Filament\Resources\Accreditation\Model\Accreditation;
 use App\Filament\Resources\Bms\Model\Bms;
 use App\Filament\Resources\Button\Model\Button;
-use App\Filament\Resources\DropdownList\Model\DropdownList;
-use App\Filament\Resources\News\Model\News;
 use App\Filament\Resources\Page\Model\Page;
-use App\Filament\Resources\Project\Model\Project;
-use App\Filament\Resources\PatientReview\Model\PatientReview;
-use App\Filament\Resources\Speciality\Model\Speciality;
-use App\Filament\Resources\SpecializedCenter\Model\SpecializedCenter;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class SiteController extends Controller
 {
     public function home($lng)
     {
-
-
-        $data["HomePageSlider"] = Cache::rememberForever("home_page_slider" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::HOME_PAGE_SLIDER)
-                ->with("bmses.mainImage")
-                ->first();
-        });
-        $data["HomePageEnergyCards"] = Cache::rememberForever("home_page_energy_cards" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::HOME_PAGE_ENERGY_CARDS)
-                ->with("bmses.mainImage")
-                ->first();
+        $data["slider"] = Cache::rememberForever("home_slider_bms", function () {
+            return Bms::activeWithCategory("home-page-slider")->with(['mainImage', 'frontButtons'])->get();
         });
 
-
-        $data["PoweringAfricaFuture"] = Cache::rememberForever("home_page_powering_africa_future" . (new Bms())->getTable(), function () {
-            return Bms::activeWithCategory("powering-africa-future")->with(['mainImage', 'mainVideo'])->first();
-        });
-        $data["InvestingCleanEnergy"] = Cache::rememberForever("home_page_investing_clean_energy" . (new Bms())->getTable(), function () {
-            return Bms::activeWithCategory("investing-clean-energy")->with('mainImage')->first();
+        $data["aboutUs"] = Cache::rememberForever("home_about_us_bms", function () {
+            return Bms::activeWithCategory("home-page-about-us")->with(['mainImage', 'frontButtons'])->get();
         });
 
-        $data["HomePageCounters"] = Cache::rememberForever("home_page_counters" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::HOME_PAGE_COUNTERS)
-                ->with("bmses")
-                ->first();
-        });
-        $data["HomePageWhyChooseUs"] = Cache::rememberForever("home_page_why_choose_us" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::WHY_CHOOSE_US_ABOUT_US_HOME_PAGE)
-                ->with("bmses")
-                ->first();
+        $data["servicesOverview"] = Cache::rememberForever("home_services_overview_bms", function () {
+            return Bms::activeWithCategory("home-page-services-overview")->with(['mainImage', 'frontButtons'])->first();
         });
 
-        $data["latestNews"] = Cache::remember('home_latest_news_3', 300, function () {
-            return News::active()->where('is_campaign', true)->with(['mainImage'])->orderByDesc('published_at')->limit(3)->get();
-        });
-        $data["latestProjects"] = Cache::remember('home_latest_projects_3', 300, function () {
-            return Project::active()->with(['mainImage'])->orderBy('weight_order')->orderByDesc('published_at')->limit(3)->get();
+        $data["servicesCore"] = Cache::rememberForever("home_services_core_bms", function () {
+            return Bms::activeWithCategory("home-page-services-core")->with(['mainImage', 'frontButtons'])->first();
         });
 
-        $data["HomePageOurPartners"] = Cache::rememberForever("home_page_our_partners" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::HOME_PAGE_OUR_PARTNERS)
-                ->with("bmses.mainImage")
-                ->first();
+        $data["servicesIndustries"] = Cache::rememberForever("home_services_industries_bms", function () {
+            return Bms::activeWithCategory("home-page-services-industries")->with(['mainImage', 'frontButtons'])->first();
         });
 
-        $data["HomePageNewsLetterImage"] = Cache::rememberForever("home_page_news_letter" . (new Bms())->getTable(), function () {
-            return Bms::activeWithCategory("home-page-news-letter")->with('mainImage')->first();
+        $data["cultureHowWeDo"] = Cache::rememberForever("home_culture_how_we_do_bms", function () {
+            return Bms::activeWithCategory("home-page-culture-how-we-do")->with(['mainImage', 'frontButtons'])->first();
+        });
+
+        $data["cultureRiseValues"] = Cache::rememberForever("home_culture_rise_values_bms", function () {
+            return Bms::activeWithCategory("home-page-culture-rise-values")->with(['mainImage', 'frontButtons'])->first();
+        });
+
+        $data["cultureEquityDriven"] = Cache::rememberForever("home_culture_equity_driven_bms", function () {
+            return Bms::activeWithCategory("home-page-culture-equity-drivin")->with(['mainImage', 'frontButtons'])->first();
+        });
+
+        $data["careers"] = Cache::rememberForever("home_careers_bms", function () {
+            return Bms::activeWithCategory("home-page-careers")->with(['mainImage', 'frontButtons'])->first();
+        });
+
+        $data["internship"] = Cache::rememberForever("home_internship_bms", function () {
+            return Bms::activeWithCategory("home-page-our-internship-program")->with(['mainImage', 'frontButtons'])->first();
         });
 
         $data["lng"] = $lng;
@@ -80,131 +57,128 @@ class SiteController extends Controller
 
     public function aboutUs()
     {
-        $data["who_we_are"] = Cache::rememberForever("who_we_are" . (new Bms())->getTable(), function () {
-            return Bms::activeWithCategory("who-we-are")->with('mainImage')->first();
-        });
-
-        $data["why_choose_us"] = Cache::rememberForever("why_choose_us" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::WHY_CHOOSE_US_ABOUT_US)
-                ->with("bmses")
-                ->first();
-        });
-        $data["our_partners"] = Cache::rememberForever("our_partners" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::OUR_PARTNERS_ABOUT_US)
-                ->with("bmses")
+        $data["aboutHeader"] = Cache::rememberForever("about_us_header_section_bms", function () {
+            return Bms::activeWithCategory("about-us-header-section")
+                ->with(['mainImage', 'frontButtons'])
                 ->first();
         });
 
-        $data["ag_energies_team"] = Cache::rememberForever("ag_energies_team" . (new Bms())->getTable(), function () {
-            return DropdownList::active()
-                ->where("category", DropdownList::AG_ENERGIES_TEAM_ABOUT_US)
-                ->with("bmses")
+        $data["aboutHistory"] = Cache::rememberForever("about_us_history_and_evolution_bms", function () {
+            return Bms::activeWithCategory("about-us-history-and-evolution")
+                ->with(['mainImage', 'frontButtons'])
                 ->first();
         });
 
+        $data["aboutPurpose"] = Cache::rememberForever("about_us_propose_and_future_bms", function () {
+            return Bms::activeWithCategory("about-us-propose-and-future")
+                ->with(['mainImage', 'frontButtons'])
+                ->first();
+        });
+
+        $data["aboutPeopleItems"] = Cache::rememberForever("about_us_our_people_bms", function () {
+            return Bms::activeWithCategory("about-us-our-people")
+                ->with(['mainImage', 'frontButtons'])
+                ->get();
+        });
+
+        $data["aboutPartners"] = Cache::rememberForever("about_us_partner_bms", function () {
+            return Bms::activeWithCategory("about-use-partner")
+                ->with(['mainImage', 'frontButtons'])
+                ->first();
+        });
+
+        $data["aboutJointVentures"] = Cache::rememberForever("about_us_joint_ventures_bms_v2", function () {
+            return Bms::activeWithCategory("about-use-joint-ventures")
+                ->with(['mainImage', 'frontButtons'])
+            ->get();
+        });
 
 
         return view('site.about_us', $data);
     }
 
-
-
-
-    public function changeLanguage(Request $request)
+    public function services()
     {
-        $currentLocale = app()->getLocale();
-        $newLocale = $currentLocale === 'ar' ? 'en' : 'ar';
+        $data['servicesHeader'] = Cache::rememberForever('services_header_bms', function () {
+            return Bms::activeWithCategory('services-overview')->with(['mainImage', 'frontButtons'])->first();
+        });
 
-        $previousUrl = $request->headers->get('referer');
+        $data['servicesIndustries'] = Cache::rememberForever('services_industries_bms', function () {
+            return Bms::activeWithCategory('services-industries')->with(['mainImage', 'frontButtons'])->first();
+        });
 
-        if ($previousUrl) {
-            $urlPath = parse_url($previousUrl, PHP_URL_PATH);
-            $pathSegments = explode('/', trim($urlPath, '/'));
-            if (isset($pathSegments[0]) && in_array($pathSegments[0], config('app.locales'))) {
-                $pathSegments[0] = $newLocale;
-            } else {
-                return redirect()->route('home');
-            }
-            $newUrl = '/' . implode('/', $pathSegments);
+        $data['serviceTabs'] = [
+            'company-setup' => Cache::rememberForever('services_tab_company_setup_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-company-setup')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'audit' => Cache::rememberForever('services_tab_audit_assurance_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-audit-and-assurance')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'accounting' => Cache::rememberForever('services_tab_accounting_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-accounting-and-bookkeeping')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'payroll' => Cache::rememberForever('services_tab_payroll_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-payroll')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'tax' => Cache::rememberForever('services_tab_tax_advisory_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-tax-advisory')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'internal-control' => Cache::rememberForever('services_tab_internal_control_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-internal-control-assessment')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'ma' => Cache::rememberForever('services_tab_mergers_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-mergers')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'human-capital' => Cache::rememberForever('services_tab_human_capital_bms', function () {
+                return Bms::activeWithCategory('services-what-we-do-human-capital')->with(['mainImage', 'frontButtons'])->first();
+            }),
+        ];
 
-            $query = parse_url($previousUrl, PHP_URL_QUERY);
-            if ($query) {
-                parse_str($query, $params);
-                $params = Utility::sanitize($params);
-                $queryString = http_build_query($params);
-                $newUrl = $newUrl . '?' . $queryString;
-            }
+        $data['servicesConnectBanner'] = Cache::rememberForever('services_connect_banner_bms', function () {
+            return Bms::activeWithCategory('services-connect-us-banner')->with(['mainImage', 'frontButtons'])->first();
+        });
 
+        return view('site.services', $data);
+    }
 
+    public function culture()
+    {
+        $data['cultureHeader'] = Cache::rememberForever('culture_header_bms', function () {
+            return Bms::activeWithCategory('culture-header')->with(['mainImage', 'frontButtons'])->first();
+        });
 
+        $data['cultureFeatureCards'] = Cache::rememberForever('culture_feature_card_bms', function () {
+            return Bms::activeWithCategory('culture-feature-card')->with(['mainImage', 'frontButtons'])->get();
+        });
 
-            return redirect($newUrl);
-        }
+        $data['cultureRiseValues'] = [
+            'respect' => Cache::rememberForever('culture_core_value_respect_bms', function () {
+                return Bms::activeWithCategory('culture-core-value-respect')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'integrity' => Cache::rememberForever('culture_core_value_integrity_bms', function () {
+                return Bms::activeWithCategory('culture-core-value-integrity')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'skills' => Cache::rememberForever('culture_core_value_skills_bms', function () {
+                return Bms::activeWithCategory('culture-core-value-skills')->with(['mainImage', 'frontButtons'])->first();
+            }),
+            'equality' => Cache::rememberForever('culture_core_value_equality_bms', function () {
+                return Bms::activeWithCategory('culture-core-value-Equaility')->with(['mainImage', 'frontButtons'])->first();
+            }),
+        ];
 
-        return redirect()->route('home', ['locale' => $newLocale]);
+        $equityItems = Cache::rememberForever('culture_equity_driven_card_bms', function () {
+            return Bms::activeWithCategory('culture-equity-driven-card')->with(['mainImage', 'frontButtons'])->get();
+        });
+
+        $data['cultureEquityIntro'] = $equityItems->first();
+        $data['cultureEquityCards'] = $equityItems->skip(1)->values();
+
+        return view('site.culture', $data);
     }
 
 
-    public function search(Request $request)
-    {
-
-        $data = [];
-        if ($request->method() == "POST") {
-            if ($request->ajax()) {
-                $dataAjaxRequest = $request->all();
-                foreach ($dataAjaxRequest as $key => $requestItem) {
-                    if ($key == "query") {
-                        $request['search_word'] = $requestItem;
-                    } elseif ($key != "_token") {
-                        $request['model'] = $key;
-                        $request['page'] = $requestItem;
-                    }
-                }
-            }
-            $searchData = $request->validate([
-                'search_word' => 'required|min:1',
-                'model' => 'nullable',
-            ]);
-            $params = Utility::sanitize($searchData);
-
-            $searchModels = Utility::getSearchModels();
-            foreach ($searchModels as $key => $searchModel) {
-                if (isset($params['model'])) {
-                    if ($params['model'] != $searchModel["pagination_name"]) {
-                        continue;
-                    }
-                }
-                $data['searchSections'][$key]["title"] = $searchModel["title"];
-                $data['searchSections'][$key]["items"] = $searchModel["model"]::search($params['search_word'])
-                    ->query(function ($builder) use ($searchModel) {
-                        $builder->active();
-                        foreach ($searchModel["extra_search"] as $condation) {
-                            if (is_array($condation) && count($condation) === 3) {
-                                $builder->where($condation[0], $condation[1], $condation[2]);
-                            }
-                        }
-                    })
-                    ->paginate(setting("pagination.search") ?? setting("pagination.default"), $searchModel["pagination_name"]);
-
-                $data['searchSections'][$key]["item_title"] = $searchModel["item_title"];
-                $data['searchSections'][$key]["item_brief"] = $searchModel["item_brief"];
-                $data['searchSections'][$key]["item_url"] = $searchModel["item_url"];
-                $data['searchSections'][$key]["main_item_url"] = $searchModel["main_item_url"];
-                $data['searchSections'][$key]["pagination_name"] = $searchModel["pagination_name"];
-            }
-
-            $data['searchWord'] = $params['search_word'];
-        }
-
-        if ($request->ajax()) {
-            return view('site.search_ajax', $data);
-        }
 
 
-        return view('site.search', $data);
-    }
 
 
     public function index($locale, $slug)

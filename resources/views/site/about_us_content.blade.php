@@ -1,110 +1,367 @@
 <main>
-    @php $path = '/about-us'; @endphp
-    <x-common.header-image :innerItem="null" :getFromSpacificLink="$path" />
+    @php
+        $hero = $aboutHeader ?? null;
+        $history = $aboutHistory ?? null;
+        $purpose = $aboutPurpose ?? null;
+        $peopleItems = $aboutPeopleItems ?? collect();
+        $peopleIntro = $aboutPartners ?? null;
+        $partners = $aboutPartners ?? null;
+        $ventures = $aboutJointVentures ?? collect();
+    @endphp
 
-    @if(isset($who_we_are) && $who_we_are)
-    <section class="py-32 relative overflow-hidden w-full bg-gradient-to-b from-white via-gray-50/50 to-white">
-        <div class="w-full px-4 lg:px-8 relative z-10">
-            <div class="max-w-7xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-20 items-center mb-32">
-                    <div class="fade-in order-2 lg:order-1">
-                        <div class="mb-8">
-                            @if($who_we_are->title)
-                            <span class="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-4 block">{{ $who_we_are->title }}</span>
-                            @endif
-                            @if($who_we_are->second_title)
-                            <h2 class="text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
-                                <span class="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">{{ $who_we_are->second_title }}</span>
-                            </h2>
-                            @endif
-                            <div class="w-20 h-1 bg-gradient-to-r from-teal-500 to-blue-500 mb-8"></div>
-                        </div>
-                        <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
-                            {!! \App\Classes\Content::inlineStyleToClasses($who_we_are->content ?? '') !!}
-                        </div>
-                    </div>
-                    <div class="relative slide-in-right order-1 lg:order-2">
-                        <div class="relative group">
-                            <div class="absolute -inset-4 bg-gradient-to-r from-teal-400 to-blue-400 rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-                            @if($who_we_are->mainImage)
-                            <x-common.webp-image :mediaObject="$who_we_are->mainImage" :alt="$who_we_are->title" imgClass="relative rounded-3xl w-full h-auto shadow-2xl transform group-hover:scale-[1.02] transition-transform duration-500" />
-                            @else
-                            <div class="glass rounded-3xl w-full aspect-video flex items-center justify-center">
-                                <i class="fas fa-image text-6xl text-white/20"></i>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
+    <style>
+        .page-hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            max-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 61, 92, 0.85) 0%, rgba(13, 148, 136, 0.75) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-title-main {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-subtitle-main {
+            font-size: clamp(16px, 2vw, 22px);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            padding: 80px 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .section-title {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #003d5c;
+        }
+
+        .section-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .card-reveal-section {
+            min-height: 220vh;
+            background: white;
+            position: relative;
+            padding: 100px 0;
+        }
+
+        .card-reveal-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .card-reveal-content {
+            position: sticky;
+            top: 100px;
+        }
+
+        .section-eyebrow {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #003d5c;
+            margin-bottom: 20px;
+        }
+
+        .card-reveal-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: #001f2e;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .card-reveal-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .card-reveal-track {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .card-reveal-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .card-reveal-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-item-link {
+            display: block;
+            position: relative;
+            text-decoration: none;
+            min-height: 520px;
+        }
+
+        .card-item-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-item-text {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            width: 42%;
+            max-width: 480px;
+            padding: 30px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-item-text h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .card-item-text p {
+            font-size: 13px;
+            color: #5a6c7d;
+            margin-bottom: 0;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .partnership-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(2, 12, 27, 0.08);
+            border-left: 4px solid #00849e;
+        }
+
+        .partnership-card h2 {
+            margin-bottom: 12px;
+            color: #003d5c;
+        }
+
+        .partnership-card p {
+            color: #5a6c7d;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1024px) {
+            .card-reveal-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 0 40px;
+                position: static;
+            }
+
+            .card-reveal-content {
+                position: static;
+            }
+
+            .card-reveal-section {
+                min-height: auto;
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero {
+                height: 50vh;
+                min-height: 350px;
+            }
+
+            .card-reveal-container {
+                padding: 0 20px;
+            }
+
+            .card-item-link {
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .card-item-image {
+                position: relative;
+                height: 320px;
+            }
+
+            .card-item-text {
+                position: static;
+                width: 100%;
+                max-width: none;
+                padding: 24px;
+            }
+        }
+    </style>
+
+    @if($hero)
+    @php $heroImg = $hero->mainImage?->url ?? $hero->mainImage?->getUrl(); @endphp
+    <section class="page-hero">
+        <div class="hero-background">
+            @if($heroImg)
+                <img src="{{ $heroImg }}" alt="{{ $hero->title ?? 'About Us' }}" loading="eager">
+            @endif
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <h1 class="hero-title-main">{{ $hero->title ?? 'About A.M.C.' }}</h1>
+            <p class="hero-subtitle-main">{{ $hero->brief ?? '' }}</p>
+        </div>
+    </section>
+    @endif
+
+    @if($history)
+    <section id="history" class="content-section">
+        <div class="container">
+            <h2 class="section-title">{{ $history->title ?? 'History & Evolution' }}</h2>
+            <div class="section-content">
+                {!! \App\Classes\Content::inlineStyleToClasses($history->content ?? '') !!}
             </div>
         </div>
     </section>
     @endif
 
-    @if(isset($why_choose_us) && $why_choose_us)
-    <section class="relative overflow-hidden w-full bg-gradient-to-b from-white via-gray-50/30 to-white">
-        <div class="w-full px-4 lg:px-8 relative z-10">
-            <div class="max-w-5xl mx-auto">
-                <div class="text-center mb-20 fade-in">
-                    @if($why_choose_us->title)
-                    <span class="text-sm font-semibold text-teal-600 uppercase tracking-wider mb-4 block">{{ $why_choose_us->title }}</span>
-                    @endif
-                    @if($why_choose_us->second_title)
-                    <h2 class="text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900">
-                        <span class="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">{{ $why_choose_us->second_title }}</span>
-                    </h2>
-                    @endif
-                    <div class="w-20 h-1 bg-gradient-to-r from-teal-500 to-blue-500 mx-auto"></div>
-                </div>
-                @php
-                    $whyIcons = ['fas fa-eye', 'fas fa-bullseye', 'fas fa-flag-checkered', 'fas fa-heart'];
-                    $whyGradients = ['from-teal-500 to-teal-600', 'from-orange-500 to-orange-600', 'from-yellow-400 to-yellow-500', 'from-slate-700 to-slate-800'];
-                    $whyUnderline = ['from-teal-500 to-blue-500', 'from-orange-500 to-red-500', 'from-yellow-400 to-orange-500', 'from-slate-600 to-gray-700'];
-                @endphp
-                @foreach(isset($why_choose_us->bmses) ? $why_choose_us->bmses : [] as $index => $block)
-                <div class="content-block mb-24 fade-in">
-                    <div class="flex items-start space-x-6 mb-6">
-                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br {{ $whyGradients[min($index, 3)] }} rounded-2xl flex items-center justify-center shadow-lg">
-                            <i class="{{ $whyIcons[min($index, 3)] }} text-2xl text-white"></i>
-                        </div>
-                        <div class="flex-1">
-                            @if($block->title)
-                            <h3 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{{ $block->title }}</h3>
-                            <div class="w-16 h-1 bg-gradient-to-r {{ $whyUnderline[min($index, 3)] }} mb-6"></div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="space-y-4 pl-24 text-lg lg:text-xl text-gray-700 leading-relaxed">
-                        {!! \App\Classes\Content::inlineStyleToClasses($block->content ?? '') !!}
-                    </div>
-                </div>
-                @endforeach
+    @if($purpose)
+    <section id="purpose" class="content-section">
+        <div class="container">
+            <h2 class="section-title">{{ $purpose->title ?? 'Purpose & Future' }}</h2>
+            <div class="section-content">
+                {!! \App\Classes\Content::inlineStyleToClasses($purpose->content ?? '') !!}
+                {!! \App\Classes\Content::inlineStyleToClasses($purpose->content2 ?? '') !!}
             </div>
         </div>
     </section>
     @endif
 
-    @if(isset($our_partners) && $our_partners)
-    <section class="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden w-full">
-        <div class="w-full px-4 lg:px-8 relative z-10">
-            <div class="max-w-7xl mx-auto">
-                @if($our_partners->title)
-                <h2 class="text-4xl lg:text-5xl font-bold text-center mb-4 text-gray-900 fade-in">{{ $our_partners->title }}</h2>
-                @endif
-                @if(isset($our_partners->second_title) && $our_partners->second_title)
-                <p class="text-center text-gray-700 text-xl mb-16 fade-in">{{ $our_partners->second_title }}</p>
-                @else
-                <p class="text-center text-gray-700 text-xl mb-16 fade-in">Trusted by leading organizations</p>
-                @endif
-                <div class="partners-grid grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
-                    @foreach(isset($our_partners->bmses) ? $our_partners->bmses : [] as $partner)
-                    <div class="partner-card bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex items-center justify-center h-48 lg:h-56 fade-in hover:scale-105">
-                        @if($partner->mainImage)
-                        <x-common.webp-image :mediaObject="$partner->mainImage" :alt="$partner->title ?? 'Partner'" imgClass="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300" />
-                        @else
-                        <span class="text-gray-400">{{ $partner->title ?? 'Partner' }}</span>
-                        @endif
+    @if($peopleIntro || $peopleItems->isNotEmpty())
+    <section class="card-reveal-section" id="people">
+        <div class="card-reveal-container">
+            <div class="card-reveal-content">
+                @if($peopleIntro)
+                    <div class="section-eyebrow">{{ $peopleIntro->title ?? 'Our People' }}</div>
+                    <h2 class="card-reveal-title">{{ $peopleIntro->second_title ?? 'At the heart of every possibility is our team' }}</h2>
+                    <div class="card-reveal-description">
+                        {!! \App\Classes\Content::inlineStyleToClasses($peopleIntro->content ?? '') !!}
                     </div>
+                @endif
+            </div>
+
+            <div class="card-reveal-slider">
+                <div class="card-reveal-track">
+                    @foreach($peopleItems as $person)
+                        @php
+                            $personImg = $person->mainImage?->url ?? $person->mainImage?->getUrl();
+                            $personLink = $person->frontButtons->first()?->url ?? '#people';
+                        @endphp
+                        <div class="card-reveal-item">
+                            <a href="{{ $personLink }}" class="card-item-link">
+                                <div class="card-item-image">
+                                    @if($personImg)
+                                        <img src="{{ $personImg }}" alt="{{ $person->title ?? 'Our People' }}">
+                                    @endif
+                                </div>
+                                <div class="card-item-text">
+                                    <h3>{{ $person->title ?? '' }}</h3>
+                                    <p>{{ $person->brief ?? '' }}</p>
+                                </div>
+                            </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -112,26 +369,43 @@
     </section>
     @endif
 
-    @php
-        $teamBmses = isset($ag_energies_team) && $ag_energies_team->bmses ? $ag_energies_team->bmses : collect();
-    @endphp
-    @if($teamBmses->isNotEmpty())
-    <section class="py-20 w-full bg-white">
-        <div class="w-full px-4 lg:px-8">
-            <div class="max-w-7xl mx-auto">
-                <div class="about-image-slider relative overflow-hidden mb-20 fade-in">
-                    <div class="slider-wrapper flex transition-transform duration-700 ease-in-out">
-                        @foreach($teamBmses as $teamItem)
-                            @if($teamItem->mainImage)
-                            <div class="slide">
-                                <x-common.webp-image :mediaObject="$teamItem->mainImage" :alt="$teamItem->title ?? 'AG Energies Team'" imgClass="slide-image" />
-                            </div>
-                            @endif
-                        @endforeach
-                    </div>
+    @if($ventures->isNotEmpty())
+    <section id="ventures" class="content-section">
+        <div class="container">
+            <div class="section-eyebrow" style="text-align:center;">{{ $ventures->first()?->title ?? 'Joint Ventures & Alliances' }}</div>
+            <h2 class="section-title" style="text-align:center;">{{ $ventures->first()?->second_title ?? 'Ecosystems and Trusted Relationships' }}</h2>
+
+            <div class="section-content">
+                <div class="partnerships-grid">
+                    @foreach($ventures as $venture)
+                        <div class="partnership-card">
+                            <h2>{{ $venture->second_title ?? $venture->title }}</h2>
+                            <div>{!! \App\Classes\Content::inlineStyleToClasses($venture->content ?? '') !!}</div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
     @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardRevealItems = document.querySelectorAll('.card-reveal-item');
+            if (!cardRevealItems.length) return;
+
+            const cardRevealObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            cardRevealItems.forEach(item => cardRevealObserver.observe(item));
+        });
+    </script>
 </main>

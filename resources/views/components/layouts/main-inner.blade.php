@@ -245,6 +245,7 @@
 
     @yield('content')
 
+
     @include('layouts.footer')
 
 {{-- Scroll Script --}}
