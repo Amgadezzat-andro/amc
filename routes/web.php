@@ -26,34 +26,12 @@ Route::prefix('{locale}')
                 Route::get('/', 'index')->name('news-index');
                 Route::get('/{slug}', 'view')->name('news-view');
             });
-        Route::controller(\App\Http\Controllers\ProductController::class)
-            ->prefix('/products')
-            ->group(function () {
-                Route::get('/', 'index')->name('products-index');
-                Route::get('/{slug}', 'view')->name('products-view');
-            });
-        Route::controller(\App\Http\Controllers\ProjectController::class)
-            ->prefix('/projects')
-            ->group(function () {
-                Route::get('/', 'index')->name('projects-index');
-                Route::get('/{slug}', 'view')->name('projects-view');
-            });
-        Route::controller(\App\Http\Controllers\EmobilityController::class)
-            ->prefix('/emobility')
-            ->group(function () {
-                Route::get('/', 'index')->name('emobility-index');
-                Route::get('/{slug}', 'view')->name('emobility-view');
-            });
-        Route::get('/swapping-stations', [\App\Http\Controllers\SwappingStationController::class, 'index'])->name('swapping-stations-index');
         Route::controller(\App\Http\Controllers\WebformsController::class)
             ->group(function () {
                 Route::get('/contact-us', 'contactUs')->name('contact-us');
                 Route::post('/contact-us', 'contactUsPost')->name('contact-us.post');
-                Route::get('/get-a-quote', 'getAQuote')->name('get-a-quote');
-                Route::post('/get-a-quote', 'getAQuotePost')->name('get-a-quote.post');
                 Route::get('/careers', 'careers')->name('careers');
                 Route::get('/internship', 'internship')->name('internship');
-                Route::post('/newsletter-subscribe', 'newsletterSubscribe')->name('newsletter-subscribe');
             });
 
 
