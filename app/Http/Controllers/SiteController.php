@@ -90,9 +90,8 @@ class SiteController extends Controller
         $data["aboutJointVentures"] = Cache::rememberForever("about_us_joint_ventures_bms_v2", function () {
             return Bms::activeWithCategory("about-use-joint-ventures")
                 ->with(['mainImage', 'frontButtons'])
-            ->get();
+                ->get();
         });
-
 
         return view('site.about_us', $data);
     }
@@ -176,14 +175,8 @@ class SiteController extends Controller
         return view('site.culture', $data);
     }
 
-
-
-
-
-
     public function index($locale, $slug)
     {
-
         $data['taregtPage'] = Cache::rememberForever($slug . "_page_" . (new Page())->getTable(), function () use ($slug) {
             return Page::onlyActive()
                 ->where('slug', $slug)

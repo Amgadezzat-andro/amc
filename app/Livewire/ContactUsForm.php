@@ -13,7 +13,7 @@ class ContactUsForm extends BaseForm
     public $emailList = "";
     public $subjectList = [];
 
-    public $first_name, $last_name, $company, $email, $phone, $internation_phone_country, $subject_id, $message, $captcha;
+    public $first_name, $last_name, $company, $position, $location, $email, $phone, $internation_phone_country, $subject_id, $message, $captcha;
 
     public $mailData = [];
 
@@ -59,6 +59,8 @@ class ContactUsForm extends BaseForm
                 'internation_phone_country' => ['nullable', 'string', 'size:2'],
                 'phone' => ['required', 'regex:/^[\d\s\-\+\(\)]{8,20}$/', 'not_regex:/<[^b][^r][^>]*>/'],
                 'company' => ['nullable', 'string', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
+                'position' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
+                'location' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
                 'subject_id' => ['nullable', 'exists:dropdown_list,id'],
                 'message' => ['nullable', 'min:3', 'max:65535', 'not_regex:/<[^b][^r][^>]*>/'],
                 'captcha' => ['nullable'],

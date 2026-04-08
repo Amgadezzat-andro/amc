@@ -111,6 +111,13 @@ class Bms extends BaseTranslationModel
             'culture-core-value-Equaility'=>__('Culture Core Value Equaility'),
             'culture-equity-driven-card'=>__('Culture Equity Driven Card'),
 
+            //!!Careers
+            'careers-header'=>__('Careers Header'),
+
+            //!! InternShip
+            'internship-header'=>__('Internship Header'),
+            'internship-why-join-section'=>__('Internship Why Join Section'),
+            'internship-our-program-card'=>__('Internship Our Program Card'),
 
 
         ];

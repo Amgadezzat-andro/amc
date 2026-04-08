@@ -1,115 +1,125 @@
-<x-layouts.layout seoTitle="{{ __('site.CONTACT_US') }}" layoutView="main-inner">
+<x-layouts.layout seoTitle="Contact Us" layoutView="main-inner">
 
-    @push('css')
-        <style>
-            :root { --contact-orange: #f97316; --contact-orange-dk: #ea6a00; --contact-text-dark: #1a1a1a; --contact-text-mid: #555; --contact-border: #e5e7eb; }
-            .contact-hero { display: flex; position: relative; min-height: auto; }
-            .hero-left { flex: 1; background: #fff; padding: 3rem 5% 4rem; position: relative; }
-            .hero-right { width: 46%; background: linear-gradient(155deg, #003d5c 0%, #0d9488 100%); padding: 3rem 5% 4rem; position: relative; overflow: hidden; }
-            .hero-right::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
-            .contact-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; color: var(--contact-text-dark); line-height: 1.15; margin-bottom: 0.5rem; }
-            .contact-title span { color: var(--contact-orange); }
-            .orange-bar { width: 52px; height: 3px; background: var(--contact-orange); border-radius: 2px; margin: 1rem 0 1.5rem; }
-            .contact-subtitle { color: var(--contact-text-mid); font-size: 1rem; max-width: 420px; line-height: 1.7; margin-bottom: 2rem; }
-            .contact-input { width: 100%; background: transparent; border: none; border-bottom: 1.5px solid var(--contact-border); padding: 0.7rem 0; font-size: 0.95rem; outline: none; border-radius: 0; }
-            .contact-input:focus { border-bottom-color: var(--contact-orange); border-bottom-width: 2px; }
-            .form-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--contact-text-mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; }
-            .info-heading { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; }
-            .info-bar { width: 40px; height: 3px; background: linear-gradient(90deg, rgba(255,255,255,.8), rgba(255,255,255,.4)); border-radius: 2px; margin-bottom: 1.5rem; }
-            .info-row { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-            .info-icon-circle { width: 48px; height: 48px; min-width: 48px; border-radius: 50%; border: 2px solid rgba(255,255,255,.7); display: flex; align-items: center; justify-content: center; color: #fff; background: rgba(255,255,255,.05); }
-            .info-row-text p, .info-row-text a, .info-row-text span { color: rgba(255,255,255,.92); font-size: 0.95rem; line-height: 1.6; }
-            .info-row-text a { text-decoration: none; }
-            .info-row-text a:hover { color: #fff; text-decoration: underline; }
-            .info-row-label { color: rgba(255,255,255,.65); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.25rem; }
-            .social-label { color: rgba(255,255,255,.75); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-            .social-link { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(255,255,255,.6); display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-right: 0.5rem; text-decoration: none; transition: all 0.3s; }
-            .social-link:hover { background: rgba(255,255,255,.25); border-color: #fff; }
-            .map-wrapper { overflow: hidden; border-top: 4px solid var(--contact-orange); }
-            .map-wrapper iframe { display: block; border: 0; }
-            .form-success-toast { position: fixed; top: 5.5rem; right: 1.5rem; z-index: 80; width: min(420px, calc(100vw - 2rem)); display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.1rem; border-radius: 18px; background: rgba(255,255,255,0.96); border: 1px solid rgba(13,148,136,0.18); box-shadow: 0 22px 55px rgba(15,23,42,0.18); backdrop-filter: blur(12px); animation: successToastIn .35s ease, successToastOut .35s ease 5.15s forwards; }
-            .form-success-toast__icon { width: 46px; height: 46px; min-width: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(145deg, #10b981, #0d9488); color: #fff; box-shadow: 0 10px 24px rgba(13,148,136,0.28); }
-            .form-success-toast__content { flex: 1; }
-            .form-success-toast__eyebrow { margin: 0 0 0.2rem; color: #0f766e; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-            .form-success-toast__message { margin: 0; color: var(--contact-text-dark); font-size: 0.96rem; line-height: 1.55; }
-            .form-success-toast__close { border: none; background: transparent; color: #64748b; padding: 0.15rem; line-height: 1; }
-            .form-success-toast__close:hover { color: #0f172a; }
-            @keyframes successToastIn { from { opacity: 0; transform: translate3d(0, -12px, 0) scale(0.98); } to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
-            @keyframes successToastOut { from { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } to { opacity: 0; transform: translate3d(0, -10px, 0) scale(0.98); pointer-events: none; } }
-            @media (max-width: 1023px) { .form-success-toast { top: 5rem; right: 1rem; left: 1rem; width: auto; } }
-            @media (max-width: 1023px) { .contact-hero { flex-direction: column; } .hero-right { width: 100%; } }
-        </style>
-    @endpush
+@section('content')
+@php
+    $ci = $contactInfo ?? [];
+    $mapQuery = $mapQuery ?? null;
+@endphp
 
-    @section('content')
-        @php $path = '/contact-us'; @endphp
-        <x-common.header-image :innerItem="null" :getFromSpacificLink="$path" />
+<style>
+.contact-hero-banner { position: relative; width: 100%; min-height: 70vh; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+.contact-hero-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,61,92,.9) 0%, rgba(0,132,158,.85) 100%); z-index: 1; }
+.contact-hero-content { max-width: 1400px; margin: 0 auto; padding: 100px 80px; width: 100%; text-align: center; position: relative; z-index: 2; }
+.contact-hero-title { font-size: clamp(36px, 5vw, 64px); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 20px; }
+.contact-hero-title strong { font-weight: 600; }
 
-        <section class="contact-hero">
-            <div class="hero-left">
-                <h2 class="contact-title">{{ __('site.Contact Us') }} <span>.</span></h2>
-                <div class="orange-bar"></div>
-                <p class="contact-subtitle">{{ __('site.GET_IN_TOUCH') }}</p>
-                <livewire:contact-us-form :subjectList="$subjectList ?? []" />
-            </div>
-            <div class="hero-right" style="position:relative;z-index:1;">
-                <h2 class="info-heading">{{ __('Info') }}</h2>
-                <div class="info-bar"></div>
-                @php $ci = $contactInfo ?? []; @endphp
-                @if(!empty($ci['phone']))
-                <div class="info-row">
-                    <div class="info-icon-circle"><i class="fas fa-phone-alt"></i></div>
-                    <div class="info-row-text">
-                        <p class="info-row-label">{{ __('Call Us') }}</p>
-                        <a href="tel:{{ preg_replace('/\s+/', '', $ci['phone']) }}">{{ $ci['phone'] }}</a>
-                    </div>
-                </div>
-                @endif
-                @if(!empty($ci['email']))
-                <div class="info-row">
-                    <div class="info-icon-circle"><i class="fas fa-envelope"></i></div>
-                    <div class="info-row-text">
-                        <p class="info-row-label">{{ __('Write Us') }}</p>
-                        <a href="mailto:{{ $ci['email'] }}">{{ $ci['email'] }}</a>
-                    </div>
-                </div>
-                @endif
-                @if(!empty($ci['address']) || !empty($locationTitle2))
-                <div class="info-row">
-                    <div class="info-icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="info-row-text">
-                        <p class="info-row-label">{{ __('Visit Us') }}</p>
-                        <p>{{ $ci['address'] ?? $locationTitle2 ?? '' }}</p>
-                    </div>
-                </div>
-                @endif
-                @if(!empty($ci['business_hours']))
-                <div class="info-row">
-                    <div class="info-icon-circle"><i class="fas fa-clock"></i></div>
-                    <div class="info-row-text">
-                        <p class="info-row-label">{{ __('Business Hours') }}</p>
-                        <p>{!! nl2br(e($ci['business_hours'])) !!}</p>
-                    </div>
-                </div>
-                @endif
-                @if(!empty($ci['linkedin_url']) || !empty($ci['instagram_url']) || !empty($ci['facebook_url']) || !empty($ci['youtube_url']))
-                <div style="margin-top:1rem;">
-                    <p class="social-label">{{ __('Connect with us') }}</p>
-                    @if(!empty($ci['linkedin_url']))<a href="{{ $ci['linkedin_url'] }}" target="_blank" rel="noopener" class="social-link"><i class="fab fa-linkedin-in"></i></a>@endif
-                    @if(!empty($ci['instagram_url']))<a href="{{ $ci['instagram_url'] }}" target="_blank" rel="noopener" class="social-link"><i class="fab fa-instagram"></i></a>@endif
-                    @if(!empty($ci['facebook_url']))<a href="{{ $ci['facebook_url'] }}" target="_blank" rel="noopener" class="social-link"><i class="fab fa-facebook-f"></i></a>@endif
-                    @if(!empty($ci['youtube_url']))<a href="{{ $ci['youtube_url'] }}" target="_blank" rel="noopener" class="social-link"><i class="fab fa-youtube"></i></a>@endif
-                </div>
-                @endif
-            </div>
-        </section>
+.contact-details-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1400px; margin: -80px auto 0; padding: 0 80px; position: relative; z-index: 3; }
+.contact-detail-card { background: #fff; border-radius: 12px; padding: 40px 30px; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,.1); transition: all .3s ease; text-decoration: none; color: inherit; display: block; }
+.contact-detail-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,132,158,.2); }
+.contact-detail-icon { width: 70px; height: 70px; background: linear-gradient(135deg, #003d5c 0%, #00849e 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+.contact-detail-icon i { font-size: 32px; color: #fff; }
+.contact-detail-title { font-size: 18px; font-weight: 600; color: #003d5c; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.contact-detail-text { font-size: 15px; line-height: 1.8; color: #5a6c7d; margin: 0; }
 
-        @if(!empty($locationCoordinate) && $locationCoordinate !== '#')
-        <section class="w-full">
-            <div class="map-wrapper">
-                <iframe src="https://maps.google.com/maps?q={{ urlencode($locationCoordinate) }}&z=14&output=embed" width="100%" height="420" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Location"></iframe>
-            </div>
-        </section>
-        @endif
-    @endsection
+.contact-form-section { padding: 120px 0 100px; background: #f5f7fa; }
+.contact-form-container { max-width: 1200px; margin: 0 auto; padding: 0 80px; }
+.contact-form-wrapper { width: 100%; padding: 40px; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(2,6,23,.06); box-sizing: border-box; }
+.contact-form-title { font-size: 32px; font-weight: 700; color: #001f2e; margin-bottom: 30px; }
+.form-group { margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.required { color: #ef4444; margin-left: 4px; }
+.form-input,
+.form-select,
+.form-textarea { width: 100%; padding: 14px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; color: #374151; transition: all .3s ease; font-family: inherit; }
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus { outline: none; border-color: #00849e; box-shadow: 0 0 0 3px rgba(0,132,158,.1); }
+.form-textarea { min-height: 120px; resize: vertical; }
+.form-submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, #003d5c 0%, #00849e 100%); color: #fff; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all .3s ease; margin-top: 10px; }
+.form-submit-btn:hover { background: linear-gradient(135deg, #002d44 0%, #006d84 100%); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,132,158,.3); }
+
+.google-map-section { width: 100%; position: relative; margin-top: 60px; padding: 80px 0 0; background: #fff; }
+.google-map-header { text-align: center; margin-bottom: 50px; padding: 0 80px; }
+.google-map-title { font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: #001f2e; margin-bottom: 20px; position: relative; padding-bottom: 20px; }
+.google-map-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(135deg, #003d5c 0%, #00849e 100%); border-radius: 2px; }
+.google-map-subtitle { font-size: 18px; color: #5a6c7d; line-height: 1.8; }
+.google-map-container iframe { width: 100%; height: 500px; border: 0; display: block; }
+
+@media (max-width: 1024px) {
+    .contact-hero-content { padding: 80px 40px; }
+    .contact-details-grid { grid-template-columns: repeat(2, 1fr); padding: 0 40px; margin-top: -60px; }
+    .contact-form-container { padding: 0 40px; }
+    .google-map-header { padding: 0 40px; margin-bottom: 40px; }
+}
+@media (max-width: 768px) {
+    .contact-hero-banner { min-height: 60vh; }
+    .contact-hero-content { padding: 60px 20px; }
+    .contact-details-grid { grid-template-columns: 1fr; padding: 0 20px; margin-top: -40px; gap: 20px; }
+    .contact-form-section { padding: 80px 0 60px; }
+    .contact-form-container { padding: 0 20px; }
+    .contact-form-wrapper { padding: 30px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .google-map-section { margin-top: 40px; padding: 40px 0 0; }
+    .google-map-header { padding: 0 20px; margin-bottom: 30px; }
+    .google-map-container iframe { height: 350px; }
+}
+</style>
+
+<section class="contact-hero-banner">
+    <div class="contact-hero-content">
+        <h1 class="contact-hero-title">Our <strong>contact details</strong></h1>
+    </div>
+</section>
+
+<div class="contact-details-grid">
+    <a href="{{ $ci['location_url'] ?: '#' }}" target="_blank" class="contact-detail-card">
+        <div class="contact-detail-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h2 class="contact-detail-title">our location</h2>
+        <p class="contact-detail-text">{{ $ci['address'] ?: '-' }}</p>
+    </a>
+
+    <a href="tel:{{ preg_replace('/\s+/', '', $ci['phone'] ?? '') }}" class="contact-detail-card">
+        <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+        <h2 class="contact-detail-title">phone</h2>
+        <p class="contact-detail-text"><span style="color:#00849e;">{{ $ci['phone'] ?: '-' }}</span></p>
+    </a>
+
+    <a href="mailto:{{ $ci['email'] ?? '' }}" class="contact-detail-card">
+        <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
+        <h2 class="contact-detail-title">e-mail</h2>
+        <p class="contact-detail-text"><span style="color:#00849e;">{{ $ci['email'] ?: '-' }}</span></p>
+    </a>
+
+    <div class="contact-detail-card">
+        <div class="contact-detail-icon"><i class="fas fa-clock"></i></div>
+        <h2 class="contact-detail-title">opening days</h2>
+        <p class="contact-detail-text">{!! nl2br(e($ci['business_hours'] ?: '-')) !!}</p>
+    </div>
+</div>
+
+<section class="contact-form-section">
+    <div class="contact-form-container">
+        <div class="contact-form-wrapper">
+            <h2 class="contact-form-title">Get in Touch</h2>
+            <p style="color:#5a6c7d; margin-bottom:30px;">Please don't hesitate to contact us regarding any questions and enquiries you may have!</p>
+            <livewire:contact-us-form :subjectList="$subjectList ?? []" />
+        </div>
+    </div>
+</section>
+
+@if(!empty($mapQuery))
+<section class="google-map-section">
+    <div class="google-map-header">
+        <h2 class="google-map-title">Find Us Here</h2>
+        <p class="google-map-subtitle">Visit our office location</p>
+    </div>
+    <div class="google-map-container">
+        <iframe src="https://maps.google.com/maps?q={{ urlencode($mapQuery) }}&z=14&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Location"></iframe>
+    </div>
+</section>
+@endif
+
+@endsection
+
 </x-layouts.layout>

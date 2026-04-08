@@ -97,6 +97,14 @@ class ContactUsWebformResource extends Resource
                     ->label(__("Company"))
                     ->searchable(),
 
+                Tables\Columns\TextColumn::make('position')
+                    ->label(__("Position"))
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('location')
+                    ->label(__("Location"))
+                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('subject.title')
                     ->label(__("Subject"))
                     ->searchable(),

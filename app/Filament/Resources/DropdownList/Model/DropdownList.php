@@ -60,7 +60,7 @@ class DropdownList extends BaseTranslationModel
 
     const BUTTON_CATEGORY = "Button Category";
 
-    const CONTACT_SUBJECT = 'Contact Subject';
+    const Career_Position = 'Career Position';
 
 
 
@@ -84,7 +84,7 @@ class DropdownList extends BaseTranslationModel
 
 
                 self::BUTTON_CATEGORY => __('Button Category'),
-                self::CONTACT_SUBJECT => __('Contact Subject'),
+                self::Career_Position => __('Career Position'),
 
 
 

@@ -20,6 +20,8 @@ class Exporter extends BaseExporter
             ExportColumn::make('email')->label(__('email')),
             ExportColumn::make('phone')->label(__('phone')),
             ExportColumn::make('company')->label(__('Company')),
+            ExportColumn::make('position')->label(__('Position')),
+            ExportColumn::make('location')->label(__('Location')),
             ExportColumn::make('subject.title')->label(__('Subject')),
             ExportColumn::make('message')->label(__('message')),
             ExportColumn::make('created_at'),

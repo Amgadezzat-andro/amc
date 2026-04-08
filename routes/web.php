@@ -51,6 +51,8 @@ Route::prefix('{locale}')
                 Route::post('/contact-us', 'contactUsPost')->name('contact-us.post');
                 Route::get('/get-a-quote', 'getAQuote')->name('get-a-quote');
                 Route::post('/get-a-quote', 'getAQuotePost')->name('get-a-quote.post');
+                Route::get('/careers', 'careers')->name('careers');
+                Route::get('/internship', 'internship')->name('internship');
                 Route::post('/newsletter-subscribe', 'newsletterSubscribe')->name('newsletter-subscribe');
             });
 
