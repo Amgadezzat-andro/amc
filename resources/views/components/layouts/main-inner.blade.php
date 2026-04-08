@@ -335,75 +335,7 @@
                 </button>
             </div>
             <div class="consultation-modal-body">
-                <form id="consultationForm">
-                    <div class="consultation-form-row">
-                        <div class="consultation-form-group">
-                            <label class="consultation-form-label" for="consultationFirstName">
-                                First Name<span class="required">*</span>
-                            </label>
-                            <input type="text" id="consultationFirstName" name="firstName"
-                                class="consultation-form-input" required>
-                        </div>
-                        <div class="consultation-form-group">
-                            <label class="consultation-form-label" for="consultationLastName">
-                                Last Name<span class="required">*</span>
-                            </label>
-                            <input type="text" id="consultationLastName" name="lastName"
-                                class="consultation-form-input" required>
-                        </div>
-                    </div>
-
-                    <div class="consultation-form-row">
-                        <div class="consultation-form-group">
-                            <label class="consultation-form-label" for="consultationCompany">
-                                Company<span class="required">*</span>
-                            </label>
-                            <input type="text" id="consultationCompany" name="company"
-                                class="consultation-form-input" required>
-                        </div>
-                        <div class="consultation-form-group">
-                            <label class="consultation-form-label" for="consultationPosition">
-                                Position<span class="required">*</span>
-                            </label>
-                            <input type="text" id="consultationPosition" name="position"
-                                class="consultation-form-input" required>
-                        </div>
-                    </div>
-
-                    <div class="consultation-form-row">
-                        <div class="consultation-form-group">
-                            <label class="consultation-form-label" for="consultationEmail">
-                                Email<span class="required">*</span>
-                            </label>
-                            <input type="email" id="consultationEmail" name="email" class="consultation-form-input"
-                                required>
-                        </div>
-                        <div class="consultation-form-group">
-                            <label class="consultation-form-label" for="consultationPhone">
-                                Phone<span class="required">*</span>
-                            </label>
-                            <input type="tel" id="consultationPhone" name="phone" class="consultation-form-input"
-                                required>
-                        </div>
-                    </div>
-
-                    <div class="consultation-form-group">
-                        <label class="consultation-form-label" for="consultationLocation">
-                            Location<span class="required">*</span>
-                        </label>
-                        <input type="text" id="consultationLocation" name="location" class="consultation-form-input"
-                            required>
-                    </div>
-
-                    <div class="consultation-form-group">
-                        <label class="consultation-form-label" for="consultationMessage">
-                            Message<span class="required">*</span>
-                        </label>
-                        <textarea id="consultationMessage" name="message" class="consultation-form-textarea" required></textarea>
-                    </div>
-
-                    <button type="submit" class="consultation-form-submit-btn">Submit Consultation Request</button>
-                </form>
+                <livewire:consultation-form />
             </div>
         </div>
     </div>
@@ -414,7 +346,6 @@
         const openConsultationModalBtn = document.getElementById('openConsultationModal');
         const openConsultationModalBtnHero = document.getElementById('openConsultationModalHero');
         const closeConsultationModalBtn = document.getElementById('closeConsultationModal');
-        const consultationForm = document.getElementById('consultationForm');
 
         function openModal() {
             consultationModal.classList.add('active');
@@ -456,28 +387,7 @@
             }
         });
 
-        if (consultationForm) {
-            consultationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const requiredFields = this.querySelectorAll('[required]');
-                let isValid = true;
-                requiredFields.forEach(field => {
-                    if (!field.value.trim()) {
-                        isValid = false;
-                        field.style.borderColor = '#ef4444';
-                    } else {
-                        field.style.borderColor = '#d1d5db';
-                    }
-                });
-                if (isValid) {
-                    alert('Thank you for your consultation request! We will contact you soon.');
-                    this.reset();
-                    closeModal();
-                } else {
-                    alert('Please fill in all required fields.');
-                }
-            });
-        }
+        window.addEventListener('consultation-submitted', closeModal);
     </script>
 
 </body>
