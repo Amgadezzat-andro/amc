@@ -1,44 +1,43 @@
+    <!-- Footer -->
+    <footer id="footer-section" class="footer">
+        <div class="footer-content">
+            <!-- Footer Logo -->
 
 
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="mx-auto px-4 lg:px-8">
-            <div class="flex flex-wrap justify-between gap-8 mb-8 items-start">
-                <div class="min-w-0 flex-shrink-0">
-                    <x-common.webp-image :allowWebpMobile="false" :allowWebpTablet="false" :mediaObject='$footerLogo' alt='Footer Logo' imgClass="h-12 w-auto mb-4" />
-                    <span class="text-2xl font-bold bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent hidden" style="display: none;">AG Energies</span>
-                    <p class="text-white/70 mb-4">Leading EPC company
-                        <br> specializing in solar energy solutions
-                        <br>
-                         across Tanzania.</p>
-                    <x-common.social-media-links />
-
-                </div>
-
-                <div class="flex flex-wrap gap-x-10 gap-y-6 min-w-0">
+            <div class="footer-top">
+                <div class="footer-grid">
                     <x-common.footer-menu categorySlug="footer-menu" />
-                </div>
 
-                <div class="min-w-0 flex-shrink-0 text-left">
-                    <h4 class="text-lg font-bold mb-4 text-white">Contact</h4>
-                    <ul class="space-y-2 text-white/70">
-                        <li><i class="fas fa-phone mr-2"></i> {{ setting('site.phone') }}</li>
-                        <li><i class="fas fa-envelope mr-2"></i>{{ setting('site.management_email') }}</li>
-                        <li><i class="fas fa-clock mr-2"></i>{{ __('site.WORKING_HOURS') }}</li>
-                    </ul>
+                    <div class="footer-col">
+                        <h4>Connect With Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-phone"></i> <span
+                                    style="color: #b0bec5;">{{ setting('site.phone') }}</span></p>
+                            <p><i class="fas fa-envelope"></i> <a
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to={{ setting('site.management_email') }}"
+                                    target="_blank"
+                                    style="color: #b0bec5; text-decoration: none;">{{ setting('site.management_email') }}</a>
+                            </p>
+                            <p><i class="fas fa-map-marker-alt"></i> <a href="{{ setting('site.location_url') }}"
+                                    target="_blank"
+                                    style="color: #b0bec5; text-decoration: none;">{{ $locationTitle }}</a>
+                            </p>
+                        </div>
+                        <x-common.social-media-links />
+                        <div class="stamp-with-gradient">
+                            {{-- <img src="assets/stamp.png" alt="Stamp"> --}}
+                        <x-common.webp-image :allowWebpMobile="false" :allowWebpTablet="false" :mediaObject='$footerLogo' alt='Footer Logo' />
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>Copyright © All Rights Reserved AG Energies | Powered By Syscom Technologies</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 A.M.C. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button id="backToTop" class="fixed bottom-8 right-8 glass rounded-full p-4 hover:bg-white/10 transition opacity-0 pointer-events-none z-50" aria-label="Back to top">
-        <i class="fas fa-arrow-up text-white"></i>
-    </button>
-
     {{-- <x-common.accessibility-tools /> --}}
-
 
 
 
