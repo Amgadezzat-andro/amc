@@ -190,6 +190,9 @@ class Bms extends BaseTranslationModel
                 'internship-why-join-section'=>__('Internship Why Join Section'),
                 'internship-our-program-card'=>__('Internship Our Program Card'),
             ],
+            __('News') => [
+                'news-index-banner'=>__('News Index Banner'),
+            ],
         ];
     }
 

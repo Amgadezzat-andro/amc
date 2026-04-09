@@ -1,0 +1,383 @@
+/* Match static Frontend/styles.css typography */
+.article-hero,
+.article-layout,
+.related-section,
+.article-hero *,
+.article-layout *,
+.related-section * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Keep Font Awesome icons rendered with their own font family */
+.article-hero .fa,
+.article-hero .fas,
+.article-hero .far,
+.article-hero .fab,
+.article-hero .fa-solid,
+.article-hero .fa-regular,
+.article-hero .fa-brands,
+.article-layout .fa,
+.article-layout .fas,
+.article-layout .far,
+.article-layout .fab,
+.article-layout .fa-solid,
+.article-layout .fa-regular,
+.article-layout .fa-brands,
+.related-section .fa,
+.related-section .fas,
+.related-section .far,
+.related-section .fab,
+.related-section .fa-solid,
+.related-section .fa-regular,
+.related-section .fa-brands {
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+}
+
+/* ============================================================
+   ARTICLE HERO
+============================================================ */
+.article-hero {
+    position: relative;
+    width: 100%;
+    min-height: 78vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #001f2e;
+}
+
+.article-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/new/Picture1.png');
+    background-size: cover;
+    background-position: center top;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1.12); }
+}
+
+.article-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,31,46,0.97) 0%,
+        rgba(0,61,92,0.75) 45%,
+        rgba(0,132,158,0.30) 100%
+    );
+}
+
+.article-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 80px 80px;
+}
+
+.article-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.article-breadcrumb a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.article-breadcrumb a:hover { color: #00b8b8; }
+.article-breadcrumb i { font-size: 10px; }
+.article-breadcrumb span { color: rgba(255,255,255,0.9); }
+
+.article-hero-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #00849e, #00b8b8);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+}
+
+.article-hero-title {
+    font-size: clamp(32px, 4.5vw, 58px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    max-width: 920px;
+    margin-bottom: 28px;
+}
+
+.article-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.article-hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+}
+
+.article-hero-meta-item i { color: #00b8b8; }
+
+/* ============================================================
+   ARTICLE LAYOUT
+============================================================ */
+.article-layout {
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 80px 100px;
+}
+
+.article-main { min-width: 0; }
+
+.article-lead {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #003d5c;
+    font-weight: 500;
+    border-left: 4px solid #00849e;
+    padding-left: 24px;
+    margin-bottom: 44px;
+    text-align: justify;
+}
+
+.article-body p {
+    font-size: 17px;
+    line-height: 1.85;
+    color: #374151;
+    margin-bottom: 24px;
+    text-align: justify;
+}
+
+.article-body h2 {
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 700;
+    color: #003d5c;
+    margin: 48px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5f4f7;
+}
+
+.article-body h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #005a7a;
+    margin: 32px 0 14px;
+}
+
+.article-image-block {
+    margin: 40px 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.article-image-block img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.article-image-block:hover img { transform: scale(1.02); }
+
+/* ============================================================
+   RELATED ARTICLES SECTION
+============================================================ */
+.related-section {
+    padding: 80px 0 100px;
+    background: #f5f7fa;
+}
+
+.related-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
+.related-header {
+    margin-bottom: 44px;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #00849e;
+    margin-bottom: 12px;
+}
+
+.section-label::before {
+    content: '';
+    width: 28px;
+    height: 3px;
+    background: #00849e;
+    border-radius: 2px;
+}
+
+.related-title {
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700;
+    color: #001f2e;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.article-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,132,158,0.15);
+}
+
+.article-card-image-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.article-card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.article-card:hover .article-card-image-wrap img { transform: scale(1.07); }
+
+.article-category-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+    color: #ffffff;
+}
+
+.badge-audit { background: #003d5c; }
+.badge-tax { background: #00849e; }
+.badge-advisory { background: #0d9488; }
+.badge-company { background: #005a7a; }
+.badge-default { background: #374151; }
+
+.article-card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card-date {
+    font-size: 13px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.article-card-date i { color: #00849e; font-size: 11px; }
+
+.article-card-title {
+    font-size: 18px !important;
+    font-weight: 700;
+    color: #001f2e;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    transition: color 0.25s;
+}
+
+.article-card:hover .article-card-title { color: #00849e; }
+
+.article-card-excerpt {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.75;
+    flex: 1;
+    text-align: justify;
+}
+
+.article-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #00849e;
+    margin-top: 18px;
+    transition: gap 0.25s;
+}
+
+.article-card:hover .article-card-link { gap: 12px; }
+
+@media (max-width: 1100px) {
+    .article-layout { padding: 0 40px; }
+}
+
+@media (max-width: 900px) {
+    .article-hero-content,
+    .article-layout,
+    .related-container { padding-left: 40px; padding-right: 40px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .article-hero { min-height: 60vh; }
+    .article-hero-content,
+    .article-layout,
+    .related-container { padding-left: 20px; padding-right: 20px; }
+    .article-hero-content { padding-bottom: 48px; }
+    .article-layout { padding-top: 48px; padding-bottom: 60px; }
+    .article-hero-title { font-size: 28px; }
+    .related-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+    .article-image-block { border-radius: 10px; }
+}

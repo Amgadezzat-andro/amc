@@ -210,6 +210,14 @@ class NewsResource extends Resource
                                     ->native(false)
                                     ->searchable(),
 
+                                    // reading_time
+                                Forms\Components\TextInput::make('reading_time')
+                                    ->label(__("Reading Time (Minutes)"))
+                                    ->integer()
+                                    ->default(5)
+                                    ->notRegex('/<[^b][^r][^>]*>/'),
+
+
                                 FilamentUtility::seoSection($tab, '/news/'),
                                 // FilamentUtility::headerImageSection($tab, '/news/')
 
