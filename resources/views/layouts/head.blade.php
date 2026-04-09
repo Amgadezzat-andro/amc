@@ -1,7 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.M.C</title>
+    <title>{{ $seoTitle ? 'AMC - ' . $seoTitle : 'A.M.C' }}</title>
     <link rel="icon" href="{{ $favIcon?->largeUrl }}">
 
 

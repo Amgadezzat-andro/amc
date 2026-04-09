@@ -79,14 +79,8 @@ class AppServiceProvider extends ServiceProvider
         $favicon = Cache::rememberForever("favicon" . (new Media())->getTable(), function () use ($lng) {
             return Media::find(setting("{$lng}.site.icon"));
         });
-        $internUrl = Cache::rememberForever("intern_url", function () use ($lng) {
-            return setting("site.internships_url", "#");
-        });
         $locationTitle = Cache::rememberForever("location", function () use ($lng) {
             return setting("{$lng}.site.location");
-        });
-        $newsInnerBrief = Cache::rememberForever("news_inner_brief", function () use ($lng) {
-            return setting("{$lng}.site.news_inner_brief");
         });
         $locationTitle2 = Cache::rememberForever("location_title_2", function () use ($lng) {
             return setting("{$lng}.site.location_title");
@@ -104,12 +98,10 @@ class AppServiceProvider extends ServiceProvider
 
         view()->share("logo", $logo);
         view()->share("favIcon", $favicon);
-        view()->share("internUrl", $internUrl);
         view()->share("locationUrl", $locationUrl);
         view()->share("locationTitle", $locationTitle);
         view()->share("locationTitle2", $locationTitle2);
         view()->share("locationCoordinate", $locationCoordinate);
-        view()->share("newsInnerBrief", $newsInnerBrief);
         view()->share("footerLogo", $footerLogo);
 
 

@@ -1,4 +1,4 @@
-<x-layouts.layout seoTitle="{{ __('About Us') }}">
+<x-layouts.layout  seoTitle="{{ __('About Us') }}">
     @push('css')
     @endpush
 
