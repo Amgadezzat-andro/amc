@@ -42,13 +42,10 @@ class News extends BaseTranslationModel
             'reject_note',
             'weight_order',
             'views',
-            'video_id',
-            'gallery_image_ids',
         ];
 
     protected $casts = [
         'published_at' => 'date',
-        'gallery_image_ids' => 'array',
     ];
 
 
@@ -80,20 +77,7 @@ class News extends BaseTranslationModel
         )->where('language', $locale);
     }
 
-    public function video()
-    {
-        return $this->belongsTo(Media::class, 'video_id', 'id');
-    }
 
-    public function galleryMedia()
-    {
-        $ids = $this->gallery_image_ids ?? [];
-        if (empty($ids)) {
-            return collect();
-        }
-        $ordered = implode(',', array_map('intval', $ids));
-        return Media::whereIn('id', $ids)->orderByRaw('FIELD(id, ' . $ordered . ')')->get();
-    }
 
     // public function servicesCenters()
     // {

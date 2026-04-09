@@ -140,19 +140,6 @@ class NewsResource extends Resource
                                     ->toolbarSticky(true)
                                     ->profile('with-bootstrap'),
 
-                                CustomCuratorPicker::make('gallery_image_ids')
-                                    ->label(__("Photo Gallery"))
-                                    ->pathGenerator(DatePathGenerator::class)
-                                    ->size(40)
-                                    ->multiple(true)
-                                    ->orderColumn('order')
-                                    ->listDisplay(true),
-
-                                CustomCuratorPicker::make('video_id')
-                                    ->label(__("Video"))
-                                    ->pathGenerator(DatePathGenerator::class)
-                                    ->multiple(false),
-
                                 // FilamentUtility::selectWithCreate(
                                 //     'servicesCenters',
                                 //     __("Specialized Centers"),

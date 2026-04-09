@@ -43,14 +43,6 @@
                             <p class="text-xl text-gray-700 leading-relaxed mb-6">{{ Str::limit(strip_tags($targetItem->brief), 300) }}</p>
                             @endif
                             {!! Content::inlineStyleToClasses($targetItem->content) !!}
-                            @php $gallery = $targetItem->galleryMedia(); @endphp
-                            @if($gallery->isNotEmpty())
-                            <div class="grid md:grid-cols-2 gap-6 my-8">
-                                @foreach($gallery as $media)
-                                <img src="{{ $media->url ?? $media->getUrl() }}" alt="{{ $targetItem->title }}" class="rounded-xl shadow-lg w-full object-cover lightbox-img cursor-pointer hover:opacity-90 transition" onerror="this.style.display='none';">
-                                @endforeach
-                            </div>
-                            @endif
                         </div>
                         <div class="border-t border-gray-200 pt-6 mt-8">
                             <div class="flex items-center justify-between flex-wrap gap-4">
@@ -76,25 +68,6 @@
                                 <li class="flex items-start gap-2"><i class="fas fa-calendar text-teal-500 mt-1"></i><span>{{ __('site.Published') ?? 'Published' }}: <strong>{{ $targetItem->published_at?->format('M d, Y') }}</strong></span></li>
                             </ul>
                         </div>
-                        @if($targetItem->video_id && $targetItem->video)
-                        @php $videoUrl = $targetItem->video->url ?? $targetItem->video->getUrl(); @endphp
-                        <div class="bg-teal-50 rounded-2xl p-6 border border-teal-100 shadow-sm">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-play-circle text-teal-500"></i> {{ __('site.Video') ?? 'Video' }}</h3>
-                            <div class="rounded-xl overflow-hidden shadow-lg aspect-video bg-black">
-                                <video class="w-full h-full object-contain" controls src="{{ $videoUrl }}"></video>
-                            </div>
-                        </div>
-                        @endif
-                        @if($gallery->isNotEmpty())
-                        <div class="bg-teal-50 rounded-2xl p-6 border border-teal-100 shadow-sm">
-                            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><i class="fas fa-images text-teal-500"></i> {{ __('site.Photo_Gallery') ?? 'Photo Gallery' }}</h3>
-                            <div class="grid grid-cols-2 gap-2">
-                                @foreach($gallery as $media)
-                                <img src="{{ $media->url ?? $media->getUrl() }}" alt="{{ $targetItem->title }}" class="rounded-lg w-full h-20 object-cover lightbox-img cursor-pointer hover:opacity-90 transition" onerror="this.style.display='none';">
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
                         {{-- <a href="{{ route('contact-us', ['locale' => $lng]) }}" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-xl transition shadow-md">{{ __('site.Get_a_Free_Quote') ?? 'Get a Free Quote' }}</a> --}}
                     </div>
                 </div>
