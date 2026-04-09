@@ -42,6 +42,7 @@ class News extends BaseTranslationModel
             'reject_note',
             'weight_order',
             'views',
+            'reading_time',
         ];
 
     protected $casts = [
