@@ -1,14 +1,20 @@
 @if (isset($menuParents) && $menuParents)
     @foreach ($menuParents as $item)
         @php
-            $currentPath = '/' . request()->path();
-            $isActive = Str::endsWith($currentPath, $item->link);
+            $currentPath = '/' . ltrim(request()->path(), '/');
+            $itemLink = (string) $item->link;
+            $itemPath = parse_url($itemLink, PHP_URL_PATH) ?: $itemLink;
+            $itemPath = '/' . ltrim($itemPath, '/');
+            $isHomeLink = $itemPath === '/';
+            $isActive = $isHomeLink
+                ? request()->routeIs('home')
+                : ($currentPath === $itemPath || Str::endsWith($currentPath, $itemPath));
             $hasChildren = isset($item->childs) && $item->childs->count();
         @endphp
 
         @if ($hasChildren)
-            <li class="nav-item dropdown">
-                <a {!! Utility::printAllUrl($item->link) !!} class="{{ $isActive ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ $isActive ? 'active' : '' }}">
+                <a {!! Utility::printAllUrl($item->link) !!}>
                     {{ $item->title }} <i class="fas fa-chevron-down"></i>
                 </a>
                 <div class="dropdown-menu">
@@ -24,8 +30,8 @@
                 </div>
             </li>
         @else
-            <li class="nav-item">
-                <a {!! Utility::printAllUrl($item->link) !!} class="{{ $isActive ? 'active' : '' }}">
+            <li class="nav-item {{ $isActive ? 'active' : '' }}">
+                <a {!! Utility::printAllUrl($item->link) !!}>
                     {{ $item->title }}
                 </a>
             </li>
