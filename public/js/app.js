@@ -568,28 +568,7 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     }
 });
 
-// Preload Images (with error handling)
-function preloadImages() {
-    const imageUrls = [
-        'assets/hero/team-meeting.jpg',
-        'assets/hero/consultation.jpg',
-        'assets/hero/team-collaboration.jpg',
-        'assets/hero/diversity.jpg',
-        'assets/hero/career-growth.jpg'
-    ];
 
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.onerror = function() {
-            // Silently handle missing images - don't log errors
-            this.onerror = null;
-        };
-        img.src = url;
-    });
-}
-
-// Call preload on page load
-window.addEventListener('load', preloadImages);
 
 // Add active state to current page in navigation
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
