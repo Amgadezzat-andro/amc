@@ -21,13 +21,13 @@ window.addEventListener('load', () => {
 function handleBannerScroll() {
     const bannerContent = document.querySelector('.banner-content');
     const topBanner = document.querySelector('.top-banner');
-
+    
     if (!bannerContent || !topBanner) return;
-
+    
     function updateBannerVisibility() {
         const bannerHeight = topBanner.offsetHeight;
         const scrolled = window.pageYOffset;
-
+        
         // Fade out when scrolling past the banner
         if (scrolled > bannerHeight - 100) {
             bannerContent.style.opacity = '0';
@@ -38,7 +38,7 @@ function handleBannerScroll() {
             bannerContent.style.pointerEvents = opacity > 0 ? '' : 'none';
         }
     }
-
+    
     window.addEventListener('scroll', updateBannerVisibility);
     updateBannerVisibility();
 }
@@ -50,17 +50,17 @@ window.addEventListener('load', handleBannerScroll);
 function initServicesSlider() {
     const serviceSlides = document.querySelectorAll('.service-slide');
     const serviceNavBtns = document.querySelectorAll('.service-nav-btn');
-
+    
     if (serviceNavBtns.length === 0) return;
-
+    
     serviceNavBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const serviceNum = btn.getAttribute('data-service');
-
+            
             // Remove active class from all
             serviceSlides.forEach(slide => slide.classList.remove('active'));
             serviceNavBtns.forEach(navBtn => navBtn.classList.remove('active'));
-
+            
             // Add active class to selected
             const targetSlide = document.querySelector(`.service-slide[data-service="${serviceNum}"]`);
             if (targetSlide) {
@@ -196,7 +196,7 @@ if (heroSection) {
 function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
-
+    
     if (Math.abs(diff) > swipeThreshold) {
         stopAutoplay();
         if (diff > 0) {
@@ -226,12 +226,12 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-
+    
     if (currentScroll <= 0) {
         navbar.classList.remove('scroll-up');
         return;
     }
-
+    
     if (currentScroll > lastScroll && !navbar.classList.contains('scroll-down')) {
         // Scrolling down
         navbar.classList.remove('scroll-up');
@@ -241,7 +241,7 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scroll-down');
         navbar.classList.add('scroll-up');
     }
-
+    
     lastScroll = currentScroll;
 });
 
@@ -328,7 +328,7 @@ function initScrollAnimations() {
     if (aboutSection) {
         animationObserver.observe(aboutSection);
     }
-
+    
     document.querySelectorAll('.about-card').forEach((card, index) => {
         card.classList.add('slide-up-animation');
         card.style.transitionDelay = `${index * 0.15}s`;
@@ -340,7 +340,7 @@ function initScrollAnimations() {
     if (servicesSection) {
         animationObserver.observe(servicesSection);
     }
-
+    
     // Services slider navigation
     const servicesSliderNav = document.querySelector('.services-slider-nav');
     if (servicesSliderNav) {
@@ -353,7 +353,7 @@ function initScrollAnimations() {
     if (cultureSection) {
         animationObserver.observe(cultureSection);
     }
-
+    
     // Culture progress container
     const cultureProgress = document.querySelector('.culture-progress-container');
     if (cultureProgress) {
@@ -366,7 +366,7 @@ function initScrollAnimations() {
     if (careersSection) {
         animationObserver.observe(careersSection);
     }
-
+    
     // Career content blocks
     document.querySelectorAll('.career-content-block').forEach((block, index) => {
         block.classList.add('slide-up-animation');
@@ -426,13 +426,13 @@ function initScrollAnimations() {
         item.style.transitionDelay = `${index * 0.1}s`;
         animationObserver.observe(item);
     });
-
+    
     // Observe all images for lazy loading effect
     document.querySelectorAll('.about-image img, .service-slide-image img, .culture-slide-image img, .career-image-side img').forEach(img => {
         img.classList.add('scale-in-animation');
         animationObserver.observe(img);
     });
-
+    
     // Hero section - ensure it's visible immediately
     const heroSection = document.querySelector('.hero-section');
     if (heroSection) {
@@ -532,10 +532,10 @@ navItems.forEach(item => {
         if (window.innerWidth <= 768) {
             e.preventDefault();
             const parent = item.parentElement;
-
+            
             // Toggle dropdown-open class
             parent.classList.toggle('dropdown-open');
-
+            
             // Close other dropdowns
             document.querySelectorAll('.nav-item.dropdown').forEach(navItem => {
                 if (navItem !== parent && navItem.classList.contains('dropdown-open')) {
@@ -568,7 +568,28 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     }
 });
 
+// Preload Images (with error handling)
+function preloadImages() {
+    const imageUrls = [
+        'assets/hero/team-meeting.jpg',
+        'assets/hero/consultation.jpg',
+        'assets/hero/team-collaboration.jpg',
+        'assets/hero/diversity.jpg',
+        'assets/hero/career-growth.jpg'
+    ];
+    
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.onerror = function() {
+            // Silently handle missing images - don't log errors
+            this.onerror = null;
+        };
+        img.src = url;
+    });
+}
 
+// Call preload on page load
+window.addEventListener('load', preloadImages);
 
 // Add active state to current page in navigation
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -583,7 +604,7 @@ function animateCounter(element, target, duration = 2000) {
     const start = 0;
     const increment = target / (duration / 16); // 60 FPS
     let current = start;
-
+    
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
@@ -762,35 +783,32 @@ function initCultureSlider() {
 // Initialize culture slider on page load
 window.addEventListener('load', initCultureSlider);
 
-// Handle Industries navigation from all pages.
+// Handle Industries navigation from all pages (except services.html which has its own handler)
 function handleIndustriesNavigation() {
-    // Skip only when already on the services route.
-    if (window.location.pathname.includes('/services')) {
+    // Only handle if we're NOT on services.html (services.html has its own handler)
+    if (window.location.pathname.includes('services.html')) {
         return;
     }
-
+    
     // Find all Industries links in navigation and footer
     const industriesLinks = document.querySelectorAll('a[href*="industries"], a[href*="#industries"], a[href*="#overview2"]');
-
+    
     industriesLinks.forEach(link => {
         // Skip if already handled
         if (link.hasAttribute('data-industries-handled-global')) {
             return;
         }
-
+        
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-
-            // Navigate to the Laravel services route section.
+            
+            // Navigate to services.html#industries
             if (href.includes('services.html') || href.includes('industries') || href.includes('overview2')) {
                 e.preventDefault();
-                const pathSegments = window.location.pathname.split('/').filter(Boolean);
-                const locale = pathSegments[0] || '';
-                const localePrefix = /^[a-z]{2}$/i.test(locale) ? `/${locale}` : '';
-                window.location.href = `${localePrefix}/services#overview2`;
+                window.location.href = 'services.html#industries';
             }
         });
-
+        
         link.setAttribute('data-industries-handled-global', 'true');
     });
 }

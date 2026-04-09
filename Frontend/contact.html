@@ -7,10 +7,7 @@
     <link rel="icon" href="assets/favicon-amc (1).ico" type="image/png" sizes="32x32">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <style>
         /* Contact Page Specific Styles */
         .contact-hero-banner {
@@ -93,7 +90,7 @@
 
         .google-map-container {
             width: 100%;
-            /* height: 500px; */
+            height: 500px;
             border: none;
         }
 
@@ -723,7 +720,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        
+                        <a href="news.html">News</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="culture.html">Culture <i class="fas fa-chevron-down"></i></a>
@@ -780,7 +777,7 @@
             <h2 class="contact-detail-title" style="color: #003d5c;">phone</h2>
             <p class="contact-detail-text">
                 Tel/Fax<br>
-                <span style="color: #00849e;">+(961) 5 455 117</span><br><br>
+                <span style="color: #00849e;">+(961) 70 955 023</span><br><br>
                 Mobile<br>
                 <!-- <span style="color: #00849e;">+(961) 3 220 147</span> -->
                 <span style="color: #00849e;">(+961) 70 955 023</span>
@@ -876,7 +873,16 @@
             <p class="google-map-subtitle">Visit our offices at St. Elie Center, St. Elie Street, Hazmieh, Lebanon</p>
         </div>
         <div class="google-map-container">
-            <div id="contactMap" style="width: 100%; height: 500px; border-radius: 8px;"></div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.25!2d35.5375046!3d33.8559898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f1796a36bf41f%3A0x7bac62804d16df1f!2sAccounting+%26+Management+Consultants!5e0!3m2!1sen!2slb!4v1712586000000!5m2!1sen!2slb"
+                width="100%"
+                height="600"
+                style="border:0; display:block;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="A.M.C. Office Location">
+            </iframe>
         </div>
     </section>
 
@@ -962,7 +968,7 @@
             <div class="footer-top">
                 <div class="footer-grid">
                     <div class="footer-col">
-                        <h4>About us</h4>
+                        <h4><a href="about.html">About us</a></h4>
                         <ul>
                             <li><a href="about.html#history">Our History & Evolution</a></li>
                             <li><a href="about.html#purpose">Our Purpose & Future</a></li>
@@ -971,7 +977,7 @@
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Services</h4>
+                        <h4><a href="services.html">Services</a></h4>
                         <ul>
                             <li><a href="services.html#overview">Overview</a></li>
                             <li><a href="services.html#what-we-do">What We Do</a></li>
@@ -979,7 +985,7 @@
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Culture</h4>
+                        <h4><a href="culture.html">Culture</a></h4>
                         <ul>
                             <li><a href="culture.html#how-we-do">How We Do</a></li>
                             <li><a href="culture.html#rise-values">RISE Values</a></li>
@@ -987,7 +993,7 @@
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Careers</h4>
+                        <h4><a href="careers.html">Careers</a></h4>
                         <ul>
                             <li><a href="careers.html#jobs">Jobs</a></li>
                             <li><a href="internships.html">Internships</a></li>
@@ -1144,76 +1150,6 @@
         }
     </script>
 
-    <!-- Leaflet Map Initialization -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof L === 'undefined') {
-                console.error('Leaflet library not loaded');
-                return;
-            }
 
-            const mapContainer = document.getElementById('contactMap');
-            if (!mapContainer) {
-                return;
-            }
-
-            // Office location: St. Elie Center, St. Elie Street, Hazmieh, Lebanon
-            const officeLocation = {
-                lat: 33.8559898,
-                lng: 35.5375046,
-                name: 'Abi Zeid, Karam & Associates',
-                address: '3rd Floor, St. Elie Center<br>St. Elie Street, Hazmieh, Lebanon'
-            };
-
-            // Create map centered on office location
-            const map = L.map('contactMap', {
-                center: [officeLocation.lat, officeLocation.lng],
-                zoom: 16,
-                zoomControl: true,
-                scrollWheelZoom: true,
-                dragging: true,
-                touchZoom: true
-            });
-
-            // Add OpenStreetMap tiles
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-                minZoom: 10
-            }).addTo(map);
-
-            // Create custom red marker icon (same style as services.html)
-            const redIcon = L.divIcon({
-                className: 'custom-pin-marker',
-                html: `
-                    <svg width="32" height="45" viewBox="0 0 32 45" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 0C7.163 0 0 7.163 0 16c0 13 16 29 16 29s16-16 16-29c0-8.837-7.163-16-16-16z" fill="#EA4335"/>
-                        <circle cx="16" cy="15" r="6" fill="white"/>
-                    </svg>
-                `,
-                iconSize: [32, 45],
-                iconAnchor: [16, 45],
-                popupAnchor: [0, -45]
-            });
-
-            // Add marker with popup
-            const marker = L.marker([officeLocation.lat, officeLocation.lng], {
-                icon: redIcon,
-                title: officeLocation.name
-            }).addTo(map);
-
-            // Create popup with office information
-            // const popupContent = `
-            //     <div style="padding: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; text-align: left; max-width: 250px;">
-            //         <strong style="color: #0d9488; font-size: 16px; display: block; margin-bottom: 8px;">${officeLocation.name}</strong>
-            //         <div style="color: #374151; font-size: 14px; line-height: 1.6;">
-            //             ${officeLocation.address}
-            //         </div>
-            //     </div>
-            // `;
-
-            // marker.bindPopup(popupContent).openPopup();
-        });
-    </script>
 </body>
 </html>

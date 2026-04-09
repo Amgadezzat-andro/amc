@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lebanon Tax Reform 2025 - A.M.C. News</title>
+    <link rel="icon" href="assets/favicon-amc (1).ico" type="image/png" sizes="32x32">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================================
+           ARTICLE HERO
+        ============================================================ */
+        .article-hero {
+            position: relative;
+            width: 100%;
+            min-height: 78vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            background: #001f2e;
+        }
+
+        .article-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/new/Picture1.png');
+            background-size: cover;
+            background-position: center top;
+            transform: scale(1.05);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.05); }
+            to   { transform: scale(1.12); }
+        }
+
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,31,46,0.97) 0%,
+                rgba(0,61,92,0.75) 45%,
+                rgba(0,132,158,0.30) 100%
+            );
+        }
+
+        .article-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px 80px;
+        }
+
+        /* Breadcrumb */
+        .article-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .article-breadcrumb a {
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .article-breadcrumb a:hover { color: #00b8b8; }
+        .article-breadcrumb i      { font-size: 10px; }
+        .article-breadcrumb span   { color: rgba(255,255,255,0.9); }
+
+        .article-hero-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #00849e, #00b8b8);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 22px;
+        }
+
+        .article-hero-title {
+            font-size: clamp(32px, 4.5vw, 58px);
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.2;
+            max-width: 920px;
+            margin-bottom: 28px;
+        }
+
+        .article-hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .article-hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .article-hero-meta-item i { color: #00b8b8; }
+
+        /* ============================================================
+           ARTICLE LAYOUT
+        ============================================================ */
+        .article-layout {
+            /* display: grid;
+            grid-template-columns: 1fr 360px; */
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 80px 100px;
+        }
+
+        /* ---- Main Content ---- */
+        .article-main { min-width: 0; }
+
+        .article-lead {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #003d5c;
+            font-weight: 500;
+            border-left: 4px solid #00849e;
+            padding-left: 24px;
+            margin-bottom: 44px;
+            text-align: justify;
+        }
+
+        .article-body p {
+            font-size: 17px;
+            line-height: 1.85;
+            color: #374151;
+            margin-bottom: 24px;
+            text-align: justify;
+        }
+
+        .article-body h2 {
+            font-size: clamp(22px, 2.5vw, 30px);
+            font-weight: 700;
+            color: #003d5c;
+            margin: 48px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5f4f7;
+        }
+
+        .article-body h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #005a7a;
+            margin: 32px 0 14px;
+        }
+
+        /* Inline image */
+        .article-image-block {
+            margin: 40px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .article-image-block img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .article-image-block:hover img { transform: scale(1.02); }
+
+        .article-image-caption {
+            background: #f5f7fa;
+            padding: 14px 20px;
+            font-size: 14px;
+            color: #6b7280;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-image-caption i { color: #00849e; }
+
+        /* Pull Quote */
+        .article-pullquote {
+            background: linear-gradient(135deg, #003d5c 0%, #005a7a 100%);
+            color: #ffffff;
+            padding: 40px 44px;
+            border-radius: 16px;
+            margin: 44px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-pullquote::before {
+            content: '\201C';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 140px;
+            color: rgba(255,255,255,0.08);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .article-pullquote p {
+            font-size: 20px !important;
+            font-style: italic;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.95) !important;
+            position: relative;
+            z-index: 1;
+            margin: 0 0 16px !important;
+        }
+
+        .article-pullquote cite {
+            font-size: 14px;
+            color: #00b8b8;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        /* Key Points List */
+        .article-key-points {
+            background: #f0f9fb;
+            border: 1px solid #b2e0ec;
+            border-radius: 16px;
+            padding: 32px 36px;
+            margin: 40px 0;
+        }
+
+        .article-key-points h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #003d5c;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .article-key-points h4 i { color: #00849e; }
+
+        .article-key-points ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .article-key-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        .article-key-points li i {
+            color: #00849e;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Tags */
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 52px;
+            padding-top: 28px;
+            border-top: 1px solid #e5e7eb;
+            align-items: center;
+        }
+
+        .article-tags-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-right: 4px;
+        }
+
+        .article-tag {
+            padding: 6px 16px;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
+            font-size: 13px;
+            color: #374151;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .article-tag:hover {
+            background: #00849e;
+            border-color: #00849e;
+            color: #ffffff;
+        }
+
+        /* Share Bar */
+        .article-share {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 32px;
+            padding: 24px 28px;
+            background: #f5f7fa;
+            border-radius: 12px;
+            flex-wrap: wrap;
+        }
+
+        .article-share-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .share-btn-linkedin { background: #0077b5; color: #fff; }
+        .share-btn-linkedin:hover { background: #005983; transform: translateY(-2px); }
+        .share-btn-facebook { background: #1877f2; color: #fff; }
+        .share-btn-facebook:hover { background: #1361c4; transform: translateY(-2px); }
+        .share-btn-copy     { background: #e5e7eb; color: #374151; }
+        .share-btn-copy:hover { background: #d1d5db; transform: translateY(-2px); }
+
+        /* ---- Navigation between articles ---- */
+        .article-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid #e5e7eb;
+        }
+
+        .article-nav-card {
+            background: #f5f7fa;
+            border-radius: 12px;
+            padding: 24px 28px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .article-nav-card:hover {
+            background: #e5f4f7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,132,158,0.12);
+        }
+
+        .article-nav-direction {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #00849e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .article-nav-card:last-child .article-nav-direction {
+            justify-content: flex-end;
+        }
+
+        .article-nav-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #001f2e;
+            line-height: 1.4;
+        }
+
+        .article-nav-card:last-child .article-nav-title {
+            text-align: right;
+        }
+
+        /* ---- Sidebar ---- */
+        .article-sidebar { position: sticky; top: 100px; align-self: start; }
+
+        .sidebar-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .sidebar-card-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #003d5c;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5f4f7;
+        }
+
+        /* Author Card */
+        .sidebar-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+        }
+
+        .sidebar-author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #00849e;
+        }
+
+        .sidebar-author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-author-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: #001f2e;
+        }
+
+        .sidebar-author-role {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        /* Table of Contents */
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .toc-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            font-size: 14px;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .toc-list a i { color: #00849e; font-size: 10px; }
+
+        .toc-list a:hover {
+            background: #f0f9fb;
+            color: #00849e;
+            padding-left: 16px;
+        }
+
+        /* Related Articles Sidebar */
+        .sidebar-related-item {
+            display: flex;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+        }
+
+        .sidebar-related-item:last-child { border-bottom: none; }
+
+        .sidebar-related-item:hover .sidebar-related-title { color: #00849e; }
+
+        .sidebar-related-img {
+            width: 72px;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .sidebar-related-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-related-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #001f2e;
+            line-height: 1.4;
+            transition: color 0.2s;
+        }
+
+        .sidebar-related-date {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+
+        /* CTA Sidebar Card */
+        .sidebar-cta {
+            background: linear-gradient(135deg, #003d5c 0%, #00849e 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .sidebar-cta .sidebar-card-title { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.15); }
+
+        .sidebar-cta-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-cta-btn {
+            display: block;
+            padding: 12px 20px;
+            background: #ffffff;
+            color: #003d5c;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-cta-btn:hover {
+            background: #00b8b8;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           RELATED ARTICLES SECTION
+        ============================================================ */
+        .related-section {
+            padding: 80px 0 100px;
+            background: #f5f7fa;
+        }
+
+        .related-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .related-header {
+            margin-bottom: 44px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #00849e;
+            margin-bottom: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 28px;
+            height: 3px;
+            background: #00849e;
+            border-radius: 2px;
+        }
+
+        .related-title {
+            font-size: clamp(26px, 3vw, 36px);
+            font-weight: 700;
+            color: #001f2e;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        /* Card – same styling as news.html article cards */
+        .article-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,132,158,0.15);
+        }
+
+        .article-card-image-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .article-card-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .article-card:hover .article-card-image-wrap img { transform: scale(1.07); }
+
+        .article-category-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 50px;
+            color: #ffffff;
+        }
+
+        .badge-audit       { background: #003d5c; }
+        .badge-tax         { background: #00849e; }
+        .badge-advisory    { background: #0d9488; }
+        .badge-company     { background: #005a7a; }
+
+        .article-card-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card-date {
+            font-size: 13px;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .article-card-date i { color: #00849e; font-size: 11px; }
+
+        .article-card-title {
+            font-size: 18px !important;
+            font-weight: 700;
+            color: #001f2e;
+            line-height: 1.35;
+            margin-bottom: 10px;
+            transition: color 0.25s;
+        }
+
+        .article-card:hover .article-card-title { color: #00849e; }
+
+        .article-card-excerpt {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.75;
+            flex: 1;
+            text-align: justify;
+        }
+
+        .article-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #00849e;
+            margin-top: 18px;
+            transition: gap 0.25s;
+        }
+
+        .article-card:hover .article-card-link { gap: 12px; }
+
+        /* ============================================================
+           SHARED OVERRIDES
+        ============================================================ */
+        .footer-logo img {
+            height: 80px; width: 80px;
+            object-fit: contain;
+            background: #ffffff;
+            padding: 0 !important;
+            border-radius: 50%;
+            display: block; margin: 0 !important;
+        }
+
+        .contact-info span, .contact-info-link {
+            display: flex; align-items: center; gap: 8px;
+            color: white !important;
+            text-decoration: none !important;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Consultation Modal */
+        .consultation-modal {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000; overflow-y: auto; padding: 40px 20px;
+        }
+        .consultation-modal.active { display: flex; align-items: center; justify-content: center; }
+        .consultation-modal-content {
+            background: #ffffff; border-radius: 16px;
+            max-width: 700px; width: 100%; max-height: 90vh;
+            overflow-y: auto; position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .consultation-modal-header {
+            padding: 30px 40px; border-bottom: 1px solid #e5e7eb;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; background: #ffffff;
+            border-radius: 16px 16px 0 0; z-index: 1;
+        }
+        .consultation-modal-title { font-size: 28px; font-weight: 700; color: #001f2e; margin: 0; }
+        .consultation-modal-close {
+            width: 40px; height: 40px; border: none;
+            background: #f3f4f6; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #6b7280; transition: all 0.3s;
+        }
+        .consultation-modal-close:hover { background: #e5e7eb; color: #374151; }
+        .consultation-modal-body { padding: 40px; }
+        .consultation-form-group { margin-bottom: 24px; }
+        .consultation-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .consultation-form-label { display: block; font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+        .consultation-form-label .required { color: #ef4444; margin-left: 4px; }
+        .consultation-form-input,
+        .consultation-form-select,
+        .consultation-form-textarea {
+            width: 100%; padding: 14px 16px; border: 1px solid #d1d5db;
+            border-radius: 8px; font-size: 15px; color: #374151;
+            transition: all 0.3s; font-family: inherit; box-sizing: border-box;
+        }
+        .consultation-form-input:focus,
+        .consultation-form-select:focus,
+        .consultation-form-textarea:focus {
+            outline: none; border-color: #00849e;
+            box-shadow: 0 0 0 3px rgba(0,132,158,0.1);
+        }
+        .consultation-form-textarea { min-height: 120px; resize: vertical; }
+        .consultation-form-submit-btn {
+            width: 100%; padding: 16px;
+            background: linear-gradient(135deg, #003d5c 0%, #00849e 100%);
+            color: #ffffff; border: none; border-radius: 8px;
+            font-size: 16px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s; margin-top: 10px;
+        }
+        .consultation-form-submit-btn:hover {
+            background: linear-gradient(135deg, #002d44 0%, #006d84 100%);
+            transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,132,158,0.3);
+        }
+        @media (max-width: 768px) {
+            .consultation-modal-content { margin: 20px; }
+            .consultation-modal-header,
+            .consultation-modal-body  { padding: 24px; }
+            .consultation-form-row    { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1100px) {
+            .article-layout  { grid-template-columns: 1fr; gap: 40px; }
+            .article-sidebar { position: static; }
+        }
+
+        @media (max-width: 900px) {
+            .article-hero-content,
+            .article-layout,
+            .related-container { padding-left: 40px; padding-right: 40px; }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .article-hero { min-height: 60vh; }
+            .article-hero-content,
+            .article-layout,
+            .related-container { padding-left: 20px; padding-right: 20px; }
+            .article-hero-content { padding-bottom: 48px; }
+            .article-layout { padding-top: 48px; padding-bottom: 60px; }
+            .article-hero-title  { font-size: 28px; }
+            .article-nav { grid-template-columns: 1fr; }
+            .article-nav-card:last-child .article-nav-direction,
+            .article-nav-card:last-child .article-nav-title { text-align: left; }
+            .related-grid { grid-template-columns: 1fr; }
+            .article-pullquote { padding: 28px 24px; }
+            .article-pullquote p { font-size: 17px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .article-image-block { border-radius: 10px; }
+            .article-share { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Header Bar -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-header-content">
+                <div class="contact-info">
+                    <a href="tel:+9615455117" class="contact-info-link"><i class="fas fa-phone"></i> +9615455117</a>
+                    <a href="mailto:amc@amclebanon.com" class="contact-info-link"><i class="fas fa-envelope"></i> amc@amclebanon.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
+                    </a>
+                </div>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+
+                <ul class="nav-menu">
+                    <li class="mobile-sidebar-logo">
+                        <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="about.html">About Us <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="about.html#history">History &amp; Evolution</a>
+                            <a href="about.html#purpose">Purpose &amp; Future</a>
+                            <a href="about.html#people">Our People</a>
+                            <a href="about.html#ventures">Joint Ventures &amp; Alliances</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="services.html">Services <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="services.html#overview">Overview</a>
+                            <a href="services.html#what-we-do">What We Do</a>
+                            <a href="services.html#industries">Industries</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="news.html">News</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="culture.html">Culture <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="culture.html#how-we-do">How We Do</a>
+                            <a href="culture.html#rise-values">RISE Values</a>
+                            <a href="culture.html#equity">Equity Driven Workspace</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="careers.html">Careers <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="careers.html#jobs">Jobs</a>
+                            <a href="internships.html">Internships</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item cta">
+                        <a href="#" class="btn-consultation" id="openConsultationModal">Book your Consultation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+         ARTICLE HERO
+    ============================================================ -->
+    <section class="article-hero">
+        <div class="article-hero-bg"></div>
+        <div class="article-hero-overlay"></div>
+
+        <div class="article-hero-content">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="news.html">News</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Lebanon Tax Reform 2025</span>
+            </nav>
+
+            <div class="article-hero-category">
+                <i class="fas fa-tag"></i> Tax Advisory
+            </div>
+
+            <h1 class="article-hero-title">
+                Lebanon Tax Reform 2025: What Businesses Need to Know
+            </h1>
+
+            <div class="article-hero-meta">
+                <div class="article-hero-meta-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>By AMC Tax Advisory Team</span>
+                </div>
+                <div class="article-hero-meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>March 15, 2026</span>
+                </div>
+                <div class="article-hero-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>6 min read</span>
+                </div>
+                <div class="article-hero-meta-item">
+                    <i class="fas fa-eye"></i>
+                    <span>1,240 views</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         ARTICLE LAYOUT (Main + Sidebar)
+    ============================================================ -->
+    <div class="article-layout">
+
+        <!-- ---- MAIN CONTENT ---- -->
+        <main class="article-main">
+
+            <p class="article-lead">
+                The Lebanese government has introduced significant amendments to corporate and income 
+                tax regulations for the 2025–2026 fiscal period. These changes affect filing deadlines, 
+                VAT calculations, and cross-border transactions — with compliance timelines already in effect.
+            </p>
+
+            <div class="article-body">
+
+                <h2>Overview of the Tax Amendments</h2>
+                <p>
+                    Lebanon's Ministry of Finance issued Circular No. 2025/12 in November 2025, 
+                    outlining a series of structural reforms to the tax code. The primary objective 
+                    is to broaden the fiscal base, improve tax compliance through digitisation, 
+                    and align Lebanese tax standards with regional best practices.
+                </p>
+                <p>
+                    These amendments represent the most substantial revision to Lebanon's tax framework 
+                    since the 2002 reforms, and businesses of all sizes — from startups to large corporations — 
+                    are directly impacted. Understanding the changes is essential for maintaining compliance 
+                    and avoiding penalties.
+                </p>
+
+                <div class="article-image-block">
+                    <img src="assets/new/Picture2.png" alt="Tax filing desk with documents and calculator">
+                </div>
+<!-- 
+                <h2>Corporate Income Tax Rate Changes</h2>
+                <p>
+                    The corporate income tax (CIT) rate has been increased from 17% to 21% for fiscal 
+                    year 2025. This rate applies uniformly to all registered companies in Lebanon, 
+                    regardless of size or sector. The Ministry of Finance has clarified that this 
+                    increase is a temporary fiscal measure, subject to review in 2027.
+                </p>
+                <p>
+                    However, companies in designated economic zones (including certain technology 
+                    and export-focused businesses) may apply for a preferential rate of 15%, subject 
+                    to approval from the Investment Development Authority of Lebanon (IDAL). A.M.C. 
+                    is currently advising several clients on eligibility for this preferential regime.
+                </p>
+                <p>
+                    The tax on distributed profits (dividends) remains at 10%, but dividend withholding 
+                    is now applied at source and must be remitted to the Ministry of Finance within 
+                    15 days of distribution (previously 30 days). Late remittance incurs a daily penalty of 0.05%.
+                </p>
+
+                <div class="article-image-block">
+                    <img src="assets/new/Picture4.png" alt="Digital VAT filing process">
+                </div> -->
+
+                <!-- <h2>VAT Filing Obligations: Moving to Monthly Cycles</h2>
+                <p>
+                    One of the most operationally impactful changes is the shift to monthly VAT 
+                    filing for companies whose annual taxable turnover exceeds LBP 500 million 
+                    (previously LBP 750 million). This threshold reduction brings a significant 
+                    number of additional businesses into the monthly reporting regime.
+                </p>
+                <p>
+                    Monthly VAT declarations must now be submitted via the Ministry of Finance's 
+                    electronic portal — paper declarations are no longer accepted. Companies must 
+                    ensure their electronic filing credentials are active and that their accounting 
+                    systems can generate compliant VAT reports on a monthly basis.
+                </p>
+
+                <h2>Transfer Pricing Documentation Requirements</h2>
+                <p>
+                    Cross-border transactions between related parties are now subject to formal 
+                    transfer pricing documentation requirements. Companies engaged in intercompany 
+                    transactions exceeding USD 500,000 annually must prepare and maintain 
+                    contemporaneous transfer pricing documentation in accordance with OECD guidelines.
+                </p>
+                <p>
+                    Failure to maintain adequate documentation can result in adjustments and penalties 
+                    of up to 40% of the underpaid tax. This is a landmark development for many Lebanese 
+                    businesses with regional subsidiaries or parent companies.
+                </p>
+
+                <h2>How A.M.C. Can Help</h2>
+                <p>
+                    A.M.C.'s tax advisory division has been helping clients navigate Lebanon's 
+                    regulatory landscape for over 33 years. Our CPAs and tax specialists are 
+                    available to assist with tax impact assessments, VAT system configuration, 
+                    transfer pricing documentation, and representation before the Ministry of Finance.
+                </p>
+                <p>
+                    Do not wait until your filing deadline approaches. Early planning and proactive 
+                    engagement with your tax advisor will ensure a smooth transition and minimise 
+                    your exposure to penalties under the new framework.
+                </p> -->
+
+            </div><!-- .article-body -->
+
+ 
+
+            <!-- Share Bar -->
+            <!-- <div class="article-share">
+                <span class="article-share-label">Share:</span>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://amclebanon.com/news-detail.html" target="_blank" class="share-btn share-btn-linkedin">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://amclebanon.com/news-detail.html" target="_blank" class="share-btn share-btn-facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <button class="share-btn share-btn-copy" onclick="copyLink()">
+                    <i class="fas fa-link"></i> Copy Link
+                </button>
+            </div> -->
+
+            <!-- Prev / Next -->
+            <!-- <nav class="article-nav" aria-label="Article navigation">
+                <a href="news.html" class="article-nav-card">
+                    <div class="article-nav-direction">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </div>
+                    <div class="article-nav-title">Back to All Articles</div>
+                </a>
+                <a href="news-detail.html?id=2" class="article-nav-card">
+                    <div class="article-nav-direction">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="article-nav-title">External Audit Best Practices for Lebanese SMEs in 2026</div>
+                </a>
+            </nav> -->
+
+        </main><!-- .article-main -->
+
+        <!-- ---- SIDEBAR ---- -->
+        <!-- <aside class="article-sidebar"> -->
+
+            <!-- Author Card -->
+            <!-- <div class="sidebar-card">
+                <div class="sidebar-card-title">About the Author</div>
+                <div class="sidebar-author">
+                    <div class="sidebar-author-avatar">
+                        <img src="assets/Nabil Abi Zeid.jpg" alt="Nabil Abi Zeid">
+                    </div>
+                    <div class="sidebar-author-name">Nabil Abi Zeid</div>
+                    <div class="sidebar-author-role">Managing Partner — A.M.C.</div>
+                </div>
+            </div> -->
+
+            <!-- Table of Contents -->
+            <!-- <div class="sidebar-card">
+                <div class="sidebar-card-title">In This Article</div>
+                <ul class="toc-list">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Overview of Tax Amendments</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Income Tax Changes</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Impact on Profit Distribution</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> VAT Filing Obligations</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Transfer Pricing Requirements</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> How A.M.C. Can Help</a></li>
+                </ul>
+            </div> -->
+
+            <!-- Related in Sidebar -->
+            <!-- <div class="sidebar-card">
+                <div class="sidebar-card-title">Related Articles</div>
+                <a href="news-detail.html?id=3" class="sidebar-related-item">
+                    <div class="sidebar-related-img">
+                        <img src="assets/new/Picture5.png" alt="VAT Filing">
+                    </div>
+                    <div>
+                        <div class="sidebar-related-title">Understanding VAT Filing Changes &amp; Cash Flow</div>
+                        <div class="sidebar-related-date"><i class="fas fa-calendar-alt"></i> Feb 10, 2026</div>
+                    </div>
+                </a>
+                <a href="news-detail.html?id=2" class="sidebar-related-item">
+                    <div class="sidebar-related-img">
+                        <img src="assets/new/Picture3.png" alt="Audit">
+                    </div>
+                    <div>
+                        <div class="sidebar-related-title">External Audit Best Practices for Lebanese SMEs</div>
+                        <div class="sidebar-related-date"><i class="fas fa-calendar-alt"></i> Feb 28, 2026</div>
+                    </div>
+                </a>
+                <a href="news-detail.html?id=4" class="sidebar-related-item">
+                    <div class="sidebar-related-img">
+                        <img src="assets/new/Picture6.png" alt="M&A">
+                    </div>
+                    <div>
+                        <div class="sidebar-related-title">M&amp;A Due Diligence in a Volatile Economy</div>
+                        <div class="sidebar-related-date"><i class="fas fa-calendar-alt"></i> Jan 22, 2026</div>
+                    </div>
+                </a>
+            </div> -->
+
+            <!-- CTA Card -->
+            <!-- <div class="sidebar-card sidebar-cta">
+                <div class="sidebar-card-title">Need Expert Advice?</div>
+                <p class="sidebar-cta-text">
+                    Our tax specialists are ready to help you navigate the 2025 reforms and build 
+                    a compliant, optimised tax strategy.
+                </p>
+                <a href="#" class="sidebar-cta-btn" id="openConsultationModalSidebar">
+                    Book a Consultation
+                </a>
+            </div> -->
+
+        <!-- </aside> -->
+
+    </div><!-- .article-layout -->
+
+    <!-- ============================================================
+         RELATED ARTICLES
+    ============================================================ -->
+    <section class="related-section">
+        <div class="related-container">
+            <div class="related-header">
+                <div class="section-label">Keep Reading</div>
+                <h2 class="related-title">More from AMC Insights</h2>
+            </div>
+
+            <div class="related-grid">
+
+                <a href="news-detail.html?id=2" class="article-card">
+                    <div class="article-card-image-wrap">
+                        <img src="assets/new/Picture3.png" alt="Audit">
+                        <span class="article-category-badge badge-audit">Audit</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-date">
+                            <i class="fas fa-calendar-alt"></i> February 28, 2026
+                        </div>
+                        <h3 class="article-card-title">External Audit Best Practices for Lebanese SMEs in 2026</h3>
+                        <p class="article-card-excerpt">Key compliance steps, documentation standards, and common pitfalls to avoid during your next external audit cycle.</p>
+                        <span class="article-card-link">Read More <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <a href="news-detail.html?id=4" class="article-card">
+                    <div class="article-card-image-wrap">
+                        <img src="assets/new/Picture6.png" alt="M&A">
+                        <span class="article-category-badge badge-advisory">Advisory</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-date">
+                            <i class="fas fa-calendar-alt"></i> January 22, 2026
+                        </div>
+                        <h3 class="article-card-title">Mergers &amp; Acquisitions: Due Diligence Essentials in a Volatile Economy</h3>
+                        <p class="article-card-excerpt">A.M.C.'s advisory team shares the framework we apply to protect client interests and uncover hidden risks.</p>
+                        <span class="article-card-link">Read More <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+                <a href="news-detail.html?id=5" class="article-card">
+                    <div class="article-card-image-wrap">
+                        <img src="assets/new1.jpg" alt="Company News">
+                        <span class="article-category-badge badge-company">Company News</span>
+                    </div>
+                    <div class="article-card-body">
+                        <div class="article-card-date">
+                            <i class="fas fa-calendar-alt"></i> January 8, 2026
+                        </div>
+                        <h3 class="article-card-title">A.M.C. Ranked Among Top 3 Employers for Women Inclusion in MENA</h3>
+                        <p class="article-card-excerpt">A.M.C. has been recognized by SAWI as one of the top employers in the MENA region for inclusive human capital policies.</p>
+                        <span class="article-card-link">Read More <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4><a href="about.html">About us</a></h4>
+                        <ul>
+                            <li><a href="about.html#history">Our History &amp; Evolution</a></li>
+                            <li><a href="about.html#purpose">Our Purpose &amp; Future</a></li>
+                            <li><a href="about.html#people">Our People</a></li>
+                            <li><a href="about.html#ventures">Joint Ventures &amp; Alliances</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4><a href="services.html">Services</a></h4>
+                        <ul>
+                            <li><a href="services.html#overview">Overview</a></li>
+                            <li><a href="services.html#what-we-do">What We Do</a></li>
+                            <li><a href="services.html#industries">Industries</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4><a href="culture.html">Culture</a></h4>
+                        <ul>
+                            <li><a href="culture.html#how-we-do">How We Do</a></li>
+                            <li><a href="culture.html#rise-values">RISE Values</a></li>
+                            <li><a href="culture.html#equity">Equity Driven Workspace</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4><a href="careers.html">Careers</a></h4>
+                        <ul>
+                            <li><a href="careers.html#jobs">Jobs</a></li>
+                            <li><a href="internships.html">Internships</a></li>
+                        </ul>
+                        <div class="stamp-with-gradient">
+                            <img src="assets/stamp.png" alt="Stamp">
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect With Us</h4>
+                        <div class="footer-contact">
+                            <p><i class="fas fa-phone"></i> <span style="color:#b0bec5;">+9615455117</span></p>
+                            <p><i class="fas fa-envelope"></i> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=amc@amclebanon.com" target="_blank" style="color:#b0bec5;text-decoration:none;">amc@amclebanon.com</a></p>
+                            <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/search/3rd+Floor,+St.+Elie+Center,+St.+Elie+Street,+Hazmieh,+Lebanon" target="_blank" style="color:#b0bec5;text-decoration:none;">Beirut, Lebanon</a></p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 A.M.C. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+        /* Copy link to clipboard */
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        /* Consultation Modal */
+        const modal = document.getElementById('consultationModal');
+
+        ['openConsultationModal', 'openConsultationModalSidebar'].forEach(id => {
+            document.getElementById(id)?.addEventListener('click', e => {
+                e.preventDefault();
+                modal.classList.add('active');
+            });
+        });
+
+        document.getElementById('closeConsultationModal')?.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal?.addEventListener('click', e => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        /* Smooth TOC scroll */
+        document.querySelectorAll('.toc-list a').forEach(link => {
+            link.addEventListener('click', e => e.preventDefault());
+        });
+    </script>
+
+    <!-- Consultation Modal -->
+    <div class="consultation-modal" id="consultationModal">
+        <div class="consultation-modal-content">
+            <div class="consultation-modal-header">
+                <h2 class="consultation-modal-title">Book your Consultation</h2>
+                <button class="consultation-modal-close" id="closeConsultationModal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="consultation-modal-body">
+                <form id="consultationForm">
+                    <div class="consultation-form-row">
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="cfFirstName">First Name<span class="required">*</span></label>
+                            <input type="text" id="cfFirstName" name="firstName" class="consultation-form-input" required>
+                        </div>
+                        <div class="consultation-form-group">
+                            <label class="consultation-form-label" for="cfLastName">Last Name<span class="required">*</span></label>
+                            <input type="text" id="cfLastName" name="lastName" class="consultation-form-input" required>
+                        </div>
+                    </div>
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="cfEmail">Email Address<span class="required">*</span></label>
+                        <input type="email" id="cfEmail" name="email" class="consultation-form-input" required>
+                    </div>
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="cfCompany">Company</label>
+                        <input type="text" id="cfCompany" name="company" class="consultation-form-input">
+                    </div>
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="cfService">Service of Interest</label>
+                        <select id="cfService" name="service" class="consultation-form-select">
+                            <option value="">Select a service</option>
+                            <option>Audit &amp; Assurance</option>
+                            <option>Tax Advisory</option>
+                            <option>Financial Consultancy</option>
+                            <option>Accounting &amp; Bookkeeping</option>
+                            <option>Mergers &amp; Acquisitions</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="consultation-form-group">
+                        <label class="consultation-form-label" for="cfMessage">Message</label>
+                        <textarea id="cfMessage" name="message" class="consultation-form-textarea" placeholder="Tell us about your needs..."></textarea>
+                    </div>
+                    <button type="submit" class="consultation-form-submit-btn">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
