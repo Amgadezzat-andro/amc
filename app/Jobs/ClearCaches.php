@@ -26,30 +26,10 @@ class ClearCaches implements ShouldQueue
      */
     public function handle(): void
     {
-
-        Artisan::queue('config:clear');
-        $output = Artisan::output();
-        echo $output;
-        Artisan::queue('cache:clear');
-        $output = Artisan::output();
-        echo $output;
-        Artisan::queue('optimize:clear');
-        $output = Artisan::output();
-        echo $output;
-        Artisan::queue('filament:clear-cached-components');
-        $output = Artisan::output();
-        echo $output;
-
-        // Artisan::queue('filament:optimize'); //not allowed from console
-        // $output = Artisan::output();
-        // echo $output;
-
-        Artisan::queue('filament:cache-components');
-        $output = Artisan::output();
-        echo $output;
-
-        // Artisan::queue('icons:cache'); //not allowed from console
-        // $output = Artisan::output();
-        // echo $output;
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('optimize:clear');
+        Artisan::call('filament:clear-cached-components');
+        Artisan::call('filament:cache-components');
     }
 }
