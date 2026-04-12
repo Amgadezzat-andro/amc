@@ -1,5 +1,6 @@
 <x-layouts.layout  seoTitle="{{ __('About Us') }}">
     @push('css')
+    <link rel="stylesheet" href="{{ asset('css/about_us.css') }}">
     @endpush
 
     @section('content')

@@ -48,22 +48,22 @@ class ButtonResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __("SM BUTTONS");
+        return __("BUTTONS");
     }
 
     public static function getModelLabel(): string
     {
-        return __("SM BUTTONS");
+        return __("BUTTONS");
     }
 
     public static function getPluralLabel(): ?string
     {
-        return __("SM BUTTONS");
+        return __("BUTTONS");
     }
 
     public static function getPluralModelLabel(): string
     {
-        return __("SM BUTTONS");
+        return __("BUTTONS");
     }
 
     public static function getNavigationGroup(): ?string
