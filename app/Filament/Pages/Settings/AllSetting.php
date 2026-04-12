@@ -19,8 +19,8 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\HtmlString;
 use Filament\Support\Exceptions\Halt;
+use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Str;
-use Throwable;
 use Filament\Forms\Components\Field;
 use App\Jobs\ClearCaches;
 use Filament\Forms\Components\Textarea;
@@ -494,18 +494,17 @@ class AllSetting extends BaseSettings
                 Setting::set($key, $value);
             }
 
-            // Use immediate dispatch to avoid afterResponse hangs in some Livewire contexts.
-            dispatch(new ClearCaches());
+            dispatch(new ClearCaches())->afterResponse();
 
             $this->callHook('afterSave');
         } catch (Halt $exception) {
             return;
-        } catch (Throwable $exception) {
-            report($exception);
-
-            return;
         }
 
         $this->getSavedNotification()?->send();
+
+        if ($redirectUrl = $this->getRedirectUrl()) {
+            $this->redirect($redirectUrl, navigate: FilamentView::hasSpaMode());
+        }
     }
 }
