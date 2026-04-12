@@ -35,7 +35,7 @@ class ContactUsForm extends BaseForm
     public function mount()
     {
         if (empty($this->internation_phone_country)) {
-            $this->internation_phone_country = 'TZ';
+            $this->internation_phone_country = 'LB';
         }
     }
 
@@ -55,7 +55,7 @@ class ContactUsForm extends BaseForm
                 'last_name' => ['required', 'min:3', 'max:255', 'regex:/^(?:[a-zA-Z ]+|[\p{Arabic} ]+)$/u', 'not_regex:/<[^b][^r][^>]*>/'],
                 'email' => ['required', 'max:255', 'email:filter', 'not_regex:/<[^b][^r][^>]*>/'],
                 'internation_phone_country' => ['nullable', 'string', 'size:2'],
-                'phone' => ['required', 'regex:/^[\d\s\-\+\(\)]{8,20}$/', 'not_regex:/<[^b][^r][^>]*>/'],
+                'phone' => ['required', 'regex:/^\+961(?:\s?\d){7,8}$/', 'not_regex:/<[^b][^r][^>]*>/'],
                 'company' => ['nullable', 'string', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
                 'position' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
                 'location' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],

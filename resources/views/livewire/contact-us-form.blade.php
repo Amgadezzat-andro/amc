@@ -36,7 +36,7 @@
         </div>
         <div class="form-group @error('phone') is-invalid @enderror">
             <label class="form-label">Phone <span class="required">*</span></label>
-            <input type="tel" wire:model.blur="phone" class="form-input" placeholder="+255 700 000 000">
+            <input type="tel" wire:model.blur="phone" class="form-input" placeholder="+961 70 123 456">
             @error('phone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
     </div>

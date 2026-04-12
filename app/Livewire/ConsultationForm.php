@@ -39,7 +39,7 @@ class ConsultationForm extends BaseForm
             'company' => ['nullable', 'string', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
             'position' => ['required', 'string', 'min:2', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
             'email' => ['required', 'max:255', 'email:filter', 'not_regex:/<[^b][^r][^>]*>/'],
-            'phone' => ['required', 'regex:/^[\d\s\-\+\(\)]{8,20}$/', 'not_regex:/<[^b][^r][^>]*>/'],
+            'phone' => ['required', 'regex:/^\+961(?:\s?\d){7,8}$/', 'not_regex:/<[^b][^r][^>]*>/'],
             'location' => ['required', 'string', 'max:255', 'not_regex:/<[^b][^r][^>]*>/'],
             'message' => ['required', 'min:3', 'max:65535', 'not_regex:/<[^b][^r][^>]*>/'],
             'captcha' => ['nullable'],

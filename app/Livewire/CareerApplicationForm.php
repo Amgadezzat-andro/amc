@@ -68,7 +68,7 @@ class CareerApplicationForm extends BaseForm
             'name' => ['required', 'min:2', 'max:255'],
             'surname' => ['required', 'min:2', 'max:255'],
             'email' => ['required', 'email:filter', 'max:255'],
-            'phone' => ['required', 'regex:/^[\d\s\-\+\(\)]{8,20}$/'],
+            'phone' => ['required', 'regex:/^\+961(?:\s?\d){7,8}$/'],
             'cv' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
             'cover_letter' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
             'position_id' => ['required', 'exists:dropdown_list,id'],

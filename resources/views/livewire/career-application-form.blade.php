@@ -24,7 +24,7 @@
 
         <div class="form-group">
             <label class="form-label" for="career-phone">Phone Number<span class="required">*</span></label>
-            <input id="career-phone" type="tel" wire:model.blur="phone" class="form-input @error('phone') border-red-500 @enderror" required>
+            <input id="career-phone" type="tel" wire:model.blur="phone" class="form-input @error('phone') border-red-500 @enderror" placeholder="+961 70 123 456" required>
             @error('phone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
     </div>

@@ -35,7 +35,7 @@
         </div>
         <div class="consultation-form-group">
             <label class="consultation-form-label" for="consultationPhone">Phone<span class="required">*</span></label>
-            <input type="tel" id="consultationPhone" wire:model.blur="phone" class="consultation-form-input @error('phone') border-red-500 @enderror" required>
+            <input type="tel" id="consultationPhone" wire:model.blur="phone" class="consultation-form-input @error('phone') border-red-500 @enderror" placeholder="+961 70 123 456" required>
             @error('phone') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
         </div>
     </div>

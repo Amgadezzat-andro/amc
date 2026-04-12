@@ -48,7 +48,7 @@ class InternshipApplicationForm extends BaseForm
             'name' => ['required', 'min:2', 'max:255'],
             'surname' => ['required', 'min:2', 'max:255'],
             'email' => ['required', 'email:filter', 'max:255'],
-            'phone' => ['required', 'regex:/^[\d\s\-\+\(\)]{8,20}$/'],
+            'phone' => ['required', 'regex:/^\+961(?:\s?\d){7,8}$/'],
             'date_of_birth' => ['required', 'date', 'before:today'],
             'address' => ['required', 'string', 'max:255'],
             'university' => ['required', 'string', 'max:255'],
