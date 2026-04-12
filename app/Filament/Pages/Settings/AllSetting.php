@@ -409,14 +409,6 @@ class AllSetting extends BaseSettings
                                                 ->validationMessages([
                                                     'not_regex' => 'HTML is invalid',
                                                 ]),
-
-                                            TextInput::make($tab->makeName('site.location_title'))
-                                                ->label(__("Location Title[" . $tab->getLocale() . "]"))
-                                                ->maxLength(255)
-                                                ->notRegex('/<[^b][^r][^>]*>/')
-                                                ->validationMessages([
-                                                    'not_regex' => 'HTML is invalid',
-                                                ]),
                                             TextInput::make('site.location_coordinate')
                                                 ->label(__("Location Coordiante"))
                                                 // ->maxLength(255)

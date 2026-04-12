@@ -13,7 +13,7 @@ class WebformsController extends Controller
     public function contactUs(): View
     {
         $lng = app()->getLocale();
-        $locationTitle = setting("{$lng}.site.location") ?: setting('site.location_title');
+        $locationTitle = setting("{$lng}.site.location");
         $locationCoordinate = setting('site.location_coordinate');
         $locationUrl = setting('site.location_url');
 

@@ -82,9 +82,6 @@ class AppServiceProvider extends ServiceProvider
         $locationTitle = Cache::rememberForever("location", function () use ($lng) {
             return setting("{$lng}.site.location");
         });
-        $locationTitle2 = Cache::rememberForever("location_title_2", function () use ($lng) {
-            return setting("{$lng}.site.location_title");
-        });
         $locationCoordinate = Cache::rememberForever("location_coordinate", function () use ($lng) {
             return setting("site.location_coordinate", "#");
         });
@@ -100,7 +97,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share("favIcon", $favicon);
         view()->share("locationUrl", $locationUrl);
         view()->share("locationTitle", $locationTitle);
-        view()->share("locationTitle2", $locationTitle2);
         view()->share("locationCoordinate", $locationCoordinate);
         view()->share("footerLogo", $footerLogo);
 
