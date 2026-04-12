@@ -19,6 +19,7 @@ class WebformsController extends Controller
 
         $contactInfo = [
             'phone' => setting('site.phone'),
+            'fax' => setting('site.fax'),
             'email' => setting('site.management_email'),
             'address' => $locationTitle,
             'business_hours' => setting('site.business_hours'),

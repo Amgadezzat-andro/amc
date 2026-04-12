@@ -381,6 +381,14 @@ class AllSetting extends BaseSettings
                                                     'not_regex' => 'HTML is invalid',
                                                 ]),
 
+                                            TextInput::make('site.fax')
+                                                ->label(__("Fax"))
+                                                ->maxLength(255)
+                                                ->notRegex('/<[^b][^r][^>]*>/')
+                                                ->validationMessages([
+                                                    'not_regex' => 'HTML is invalid',
+                                                ]),
+
 
 
                                             TextInput::make('site.management_email')

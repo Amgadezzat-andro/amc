@@ -82,7 +82,12 @@
     <a href="tel:{{ preg_replace('/\s+/', '', $ci['phone'] ?? '') }}" class="contact-detail-card">
         <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
         <h2 class="contact-detail-title">phone</h2>
-        <p class="contact-detail-text"><span style="color:#00849e;">{{ $ci['phone'] ?: '-' }}</span></p>
+        <p class="contact-detail-text">
+            Tel/Fax<br>
+            <span style="color: #00849e;">{{ $ci['fax'] ?: ($ci['phone'] ?: '-') }}</span><br><br>
+            Mobile<br>
+            <span style="color: #00849e;">{{ $ci['phone'] ?: '-' }}</span>
+        </p>
     </a>
 
     <a href="mailto:{{ $ci['email'] ?? '' }}" class="contact-detail-card">
