@@ -20,17 +20,6 @@
             <p class="news-hero-subtitle">{{ $newsBanner->brief }}</p>
         @endif
 
-        <div class="news-hero-stats">
-            <div class="news-hero-stat">
-                <span class="news-hero-stat-num">{{ $allNews->count() }}</span>
-                <span class="news-hero-stat-label">Articles</span>
-            </div>
-        </div>
-
-        <div class="news-hero-scroll">
-            <span>Scroll</span>
-            <div class="news-hero-scroll-line"></div>
-        </div>
     </div>
 </section>
 
@@ -72,7 +61,7 @@
                         <div class="article-card-meta">
                             <span class="article-card-date">
                                 <i class="fas fa-calendar-alt"></i>
-                                {{ $news->published_at?->format('d M Y') ?? 'N/A' }}
+                                {{ $news->published_at?->format('F d, Y') ?? 'N/A' }}
                             </span>
                             @if($news->reading_time)
                                 <span class="article-card-read">
@@ -82,7 +71,7 @@
                             @endif
                         </div>
                         <h3 class="article-card-title">{{ $news->title }}</h3>
-                        <p class="article-card-excerpt">{{ Str::limit($news->brief, 100) }}</p>
+                        <p class="article-card-excerpt">{{ Str::limit($news->brief, 260) }}</p>
                         <span class="article-card-link">
                             Read More
                             <i class="fas fa-arrow-right"></i>
