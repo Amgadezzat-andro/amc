@@ -92,7 +92,7 @@
     <section id="ventures" class="content-section">
         <div class="container">
             <div class="section-eyebrow" style="text-align:center;">{{ 'Joint Ventures & Alliances' }}</div>
-            <h2 class="section-title" style="text-align:center;">{{ 'Ecosystems and Trusted Relationships' }}</h2>
+            <p style="text-align: center" >Ecosystems and Trusted Relationships</p>
 
             <div class="section-content">
                 <div class="partnerships-grid">
