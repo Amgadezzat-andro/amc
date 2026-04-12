@@ -19,14 +19,14 @@
     $overviewLocations = 'Lebanon, UAE, Iraq, Germany, UK, France, Monaco, Congo, Tunisia';
 
     $tabMeta = [
-        'company-setup' => ['icon' => 'fas fa-building', 'label' => 'Company Setup'],
-        'audit' => ['icon' => 'fas fa-clipboard-check', 'label' => 'Audit & Assurance'],
-        'accounting' => ['icon' => 'fas fa-calculator', 'label' => 'Accounting & Bookkeeping'],
+        'company-setup' => ['icon' => 'fas fa-building', 'label' => 'Company Setup<br><small>Lebanon & UAE</small>'],
+        'audit' => ['icon' => 'fas fa-clipboard-check', 'label' => 'Audit &<br>Assurance'],
+        'accounting' => ['icon' => 'fas fa-calculator', 'label' => 'Accounting &<br>Bookkeeping'],
         'payroll' => ['icon' => 'fas fa-money-check-alt', 'label' => 'Payroll'],
-        'tax' => ['icon' => 'fas fa-file-invoice-dollar', 'label' => 'Tax Advisory & Filing'],
-        'internal-control' => ['icon' => 'fas fa-shield-alt', 'label' => 'Internal Control'],
-        'ma' => ['icon' => 'fas fa-handshake', 'label' => 'Mergers & Acquisitions'],
-        'human-capital' => ['icon' => 'fas fa-users-cog', 'label' => 'Human Capital'],
+        'tax' => ['icon' => 'fas fa-file-invoice-dollar', 'label' => 'Tax Advisory<br>& Filing'],
+        'internal-control' => ['icon' => 'fas fa-shield-alt', 'label' => 'Internal Control<br>Assessment'],
+        'ma' => ['icon' => 'fas fa-handshake', 'label' => 'Mergers &<br>Acquisitions'],
+        'human-capital' => ['icon' => 'fas fa-users-cog', 'label' => 'Human<br>Capital'],
     ];
 @endphp
 
@@ -59,15 +59,32 @@
 .overview-nav-btn.active .nav-number,
 .overview-nav-btn.active .nav-title { color: #fff; }
 
+.section-eyebrow {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #003d5c;
+    margin-bottom: 20px;
+}
+
+.what-we-do-section { background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); }
 .competency-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 20px 12px; background: #fff; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all .3s ease; min-height: 100px; text-align: center; }
 .competency-tab i { font-size: 24px; color: #6b7280; }
 .competency-tab span { font-size: 13px; font-weight: 600; color: #374151; line-height: 1.4; }
+.competency-tab small { font-size: 11px; font-weight: 400; }
+.competency-tab:hover { border-color: #0d9488; background: #f0fdfa; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15); }
+.competency-tab:hover i { color: #0d9488; transform: scale(1.1); }
 .competency-tab.active { border-color: transparent; background: linear-gradient(135deg,#003d5c 0%,#005a7a 25%,#00849e 50%,#00a8c2 75%,#00b8b8 100%); }
 .competency-tab.active i,
 .competency-tab.active span { color: #fff; }
+.competencies-tabs-content { position: relative; min-height: 400px; }
 .competency-tab-content { display: none; opacity: 0; animation: fadeInContent .5s ease-out forwards; }
 .competency-tab-content.active { display: block; }
 @keyframes fadeInContent { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+.competency-image img { width: 100%; height: 400px; object-fit: cover; transition: transform .5s ease; }
+.competency-image:hover img { transform: scale(1.05); }
+.competency-text h3 { color: #0d9488; line-height: 1.3; }
 
 .ecosystems-content-reveal { opacity: 1; transform: translateY(0); }
 </style>
@@ -155,7 +172,7 @@
 <section id="what-we-do" class="what-we-do-section py-20 lg:py-32 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="section-header text-center mb-16">
-            <div class="section-eyebrow">What we Do</div>
+            <div class="section-eyebrow">What We Do</div>
             <h2 class="section-subtitle text-lg font-light text-gray-900 mb-4">Core Competencies</h2>
         </div>
 
@@ -164,7 +181,7 @@
                 @foreach($tabMeta as $key => $meta)
                     <button class="competency-tab {{ $loop->first ? 'active' : '' }}" data-tab="{{ $key }}">
                         <i class="{{ $meta['icon'] }}"></i>
-                        <span>{{ $meta['label'] }}</span>
+                        <span>{!! $meta['label'] !!}</span>
                     </button>
                 @endforeach
             </div>
@@ -184,7 +201,7 @@
                             @endif
                         </div>
                         <div class="competency-text">
-                            <h3 class="text-3xl font-bold mb-4 text-teal-600">{{ $item?->title ?? $meta['label'] }}</h3>
+                            <h3 class="text-3xl font-light text-gray-900 mb-6">{{ $item?->title ?? strip_tags($meta['label']) }}</h3>
                             <div class="text-gray-700 leading-relaxed space-y-4">
                                 {!! \App\Classes\Content::inlineStyleToClasses($item?->content ?? '') !!}
                             </div>
