@@ -112,7 +112,7 @@
 <section class="google-map-section">
     <div class="google-map-header">
         <h2 class="google-map-title">Find Us Here</h2>
-        <p class="google-map-subtitle">Visit our office location</p>
+        <p class="google-map-subtitle">{{ $ci['address'] ? 'Visit our offices at ' . $ci['address'] : 'Visit our office location' }}</p>
     </div>
     <div class="google-map-container">
         <iframe src="https://maps.google.com/maps?q={{ urlencode($mapQuery) }}&z=14&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Location"></iframe>
