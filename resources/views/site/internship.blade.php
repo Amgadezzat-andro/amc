@@ -1,4 +1,4 @@
-<x-layouts.layout seoTitle="{{ __('site.InternShip') ?? 'Internship' }}" layoutView="main-inner">
+<x-layouts.layout seoTitle="{{ __('Internship') ?? 'Internship' }}" layoutView="main-inner">
 
 @section('content')
 @php
