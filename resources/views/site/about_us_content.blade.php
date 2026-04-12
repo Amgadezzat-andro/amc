@@ -91,8 +91,8 @@
     @if($ventures->isNotEmpty())
     <section id="ventures" class="content-section">
         <div class="container">
-            <div class="section-eyebrow" style="text-align:center;">{{ $ventures->first()?->title ?? 'Joint Ventures & Alliances' }}</div>
-            <h2 class="section-title" style="text-align:center;">{{ $ventures->first()?->second_title ?? 'Ecosystems and Trusted Relationships' }}</h2>
+            <div class="section-eyebrow" style="text-align:center;">{{ 'Joint Ventures & Alliances' }}</div>
+            <h2 class="section-title" style="text-align:center;">{{ 'Ecosystems and Trusted Relationships' }}</h2>
 
             <div class="section-content">
                 <div class="partnerships-grid">
