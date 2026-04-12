@@ -7,7 +7,7 @@
 @endphp
 
 <style>
-.contact-hero-banner { position: relative; width: 100%; min-height: 70vh; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80'); background-size: cover; background-position: center; background-repeat: no-repeat; }
+.contact-hero-banner { position: relative; width: 100%; min-height: 70vh; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; background-image: url('{{ asset('assets/contact-us.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; }
 .contact-hero-banner::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,61,92,.9) 0%, rgba(0,132,158,.85) 100%); z-index: 1; }
 .contact-hero-content { max-width: 1400px; margin: 0 auto; padding: 100px 80px; width: 100%; text-align: center; position: relative; z-index: 2; }
 .contact-hero-title { font-size: clamp(36px, 5vw, 64px); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 20px; }
