@@ -292,6 +292,7 @@
 .badge-company { background: #005a7a; }
 .badge-insights { background: #00b8b8; }
 .badge-regulation { background: #1d4ed8; }
+.badge-default { background: #00b8b8; }
 
 .article-card-body {
     padding: 28px 28px 24px;

@@ -45,13 +45,25 @@
 
         <div class="news-grid">
             @forelse($allNews as $news)
-                <a href="{{ route('news-view', ['locale' => $lng, 'slug' => $news->slug]) }}" class="article-card visible" data-category="{{ $news->category?->value ?? 'general' }}">
+                @php
+                    $rawCategory = $news->category?->value ?? $news->category?->title ?? 'insights';
+                    $slugCategory = \Illuminate\Support\Str::slug(strtolower($rawCategory));
+                    $categoryMap = [
+                        'audit' => 'audit',
+                        'tax' => 'tax',
+                        'advisory' => 'advisory',
+                        'company' => 'company',
+                        'company-news' => 'company',
+                    ];
+                    $badgeClass = $categoryMap[$slugCategory] ?? 'insights';
+                @endphp
+                <a href="{{ route('news-view', ['locale' => $lng, 'slug' => $news->slug]) }}" class="article-card visible" data-category="{{ $badgeClass }}">
                     <div class="article-card-image-wrap">
                         @if($news->mainImage?->url)
                             <img src="{{ $news->mainImage->url }}" alt="{{ $news->title }}">
                         @endif
                         @if($news->category?->title)
-                            <span class="article-category-badge badge-{{ $news->category?->value ?? 'general' }}">
+                            <span class="article-category-badge badge-{{ $badgeClass }}">
                                 {{ $news->category->title }}
                             </span>
                         @endif
