@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filament\Resources\Bms\Model\Bms;
+use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -52,6 +53,10 @@ class WebformsController extends Controller
 
             // Backward compatibility for existing content using the old category slug.
             return $header ?: Bms::activeWithCategory('home-page-careers')->with(['mainImage', 'frontButtons'])->first();
+        });
+
+        $data['jobs'] = Cache::remember('careers_jobs_active_list', now()->addMinutes(5), function () {
+            return Job::query()->active()->ordered()->get();
         });
 
         return view('site.careers', $data);

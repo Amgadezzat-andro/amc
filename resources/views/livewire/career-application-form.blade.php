@@ -55,16 +55,25 @@
         @error('cover_letter') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
     </div>
 
-    <div class="form-group">
-        <label class="form-label" for="career-position">Position<span class="required">*</span></label>
-        <select id="career-position" wire:model.blur="position_id" class="form-input @error('position_id') border-red-500 @enderror" required>
-            <option value="">Select a position</option>
-            @foreach($positionList as $id => $title)
-                <option value="{{ $id }}">{{ $title }}</option>
-            @endforeach
-        </select>
-        @error('position_id') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-    </div>
+    @if(!empty($jobList))
+        <div class="form-group selected-job-group">
+            <label class="form-label" for="career-selected-position">Position<span class="required">*</span></label>
+            <input
+                id="career-selected-position"
+                type="text"
+                class="form-input"
+                value="{{ $selectedJobTitle ?: 'Select a position by clicking Apply Now in the jobs list above' }}"
+                readonly
+            >
+            <select id="career-job-id" wire:model.live="job_id" style="display:none;" aria-hidden="true" tabindex="-1">
+                <option value="">Select a position</option>
+                @foreach($jobList as $id => $title)
+                    <option value="{{ $id }}">{{ $title }}</option>
+                @endforeach
+            </select>
+            @error('job_id') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+        </div>
+    @endif
 
     <div class="form-group">
         <label class="form-label" for="career-message">Your Message (optional)</label>

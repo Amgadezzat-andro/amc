@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ServicesBmsSeeder::class,
             CultureBmsSeeder::class,
             NewsSeeder::class,
+            JobsTableSeeder::class,
         ]);
     }
 }

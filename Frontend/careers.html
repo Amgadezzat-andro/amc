@@ -545,7 +545,7 @@
         }
     </style>
     <style>
-        
+
         /* Consultation Popup Modal */
         .consultation-modal {
             display: none;
@@ -767,7 +767,7 @@
                         <img src="assets/amc logo 2.png" alt="A.M.C. Logo">
                     </a>
                 </div>
-                
+
                 <button class="mobile-menu-toggle" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
@@ -887,7 +887,7 @@
                             Apply Now
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        
+
                     </div>
                 </div> -->
 
@@ -922,7 +922,7 @@
                             Apply Now
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        
+
                     </div>
                 </div> -->
 
@@ -957,7 +957,7 @@
                             Apply Now
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        
+
                     </div>
                 </div> -->
 
@@ -992,7 +992,7 @@
                             Apply Now
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        
+
                     </div>
                 </div> -->
 
@@ -1027,7 +1027,7 @@
                             Apply Now
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        
+
                     </div>
                 </div> -->
 
@@ -1062,11 +1062,11 @@
                             Apply Now
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        
+
                     </div>
                 </div> -->
-            <!-- </div> --> 
-             
+            <!-- </div> -->
+
         </div>
     </section>
 
@@ -1075,7 +1075,7 @@
         <div class="application-form-container">
             <form class="application-form" id="jobApplicationForm">
                 <h2 class="form-title">Application Form</h2>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="firstName">
@@ -1288,9 +1288,9 @@
                     const allowedExtensions = ['.pdf', '.doc', '.docx'];
                     const fileName = file.name.toLowerCase();
                     const fileExtension = fileName.substring(fileName.lastIndexOf('.'));
-                    
+
                     const isValidType = allowedTypes.includes(file.type) || allowedExtensions.includes(fileExtension);
-                    
+
                     if (!isValidType) {
                         alert('Please upload only PDF or Word documents (.pdf, .doc, .docx)');
                         this.value = '';
@@ -1299,7 +1299,7 @@
                         label.style.background = '#fef2f2';
                         return;
                     }
-                    
+
                     textSpan.textContent = file.name;
                     label.style.borderColor = '#00849e';
                     label.style.background = '#f0fdfa';
@@ -1314,11 +1314,11 @@
         // Form submission
         document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Basic validation
             const requiredFields = this.querySelectorAll('[required]');
             let isValid = true;
-            
+
             requiredFields.forEach(field => {
                 if (field.type === 'file') {
                     if (!field.files || field.files.length === 0) {
@@ -1335,7 +1335,7 @@
                         const fileName = file.name.toLowerCase();
                         const fileExtension = fileName.substring(fileName.lastIndexOf('.'));
                         const isValidType = allowedTypes.includes(file.type) || allowedExtensions.includes(fileExtension);
-                        
+
                         if (!isValidType) {
                             isValid = false;
                             alert('Please upload only PDF or Word documents (.pdf, .doc, .docx)');
@@ -1359,7 +1359,7 @@
                     field.style.borderColor = '#d1d5db';
                 }
             });
-            
+
             // Validate optional cover letter if provided
             const coverLetterInput = document.getElementById('coverLetter');
             if (coverLetterInput && coverLetterInput.files && coverLetterInput.files.length > 0) {
@@ -1369,7 +1369,7 @@
                 const fileName = file.name.toLowerCase();
                 const fileExtension = fileName.substring(fileName.lastIndexOf('.'));
                 const isValidType = allowedTypes.includes(file.type) || allowedExtensions.includes(fileExtension);
-                
+
                 if (!isValidType) {
                     isValid = false;
                     alert('Please upload only PDF or Word documents (.pdf, .doc, .docx)');
@@ -1385,7 +1385,7 @@
                 // Here you would normally send the form data to a server
                 alert('Thank you for your application! We will review your submission and get back to you soon.');
                 this.reset();
-                
+
                 // Reset file upload labels
                 document.querySelectorAll('.file-upload-label').forEach(label => {
                     const textSpan = label.querySelector('.file-upload-text');

@@ -68,8 +68,9 @@ class CareerApplicationResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->label(__('Phone'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('position.title')
+                Tables\Columns\TextColumn::make('job.title')
                     ->label(__('Position'))
+                    ->placeholder('-')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('message')
                     ->label(__('Message'))
@@ -80,8 +81,8 @@ class CareerApplicationResource extends Resource
             ->defaultSort('id', 'desc')
             ->striped()
             ->filters([
-                Tables\Filters\SelectFilter::make('position_id')
-                    ->relationship('position', 'id')
+                Tables\Filters\SelectFilter::make('job_id')
+                    ->relationship('job', 'id')
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->title),
             ])
             ->actions([

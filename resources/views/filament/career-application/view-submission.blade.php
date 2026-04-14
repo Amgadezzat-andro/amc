@@ -6,7 +6,7 @@
         </div>
         <div>
             <p class="text-gray-500">{{ __('Position') }}</p>
-            <p class="font-medium">{{ $record->position?->title }}</p>
+            <p class="font-medium">{{ $record->job?->title ?: '-' }}</p>
         </div>
         <div>
             <p class="text-gray-500">{{ __('Email') }}</p>

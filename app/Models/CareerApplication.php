@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Filament\Resources\DropdownList\Model\DropdownList;
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,9 +25,15 @@ class CareerApplication extends Model
         'phone',
         'cv',
         'cover_letter',
+        'job_id',
         'position_id',
         'message',
     ];
+
+    public function job(): BelongsTo
+    {
+        return $this->belongsTo(Job::class, 'job_id', 'id');
+    }
 
     public function position(): BelongsTo
     {
